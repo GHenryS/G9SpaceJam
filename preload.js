@@ -13,6 +13,7 @@ function preLoadImages(){
 function preLoadButtons(){
     
     mainMenuButtonImg           =   preLoadImages('buttons/mainmenu.png');
+    LL
     infoButtonImg               =   preLoadImages('buttons/information.png');
     leaderboardButtonImg        =   preLoadImages('buttons/leaderboard.png');
     mainMenuButtonImg           =   preLoadImages('buttons/menu.png');

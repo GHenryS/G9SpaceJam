@@ -1,7 +1,0 @@
-
-
-function runSetupCode(){
-    
-    introScreenSetup()
-    introScreen();
-}
