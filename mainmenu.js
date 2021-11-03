@@ -1,6 +1,10 @@
 // ------------------ FUNCTION TO PRELOAD GAME BUTTONS ---------------------- //
 
 function mainMenu(){
+    // set main menu page
+    createCanvas(window.innerWidth - 4, window.innerHeight - 4);
+    background(0,0,0);
+
     // function variables
     let scale               =   window.innerWidth / window.screen; // resize to fit window
     let winCentreX          =   window.innerwidth / 2;
@@ -9,6 +13,10 @@ function mainMenu(){
     let buttonHeight        =   200;
     let hover               =   1.2;
     let settingsButtonY     =   0.2;
+    let leaderButtonY       =   0.3;
+    let infoButtonY         =   0.4;
+    let resetButtonY        =   0.6;
+    let playGameButtonY     =   0.8;
 
     // set canvas and background //
     createCanvas(window.innerWidth - 4, window.innerHeight - 4)
@@ -31,10 +39,36 @@ function mainMenu(){
 
     // leaderboard button
     rectMode(CENTER,CENTER);
-    image(leaderboardButtonImg , winCentreX, winHeight * settingsButtonY, buttonWidth * scale, buttonHeight * scale);
-    if(mouseX > winCentreX - buttonWidth / 2 && mouseX < winCentreX + buttonWidth / 2 && mouseY > settingsButtonY - buttonHeight / 2 && mouseY < settingsButtonY + buttonHeight / 2){
-        image(leaderboardButtonImg , winCentreX, winHeight * settingsButtonY, buttonWidth * scale * hover, buttonHeight * scale * hover);
+    image(leaderboardButtonImg , winCentreX, winHeight * leaderButtonY, buttonWidth * scale, buttonHeight * scale);
+    if(mouseX > winCentreX - buttonWidth / 2 && mouseX < winCentreX + buttonWidth / 2 && mouseY > leaderButtonY - buttonHeight / 2 && mouseY < leaderButtonY + buttonHeight / 2){
+        image(leaderboardButtonImg , winCentreX, winHeight * leaderButtonY, buttonWidth * scale * hover, buttonHeight * scale * hover);
         gameState           = "leaderboard";       // switch the gameState to run the settings page
+    }
+
+    // information button
+    rectMode(CENTER,CENTER);
+    image(infoButtonImg  , winCentreX, winHeight * infoButtonY , buttonWidth * scale, buttonHeight * scale);
+    if(mouseX > winCentreX - buttonWidth / 2 && mouseX < winCentreX + buttonWidth / 2 && mouseY > infoButtonY  - buttonHeight / 2 && mouseY < infoButtonY  + buttonHeight / 2){
+        image(infoButtonImg  , winCentreX, winHeight * infoButtonY , buttonWidth * scale * hover, buttonHeight * scale * hover);
+        gameState           = "information";       // switch the gameState to run the settings page
+    }
+
+    // reset button
+    rectMode(CENTER,CENTER);
+    image(resetGameButtonImg  , winCentreX, winHeight * resetButtonY  , buttonWidth * scale, buttonHeight * scale);
+    if(mouseX > winCentreX - buttonWidth / 2 && mouseX < winCentreX + buttonWidth / 2 && mouseY > resetButtonY   - buttonHeight / 2 && mouseY < resetButtonY   + buttonHeight / 2){
+        image(resetGameButtonImg   , winCentreX, winHeight * resetButtonY , buttonWidth * scale * hover, buttonHeight * scale * hover);
+        gameState           = "resetgame";       // switch the gameState to run the settings page
+    }
+
+    // NEEDS A CONDITION TO DETERMINE IF THE PLAY BUTTON OR RETURN TO GAME BUTTON SHOULD SHOW
+    // RETURN TO GAME BUTTON NEEDS TO OBTAIN THE LAST GAME STATE INFO AND SHOULD THEN RETURN TO THE LAST GAME STATE PAGE
+    // reset button
+    rectMode(CENTER,CENTER);
+    image(playGameButtonImg   , winCentreX, winHeight * playGameButtonY  , buttonWidth * scale, buttonHeight * scale);
+    if(mouseX > winCentreX - buttonWidth / 2 && mouseX < winCentreX + buttonWidth / 2 && mouseY > playGameButtonY  - buttonHeight / 2 && mouseY < playGameButtonY  + buttonHeight / 2){
+        image(playGameButtonImg   , winCentreX, winHeight * playGameButtonY , buttonWidth * scale * hover, buttonHeight * scale * hover);
+        gameState           = "resetgame";       // switch the gameState to run the settings page
     }
 
 

@@ -2,7 +2,8 @@
 
 function preLoadImages(){
 
-  preLoadButtons();
+  // preLoadButtons();
+  
   preLoadSplashImages();
   preLoadSound();
 
@@ -12,8 +13,7 @@ function preLoadImages(){
 
 function preLoadButtons(){
     
-    mainMenuButtonImg           =   preLoadImages('buttons/mainmenu.png');
-    LL
+    mainMenuButtonImg           =   preLoadImages("buttons/mainmenu.png");
     infoButtonImg               =   preLoadImages('buttons/information.png');
     leaderboardButtonImg        =   preLoadImages('buttons/leaderboard.png');
     mainMenuButtonImg           =   preLoadImages('buttons/menu.png');
