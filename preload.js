@@ -7,7 +7,7 @@ function preLoadImages(){
   // preLoadSound();
 
 }
-
+//
 // ------------------ FUNCTION TO PRELOAD GAME BUTTONS ---------------------- //
 
 function preLoadButtons(){
