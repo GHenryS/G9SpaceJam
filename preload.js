@@ -29,8 +29,8 @@ function preLoadSplashImages(){
 
   // -------------- Splash screen images ------------------------------- //
   introImage                  =   loadImage('images/space.png');          // Author : Daniel Stephens , Downloaded From www.OpenGameArt.org
-  rocketImage                 =   loadImage('images/cohete_on_wf.png');   //Author: JM.Atencia, Downloaded From www.OpenGameArt.org
-
+  rocketImage                 =   loadImage('images/cohete2.png');   //Author: JM.Atencia, Downloaded From www.OpenGameArt.org
+  SplashScreenFont            =   loadFont("CollegiateBlackFLF.ttf")
 }
 
 // ------------------ FUNCTION TO PRELOAD SOUNDS    ---------------------- //
