@@ -1,8 +1,15 @@
 // ------------------ FUNCTION TO SET GAMESTATE ---------------------- //
 function setGameState(){
+    ll
     if( gameState == "splash"){
+        splash();             //  switch to splash page
+    }
+    if( gameState == "mainmenu"){
         mainMenu();             //  switch to splash page
     }
+    if( gameState == "settings"){
+        settings();          //  switch to leaderboard page
+    }    
     if( gameState == "leaderboard"){
         leaderBoard();          //  switch to leaderboard page
     }  

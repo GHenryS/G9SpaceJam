@@ -1,7 +1,7 @@
 // ------------------------ GLOBAL VARIABLES -------------------------------//
 // declare variables which will be used globally
 // function specific variables must be declared in the specific function 
-let gameState           = "splash";     // the splash page is the first page to run
+let gameState           = "mainmenu";     // the splash page is the first page to run  "splash"
 
 
 
@@ -22,21 +22,27 @@ function preload(){
 
 // ------------------------ FUNCTION SETUP -------------------------------//
 function setup(){
- 
 
+  canHeight   =  window.innerWidth * 0.5;
+  createCanvas(window.innerWidth * 0.99 - 6, window.innerHeight * 0.98 - 8);
+  background(0,0,0);
+  // draw()
 
 }
 
 // ------------------------ FUNCTION DRAW -------------------------------//
-function draw(){
+
+function draw() {
+  
+  stroke(255);
+  fill(255);
+  textSize(40);
+  text("hi", 10, 10);
   // setGameState is the first function to run
   // the setGameState controles which page to show and which code to run for that page
   setGameState(); 
-
-
-
-
 }
+
 
 
 

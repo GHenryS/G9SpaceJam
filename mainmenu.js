@@ -30,7 +30,7 @@ function mainMenu(){
     text("MAIN MENU", winCentreX, winHeight * 0.1);
 
     // settings button
-    rectMode(CENTER,CENTER);
+    rectMode(CENTER);
     image(settingsButtonImg, winCentreX, winHeight * settingsButtonY, buttonWidth * scale, buttonHeight * scale);
     if(mouseX > winCentreX - buttonWidth / 2 && mouseX < winCentreX + buttonWidth / 2 && mouseY > settingsButtonY - buttonHeight / 2 && mouseY < settingsButtonY + buttonHeight / 2){
         image(settingsButtonImg, winCentreX, winHeight * settingsButtonY, buttonWidth * scale * hover, buttonHeight * scale * hover);
@@ -38,7 +38,6 @@ function mainMenu(){
     }
 
     // leaderboard button
-    rectMode(CENTER,CENTER);
     image(leaderboardButtonImg , winCentreX, winHeight * leaderButtonY, buttonWidth * scale, buttonHeight * scale);
     if(mouseX > winCentreX - buttonWidth / 2 && mouseX < winCentreX + buttonWidth / 2 && mouseY > leaderButtonY - buttonHeight / 2 && mouseY < leaderButtonY + buttonHeight / 2){
         image(leaderboardButtonImg , winCentreX, winHeight * leaderButtonY, buttonWidth * scale * hover, buttonHeight * scale * hover);
@@ -46,7 +45,6 @@ function mainMenu(){
     }
 
     // information button
-    rectMode(CENTER,CENTER);
     image(infoButtonImg  , winCentreX, winHeight * infoButtonY , buttonWidth * scale, buttonHeight * scale);
     if(mouseX > winCentreX - buttonWidth / 2 && mouseX < winCentreX + buttonWidth / 2 && mouseY > infoButtonY  - buttonHeight / 2 && mouseY < infoButtonY  + buttonHeight / 2){
         image(infoButtonImg  , winCentreX, winHeight * infoButtonY , buttonWidth * scale * hover, buttonHeight * scale * hover);
@@ -54,7 +52,6 @@ function mainMenu(){
     }
 
     // reset button
-    rectMode(CENTER,CENTER);
     image(resetGameButtonImg  , winCentreX, winHeight * resetButtonY  , buttonWidth * scale, buttonHeight * scale);
     if(mouseX > winCentreX - buttonWidth / 2 && mouseX < winCentreX + buttonWidth / 2 && mouseY > resetButtonY   - buttonHeight / 2 && mouseY < resetButtonY   + buttonHeight / 2){
         image(resetGameButtonImg   , winCentreX, winHeight * resetButtonY , buttonWidth * scale * hover, buttonHeight * scale * hover);
@@ -64,7 +61,6 @@ function mainMenu(){
     // NEEDS A CONDITION TO DETERMINE IF THE PLAY BUTTON OR RETURN TO GAME BUTTON SHOULD SHOW
     // RETURN TO GAME BUTTON NEEDS TO OBTAIN THE LAST GAME STATE INFO AND SHOULD THEN RETURN TO THE LAST GAME STATE PAGE
     // reset button
-    rectMode(CENTER,CENTER);
     image(playGameButtonImg   , winCentreX, winHeight * playGameButtonY  , buttonWidth * scale, buttonHeight * scale);
     if(mouseX > winCentreX - buttonWidth / 2 && mouseX < winCentreX + buttonWidth / 2 && mouseY > playGameButtonY  - buttonHeight / 2 && mouseY < playGameButtonY  + buttonHeight / 2){
         image(playGameButtonImg   , winCentreX, winHeight * playGameButtonY , buttonWidth * scale * hover, buttonHeight * scale * hover);
