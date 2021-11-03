@@ -1,6 +1,6 @@
 // ------------------ FUNCTION TO SET GAMESTATE ---------------------- //
 function setGameState(){
-    ll
+    
     if( gameState == "splash"){
         splash();             //  switch to splash page
     }
@@ -17,7 +17,7 @@ function setGameState(){
         information();          //  switch to information page
     }  
     if( gameState == "resetgame"){
-        resetGame();            //  switch to resetGame page
+        // resetGame();            //  switch to resetGame page
     }
     if( gameState == "playgame"){
         playGame();             //  switch to first game page
