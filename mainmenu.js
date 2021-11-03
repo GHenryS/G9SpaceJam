@@ -18,7 +18,7 @@ function mainMenu(){
     let resetButtonY        =   0.70;
     let playGameButtonY     =   0.85;
 
-    //
+
     // set canvas and background //
     createCanvas(window.innerWidth - 4, window.innerHeight - 4)
     background(0,0,0);
