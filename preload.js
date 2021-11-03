@@ -7,7 +7,7 @@ function preLoadImages(){
   // preLoadSound();
 
 }
-
+// Does this work
 // ------------------ FUNCTION TO PRELOAD GAME BUTTONS ---------------------- //
 
 function preLoadButtons(){
