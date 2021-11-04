@@ -16,7 +16,7 @@ function preLoadAllImages(){
 
 function preLoadButtons(){
   
-  mainMenuButtonImg           =   loadImage("buttons/mainmenu.png");
+  mainMenuButtonImg           =   loadImage('buttons/mainmenu.png');
   infoButtonImg               =   loadImage('buttons/information.png');
   leaderboardButtonImg        =   loadImage('buttons/leaderboard.png');
   mainMenuButtonImg           =   loadImage('buttons/menu.png');
@@ -25,7 +25,7 @@ function preLoadButtons(){
   returnToGameButtonImg       =   loadImage('buttons/returntogame.png');
   settingsButtonImg           =   loadImage('buttons/settings.png');
   openingButtonImg            =   loadImage('buttons/openingscene.png');
-
+  openingButtonImg            =   loadImage('buttons/openingscene.png');
 }
 
 // ------------------ FUNCTION TO PRELOAD IMAGES    ---------------------- //
@@ -36,10 +36,12 @@ function preLoadImages(){
   introImage                  =   loadImage('images/space.png');              // Author : Daniel Stephens , Downloaded From www.OpenGameArt.org
   rocketImage                 =   loadImage('images/cohete.png');             //Author: JM.Atencia, Downloaded From www.OpenGameArt.org
   
-  // -------------- Envelope screen images ------------------------------- //
-  note                        =   loadImage('images/Cartel Nota.png');                // Author: Santoniche , Downloaded from: www.opengameart.org
-  prison                      =   loadImage('images/Walls.png');                      // Author: zisongbr , Downloaded from: www.opengameart.org
+  // -------------- Envelope screen images ------------------------------ //
+  note                        =   loadImage('images/Cartel Nota.png');        // Author: Santoniche , Downloaded from: www.opengameart.org
+  prison                      =   loadImage('images/Walls.png');              // Author: zisongbr , Downloaded from: www.opengameart.org
 
+  // -------------- Menu page --------------------------------------------//
+  star                        =   loadImage('images/star.png'); 
 }
 
 // ------------------ FUNCTION TO PRELOAD SOUNDS    ---------------------- //

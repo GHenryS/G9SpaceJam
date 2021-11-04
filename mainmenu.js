@@ -84,12 +84,8 @@ function mainMenu(){
         line(i, topOfBanner, i, bottomOfBanner)     
     }
     
-    //console.log(red)
+    // add a new line to the end of the array and remove the first line from the array
     bLength                     =   bannerArray.length - 1;
-    console.log(bLength)
-    console.log(bannerArray[bLength])
-    console.log(bannerArray)
-    
     tempArray                   =   [];
     if(bannerArray[bLength][0] + redC > 255 || bannerArray[bLength][0] + redC < 0 ){
         redC    = -redC; 
@@ -100,29 +96,73 @@ function mainMenu(){
     if(bannerArray[bLength][2] + bluC > 255 || bannerArray[bLength][2] + bluC < 0 ){
         bluC    = -bluC; 
     }
-
     tempArray[0]                =   bannerArray[bLength][0] + redC;
     tempArray[1]                =   bannerArray[bLength][1] + grnC;
     tempArray[2]                =   bannerArray[bLength][2] + bluC;
-    console.log(tempArray)  
-      
     bannerArray.push(tempArray);
     bannerArray.shift();
-    //bannerArray[0][0] = 20;
-    //console.log(bannerArray[0])
-    //console.log(redColour)  
  
+    // create background for header
     noStroke();
     fill(0,0,0);
     rectMode(CENTER);
     square(winCentreX, winHeight * 0.11, 600 * scale, 5 * scale);
-
+    // add header text
     textAlign(CENTER,CENTER);
     textSize(90 * scale);
     stroke(0,0,0,0);
     fill(200,200,200);
     text("MAIN MENU", winCentreX, winHeight * 0.1);
     imageMode(CENTER)
+    // add stars
+    
+    if(starArray.length < 50){
+        tempArray               =   [];
+        xPos                    =   random(10 * scale, window.innerWidth - 14 * scale);
+        yPos                    =   random(window.innerWidth * canRatio * 0.2, window.innerWidth * canRatio * 0.8);
+        starSize                =   random(10 * scale, 15 * scale);
+        starLive                =   random(200, 500);
+        tempArray[0]            =   starLive;
+        tempArray[1]            =   xPos;
+        tempArray[2]            =   yPos;
+        tempArray[3]            =   starSize;
+    
+        starArray.push(tempArray);
+    }
+ 
+    // animate stars
+    for(i = 0; i < starArray.length; i++){
+        starArray[i][3]         =   starArray[i][3] + random( -2, 2);
+        // prevents the star from growing to large
+        if(starArray[i][3] > 15 * scale){
+            starArray[i][3]     =  starArray[i][3] - 1 * scale ;
+        }
+        // create a sort fade away if the star gets close ti its end of live
+        if(starArray[i][0] < 200){
+            starArray[i][3] = starArray[i][3] + 0.7 * scale;
+        }
+        // reduce the star's live
+        starArray[i][0]         =   starArray[i][0] - 0.5;
+    }
+    // sort array to put stars with sortest life first in the que for removal
+    for(i = 0; i < starArray.length; i++){
+        starArray[i][0]                  =  starArray[i][0] / 1000; 
+    }   
+    starArray.sort();   
+    for(i = 0; i < starArray.length; i++){
+        starArray[i][0]                  =  starArray[i][0] * 1000; 
+    }
+
+    // remove dead stars from the starArray
+    if(starArray[0][0] < 0){
+        starArray.shift();
+    }
+ 
+    // draw stars
+    for(i = 0; i < starArray.length; i++){
+        image(star, starArray[i][1], starArray[i][2], starArray[i][3], starArray[i][3]);
+    }
+
 
     // opening scene button
     image(openingButtonImg  , winCentreX, winHeight * openingButtonY   , buttonWidth, buttonHeight);

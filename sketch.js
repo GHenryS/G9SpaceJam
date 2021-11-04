@@ -2,7 +2,7 @@
 // declare variables which will be used globally
 // function specific variables must be declared in the specific function 
 
-let gameState           = "splash";     // the splash page is the first page to run  "splash"
+let gameState           = "mainmenu";     // the splash page is the first page to run  "splash"
 let canRatio            = 0.6;          // set the game canvas ratio height : width
 let bannerFirstTime     = 0;
 
@@ -10,6 +10,7 @@ let bannerFirstTime     = 0;
 // declare arrays which will be used over multiple functions
 // arrays which are specific to a function should be declared in the function 
 let bannerArray         = new Array();  // banner for menu page
+let starArray           = new Array();  // 
 
 
 // ------------------------ FUNCTION PRELOAD -------------------------------//
