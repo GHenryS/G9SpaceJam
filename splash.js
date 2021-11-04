@@ -89,7 +89,7 @@ function introScreen(){
             // The 'b' value will adjust the X and Y position of the center of the rocketships orbit
             rocketship=createSprite(xpos,ypos)
             rocketship.addImage(rocketImage)
-            rocketship.rotation = 80 + ((frameCount - 700) / 50) // This is a ham-fisted attempt to keep the ship level with the planet
+            rocketship.rotation = 80 + ((frameCount - 700) / 60) // This is a ham-fisted attempt to keep the ship level with the planet
             theta[i] += 0.0005  // This will adjust the speed of the ship 
         }
     drawSprite(rocketship)
