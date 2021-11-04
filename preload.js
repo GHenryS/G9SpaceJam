@@ -5,7 +5,6 @@ function preLoadImages(){
   
   // run all the function which require items to be preloaded
   preLoadButtons();
-  preLoadSplashImages();
   preLoadImages();
   // preLoadSound();
   preLoadFonts();
@@ -51,7 +50,7 @@ function preLoadSound(){
 
 // ------------------ FUNCTION TO PRELOAD FONTS    ---------------------- //
 function preLoadFonts(){
-  SplashScreenFont            =   loadFont('images/CollegiateBlackFLF.ttf');   // Author: Casady & Greene , Downloaded from www.fonts.google.com 
-  scribble                    =   loadFont('PermanentMarker-Regular.ttf');     // Author: Apache , Downloaded from: www.fonts.google.com
+  SplashScreenFont            =   loadFont('fonts/CollegiateBlackFLF.ttf');   // Author: Casady & Greene , Downloaded from www.fonts.google.com 
+  scribble                    =   loadFont('fonts/PermanentMarker-Regular.ttf');     // Author: Apache , Downloaded from: www.fonts.google.com
 
 }
