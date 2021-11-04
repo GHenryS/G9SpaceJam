@@ -9,7 +9,7 @@ function openenvelope(){
   fill('black') //Text colour 
 
   // Each text is a new line on the note
-  // The margin and spacing is dictated by the width and height respectively
+  // The margin and line spacing is dictated by the width and height respectively
   margin = width*0.1
   textSize(20)
       text('Commander,' , margin , height*0.15)
