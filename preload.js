@@ -37,7 +37,7 @@ function preLoadImages(){
   rocketImage                 =   loadImage('images/cohete.png');             //Author: JM.Atencia, Downloaded From www.OpenGameArt.org
   // -------------- Envelope screen images ------------------------------- //
   note                        =   loadImage('images/Cartel Nota.png');                // Author: Santoniche , Downloaded from: www.opengameart.org
-  prison                      =   loadImage('iomages/Walls.png');                      // Author: zisongbr , Downloaded from: www.opengameart.org
+  prison                      =   loadImage('images/Walls.png');                      // Author: zisongbr , Downloaded from: www.opengameart.org
 
 }
 
