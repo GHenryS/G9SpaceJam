@@ -4,8 +4,7 @@ function preLoadImages(){
   // run all the function which require items to be preloaded
   preLoadButtons();
   preLoadSplashImages();
-
-  // preLoadImages();
+  preLoadImages();
   // preLoadSound();
   // preLoadFonts();
 
@@ -34,12 +33,11 @@ function preLoadImages(){
   // -------------- Splash screen images ------------------------------- //
   introImage                  =   loadImage('images/space.png');              // Author : Daniel Stephens , Downloaded From www.OpenGameArt.org
   rocketImage                 =   loadImage('images/cohete.png');             //Author: JM.Atencia, Downloaded From www.OpenGameArt.org
-  splashScreenFont            =   loadFont('images/CollegiateBlackFLF.ttf')
   introImage                  =   loadImage('images/space.png');               // Author : Daniel Stephens , Downloaded From www.OpenGameArt.org
-  rocketImage                 =   loadImage('images/cohete2.png');             //Author: JM.Atencia, Downloaded From www.OpenGameArt.org
+  rocketImage                 =   loadImage('images/cohete.png');             //Author: JM.Atencia, Downloaded From www.OpenGameArt.org
   // -------------- Envelope screen images ------------------------------- //
-  note                        =   loadImage('Cartel Nota.png');                // Author: Santoniche , Downloaded from: www.opengameart.org
-  prison                      =   loadImage('Walls.png');                      // Author: zisongbr , Downloaded from: www.opengameart.org
+  note                        =   loadImage('images/Cartel Nota.png');                // Author: Santoniche , Downloaded from: www.opengameart.org
+  prison                      =   loadImage('iomages/Walls.png');                      // Author: zisongbr , Downloaded from: www.opengameart.org
 
 }
 
