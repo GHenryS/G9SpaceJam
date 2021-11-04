@@ -23,7 +23,7 @@ function preLoadButtons(){
   settingsButtonImg           =   loadImage('buttons/settings.png');
 
 }
-
+//
 // ------------------ FUNCTION TO PRELOAD IMAGES    ---------------------- //
 
 function preLoadImages(){
