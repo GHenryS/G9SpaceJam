@@ -1,9 +1,9 @@
 // ------------------ FUNCTION TO MANAGE ALL PRELOAD FUNCTIONS --------------- //
 
 function preLoadImages(){
-
+  // run all the function which require items to be preloaded
   preLoadButtons();
-  // preLoadSplashImages();
+  preLoadSplashImages();
   // preLoadSound();
 
 }
@@ -20,6 +20,7 @@ function preLoadButtons(){
   resetGameButtonImg          =   loadImage('buttons/resetgame.png');
   returnToGameButtonImg       =   loadImage('buttons/returntogame.png');
   settingsButtonImg           =   loadImage('buttons/settings.png');
+  openingButtonImg            =   loadImage('buttons/openingscene.png');
 
 }
 
@@ -28,9 +29,9 @@ function preLoadButtons(){
 function preLoadSplashImages(){
 
   // -------------- Splash screen images ------------------------------- //
-  introImage                  =   loadImage('images/space.png');          // Author : Daniel Stephens , Downloaded From www.OpenGameArt.org
-  rocketImage                 =   loadImage('images/cohete2.png');   //Author: JM.Atencia, Downloaded From www.OpenGameArt.org
-  SplashScreenFont            =   loadFont('images/CollegiateBlackFLF.ttf')
+  introImage                  =   loadImage('images/space.png');              // Author : Daniel Stephens , Downloaded From www.OpenGameArt.org
+  rocketImage                 =   loadImage('images/cohete.png');             //Author: JM.Atencia, Downloaded From www.OpenGameArt.org
+  splashScreenFont            =   loadFont('images/CollegiateBlackFLF.ttf')
 }
 
 // ------------------ FUNCTION TO PRELOAD SOUNDS    ---------------------- //
