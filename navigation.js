@@ -33,6 +33,5 @@ function runSetupFunctions(){
 // ------------------ FUNCTION TO RUN SPLASH SCREEN ---------------------- //
 function splash(){
     
-    
     introScreen();
 }

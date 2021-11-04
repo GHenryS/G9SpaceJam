@@ -2,7 +2,7 @@
 // declare variables which will be used globally
 // function specific variables must be declared in the specific function 
 
-let gameState           = "mainmenu";     // the splash page is the first page to run  "splash"
+let gameState           = "splash";     // the splash page is the first page to run  "splash"
 let canRatio            = 0.6;          // set the game canvas ratio height : width
 let bannerFirstTime     = 0;
 

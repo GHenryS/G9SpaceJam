@@ -1,12 +1,14 @@
 // ------------------ FUNCTION TO MANAGE ALL PRELOAD FUNCTIONS --------------- //
 
 function preLoadImages(){
+
+  
   // run all the function which require items to be preloaded
   preLoadButtons();
   preLoadSplashImages();
   preLoadImages();
   // preLoadSound();
-  // preLoadFonts();
+  preLoadFonts();
 
 }
 
