@@ -26,7 +26,7 @@ function setup(){
   canHeight   =  window.innerWidth * 0.5;
   createCanvas(window.innerWidth * 0.99 - 6, window.innerHeight * 0.98 - 8);
   background(0,0,0);
-
+  introScreenSetup()
 }
 
 // ------------------------ FUNCTION DRAW -------------------------------//
