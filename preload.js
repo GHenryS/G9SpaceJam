@@ -3,8 +3,9 @@
 function preLoadImages(){
 
   preLoadButtons();
-  // preLoadSplashImages();
+  // preLoadImages();
   // preLoadSound();
+  // preLoadFonts();
 
 }
 
@@ -25,16 +26,26 @@ function preLoadButtons(){
 
 // ------------------ FUNCTION TO PRELOAD IMAGES    ---------------------- //
 
-function preLoadSplashImages(){
+function preLoadImages(){
 
   // -------------- Splash screen images ------------------------------- //
-  introImage                  =   loadImage('images/space.png');          // Author : Daniel Stephens , Downloaded From www.OpenGameArt.org
-  rocketImage                 =   loadImage('images/cohete2.png');   //Author: JM.Atencia, Downloaded From www.OpenGameArt.org
-  SplashScreenFont            =   loadFont('images/CollegiateBlackFLF.ttf')
+  introImage                  =   loadImage('images/space.png');               // Author : Daniel Stephens , Downloaded From www.OpenGameArt.org
+  rocketImage                 =   loadImage('images/cohete2.png');             //Author: JM.Atencia, Downloaded From www.OpenGameArt.org
+  // -------------- Envelope screen images ------------------------------- //
+  note                        =   loadImage('Cartel Nota.png');                // Author: Santoniche , Downloaded from: www.opengameart.org
+  prison                      =   loadImage('Walls.png');                      // Author: zisongbr , Downloaded from: www.opengameart.org
+
 }
 
 // ------------------ FUNCTION TO PRELOAD SOUNDS    ---------------------- //
 function preLoadSound(){
 
+
+}
+
+// ------------------ FUNCTION TO PRELOAD FONTS    ---------------------- //
+function preLoadFonts(){
+  SplashScreenFont            =   loadFont('images/CollegiateBlackFLF.ttf');   // Author: Casady & Greene , Downloaded from www.fonts.google.com 
+  scribble                    =   loadFont('PermanentMarker-Regular.ttf');     // Author: Apache , Downloaded from: www.fonts.google.com
 
 }
