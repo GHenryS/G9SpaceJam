@@ -1,10 +1,11 @@
 // ------------------ FUNCTION TO MANAGE ALL PRELOAD FUNCTIONS --------------- //
 
-function preLoadImages(){
+function preLoadAllImages(){
 
   
   // run all the function which require items to be preloaded
   preLoadButtons();
+  
   preLoadImages();
   // preLoadSound();
   preLoadFonts();
@@ -34,8 +35,7 @@ function preLoadImages(){
   // -------------- Splash screen images ------------------------------- //
   introImage                  =   loadImage('images/space.png');              // Author : Daniel Stephens , Downloaded From www.OpenGameArt.org
   rocketImage                 =   loadImage('images/cohete.png');             //Author: JM.Atencia, Downloaded From www.OpenGameArt.org
-  introImage                  =   loadImage('images/space.png');               // Author : Daniel Stephens , Downloaded From www.OpenGameArt.org
-  rocketImage                 =   loadImage('images/cohete.png');             //Author: JM.Atencia, Downloaded From www.OpenGameArt.org
+  
   // -------------- Envelope screen images ------------------------------- //
   note                        =   loadImage('images/Cartel Nota.png');                // Author: Santoniche , Downloaded from: www.opengameart.org
   prison                      =   loadImage('images/Walls.png');                      // Author: zisongbr , Downloaded from: www.opengameart.org

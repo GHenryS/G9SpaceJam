@@ -38,11 +38,11 @@ function introScreen(){
     //  To adjust how farthe screen will scorll adjust the if statement 
     //  To adjust the scroll speed adjust the frame count multiplier
     if(frameCount<680){
-        image(IntroImage, 0,0-frameCount*1, 2*width,2*height)
+        image(introImage, 0,0-frameCount*1, 2*width,2*height)
         }else{
     //Once the image has achieved the desired point it will be redrawn
     //at that point
-        image(IntroImage, 0,-680, 2*width,2*height)
+        image(introImage, 0,-680, 2*width,2*height)
     }
     
     // Introduction of Collaborators, note the 10 second
@@ -87,7 +87,7 @@ function introScreen(){
             // The 'a' value will adjust how far around the circle the rocketship will appear
             // The 'b' value will adjust the X and Y position of the center of the rocketships orbit
             rocketship=createSprite(xpos,ypos)
-            rocketship.addImage(RocketImage2)
+            rocketship.addImage(rocketImage)
             rocketship.rotation=80+((frameCount-700)/55) // This is a ham-fisted attempt to keep the ship level with the planet
             theta[i]+=0.0005  // This will adjust the speed of the ship 
     }

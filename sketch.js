@@ -16,7 +16,7 @@ let bannerArray         = new Array();  // banner for menu page
 
 function preload(){
 
-  preLoadImages();        // see preload.js
+  preLoadAllImages();        // see preload.js
 
 }
 
