@@ -6,18 +6,18 @@ function mainMenu(){
     background(0,0,0);
 
     // function variables
-    let scale               =   window.innerWidth / window.screen.width ; // resize to fit window
-    let winCentreX          =   window.innerWidth / 2;
-    let winHeight           =   window.innerWidth * canRatio;
-    let buttonWidth         =   400 * scale;
-    let buttonHeight        =   75 * scale;
-    let hover               =   1.2;
-    let openingButtonY      =   0.25;
-    let settingsButtonY     =   0.35;
-    let leaderButtonY       =   0.45;
-    let infoButtonY         =   0.55;
-    let resetButtonY        =   0.65;
-    let playGameButtonY     =   0.75;
+    let scale                   =   window.innerWidth / window.screen.width ; // resize to fit window
+    let winCentreX              =   window.innerWidth / 2;
+    let winHeight               =   window.innerWidth * canRatio;
+    let buttonWidth             =   400 * scale;
+    let buttonHeight            =   75 * scale;
+    let hover                   =   1.2;
+    let openingButtonY          =   0.25;
+    let settingsButtonY         =   0.35;
+    let leaderButtonY           =   0.45;
+    let infoButtonY             =   0.55;
+    let resetButtonY            =   0.65;
+    let playGameButtonY         =   0.75;
     // banner variables
     let redColour;
     let grnColour;
@@ -25,9 +25,8 @@ function mainMenu(){
     let red;
     let grn;
     let blu;
-    let newRed;
-    let topOfBanner         =   window.innerWidth * canRatio * 0.05;
-    let bottomOfBanner      =   topOfBanner + 100 * scale;
+    let topOfBanner             =   window.innerWidth * canRatio * 0.05;
+    let bottomOfBanner          =   topOfBanner + 100 * scale;
 
     // set canvas and background //
     createCanvas(window.innerWidth - 4, window.innerHeight - 4)
@@ -42,7 +41,6 @@ function mainMenu(){
             red                 =   1 / scale;
             grn                 =   2 / scale;
             blu                 =   3 / scale;
-            let newRed              =   1;
             for(i = 0 ; i < window.innerWidth - 4; i++){
             // keep colour rage between 0and 255
             if(redColour > 254 || redColour < 0){
@@ -87,7 +85,7 @@ function mainMenu(){
     }
     
     //console.log(red)
-    bLength                 =   bannerArray.length - 1;
+    bLength                     =   bannerArray.length - 1;
     console.log(bLength)
     console.log(bannerArray[bLength])
     console.log(bannerArray)
@@ -118,7 +116,6 @@ function mainMenu(){
     fill(0,0,0);
     rectMode(CENTER);
     square(winCentreX, winHeight * 0.11, 600 * scale, 5 * scale);
-
 
     textAlign(CENTER,CENTER);
     textSize(90 * scale);
