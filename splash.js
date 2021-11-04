@@ -78,7 +78,7 @@ function introScreen(){
     //left screen
 
     if(frameCount > 700){
-        r = width * 1.6    // Size of the radius of the orbit 
+        r = width * 1.35    // Size of the radius of the orbit 
         for(i = 0 ; i < 1 ; i++){
             let xpos = r * cos(theta[i] + 1.4 * PI) + width * 0.39    // X position of rocketship
             let ypos = r * sin(theta[i] + 1.4 * PI) + height * 3.2  // Y position of rocketship
@@ -87,11 +87,17 @@ function introScreen(){
             // and            Yposition = r * sin (theta[i]+a*PI)+height*b
             // The 'a' value will adjust how far around the circle the rocketship will appear
             // The 'b' value will adjust the X and Y position of the center of the rocketships orbit
+            line(width*0.39,height*3.2,width*0.39,0)
+            line(width*0.39,height*3.2,xpos,ypos)
+
             rocketship=createSprite(xpos,ypos)
             rocketship.addImage(rocketImage)
             rocketship.rotation = 80 + ((frameCount - 700) / 60) // This is a ham-fisted attempt to keep the ship level with the planet
             theta[i] += 0.0005  // This will adjust the speed of the ship 
+
+
         }
     drawSprite(rocketship)
     }
+
 }
