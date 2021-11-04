@@ -77,10 +77,10 @@ function introScreen(){
     //At thia point the rocketship will come into view from
     //left screen
     if(frameCount>700){
-        r=width*1.5    // Size of the radius of the orbit 
+        r=width*1.35    // Size of the radius of the orbit 
         for(i=0; i < 1 ; i++){
-            let xpos=r*cos(theta[i]+1.4*PI)+width*0.37    // X position of rocketship
-            let ypos=r*sin(theta[i]+1.4*PI)+height*2.5  // Y position of rocketship
+            let xpos=r*cos(theta[i]+1.38*PI)+width*0.39    // X position of rocketship
+            let ypos=r*sin(theta[i]+1.38*PI)+height*3.2  // Y position of rocketship
             // X and Y positioning uses a polar coordinate system which can be
             // represented as Xposition = r * cos (theta[i]+a*PI)+width*b
             // and            Yposition = r * sin (theta[i]+a*PI)+height*b
