@@ -23,9 +23,17 @@ function preload(){
 
 // ------------------------ FUNCTION SETUP -------------------------------//
 function setup(){
+<<<<<<< HEAD
   // all functions required as part of the setup is called using the runSetupFunction
   runSetupFunctions()     // see navigation.js
 
+=======
+
+  canHeight   =  window.innerWidth * 0.5;
+  createCanvas(window.innerWidth * 0.99 - 6, window.innerHeight * 0.98 - 8);
+  background(0,0,0);
+  introScreenSetup()
+>>>>>>> 3916ee88c0553c3ba956204b986dcb378a32ec87
 }
 
 // ------------------------ FUNCTION DRAW -------------------------------//
