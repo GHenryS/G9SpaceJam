@@ -2,7 +2,7 @@
 
 function mainMenu(){
     // set main menu page
-    createCanvas(window.innerWidth - 4, window.innerHeight - 4);
+    createCanvas(window.innerWidth - 4, window.innerWidth * canRatio);
     background(0,0,0);
 
     // function variables

@@ -3,7 +3,7 @@ function setGameState(){
     
     if( gameState == "splash"){
         splash();                   //  switch to splash page
-    }
+           }
     if( gameState == "mainmenu"){
         mainMenu();                 //  switch to splash page
     }
@@ -34,4 +34,6 @@ function runSetupFunctions(){
 function splash(){
     
     introScreen();
+    completeSplash();
+  
 }
