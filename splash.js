@@ -44,11 +44,11 @@ function introScreen(){
     //  To adjust the scroll speed adjust the frame count multiplier
     introImage.resize(window.innerWidth, 800 * windowScale)
     if(frameCount < 680){
-        image(introImage , 0 , 0 - frameCount * 1 , 2 * width, 2 * height)
+        image(introImage , 0 , 0 - frameCount * 1 * windowScale, 2 * width, 2 * height)
         }else{
     //Once the image has achieved the desired point it will be redrawn
     //at that point
-        image(introImage , 0 , 0 - 680 , 2 * width, 2 * height)
+        image(introImage , 0 , 0 - 680 * windowScale, 2 * width, 2 * height)
     }
     
     // Introduction of Collaborators, note the 10 second
@@ -71,37 +71,43 @@ function introScreen(){
         textSize(70 * windowScale)
         strokeWeight(5 * windowScale)
         stroke('red')
-        text("Escape From Prison" , width / 2 , height * 0.2)
+        text("Escape From Prison" , width / 2 , width * canRatio * 0.2)
     }
     if(frameCount > 720){
         stroke('black')
         fill('yellow')
-        text("IN SPACE" , width * 0.6, height * 0.29)
+        text("IN SPACE" , width * 0.6, width * canRatio * 0.29)
         stroke('yellow')
-        line(width * 0.45, height * 0.31, width * 0.75, height * 0.31)
+        line(width * 0.45, width * canRatio * 0.31, width * 0.75, width * canRatio * 0.31)
     }
     //At thia point the rocketship will come into view from
     //left screen
-
-    if(frameCount > 700){
-        r = width * 1.35    // Size of the radius of the orbit 
-        for(i = 0 ; i < 1 ; i++){
-            let xpos = (r * cos(theta[i] + 1.4 * PI) + width * 0.39) * windowScale    // X position of rocketship
-            let ypos = (r * sin(theta[i] + 1.4 * PI) + height * 3.2) * windowScale  // Y position of rocketship
-            // X and Y positioning uses a polar coordinate system which can be
-            // represented as Xposition = r * cos (theta[i]+a*PI)+width*b
-            // and            Yposition = r * sin (theta[i]+a*PI)+height*b
-            // The 'a' value will adjust how far around the circle the rocketship will appear
-            // The 'b' value will adjust the X and Y position of the center of the rocketships orbit
-
-            rocketship=createSprite(xpos,ypos);
-            rocketImage.resize(150 * windowScale, 300 * windowScale)
-            rocketship.addImage(rocketImage)
-            rocketship.rotation = 80 + ((frameCount - 700) / 60) // This is a ham-fisted attempt to keep the ship level with the planet
-            theta[i] += 0.0005  // This will adjust the speed of the ship 
-
+    rocketStartFrame            =   700;
+    if(frameCount > rocketStartFrame){
+        // radius  = width * 2.5 * windowScale   // Size of the radius of the orbit 
+        
+        startX          =   window.screen.width /2;
+        startXDist      =   startX;
+        stopX           =   startXDist;
+        startY          =   window.screen.width * canRatio * 1.9;
+        yStartDist      =   startY + 0.3 * window.innerWidth * canRatio;
+        yStopDist       =   yStartDist;     
+        radius          =   sqrt(pow(startXDist,2) + pow(yStartDist,2));
+        yCorrection     =   0.32;
+        if(frameCount > rocketStartFrame && frameCount < rocketStartFrame + 5){
+            radians     =   PI + atan(yStartDist / startXDist);
         }
-    drawSprite(rocketship)
+        thetaChange     =   0.0015;
+        // calculate the rockets position
+        radians = radians + thetaChange
+        let xpos = startX * windowScale + radius * cos(radians)  // X position of rocketship
+        let ypos = startY * windowScale + yCorrection * radius * sin(radians) // Y position of rocketship
+                    
+        rocketship=createSprite(xpos * windowScale, ypos * windowScale);
+        rocketImage.resize(150 * windowScale, 300 * windowScale)
+        rocketship.addImage(rocketImage)
+        rocketship.rotation = 75 + (40 * (xpos * windowScale) / window.innerWidth ) // This is a ham-fisted attempt to keep the ship level with the planet
+        drawSprite(rocketship)
     } 
 }
 
@@ -111,11 +117,10 @@ function completeSplash(){
     rectMode(CENTER,CENTER);
     xPos                    =   window.innerWidth / 2;
     yPos                    =   window.innerWidth  * canRatio / 2;
-    fadeOutTime             =   300;
-    opagueChange            =   255/fadeOutTime;
+    opagueChange            =   255/fadeOutSetting;
     rectMode(CENTER,CENTER);
     // create a fadeout effect to softern the transition from splash to mainmenu
-    if(splashCount < fadeOutTime){
+    if(splashCount < fadeOutSetting){
         stroke(0,0,0);
         fill(0,0,0,opagueValue)
         rect(xPos, yPos, window.innerWidth, window.innerWidth * canRatio);   

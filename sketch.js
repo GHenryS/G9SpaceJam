@@ -6,11 +6,15 @@ let gameState           = "splash";     // the splash page is the first page to 
 let canRatio            = 0.45;          // set the game canvas ratio height : width
 
 // splashSreen variables
-let splashCount         = 2000;
-let opagueValue         =   0;
+let splashCount         = 1500;
+let opagueValue         = 0;
 
 // mainMenu variables
 let bannerFirstTime     = 0;
+
+// global functions variables
+let fadeInSetting       = 255;
+let fadeOutSetting      = 255;
 
 // ------------------------ GLOBAL ARRAYS -------------------------------//
 // declare arrays which will be used over multiple functions

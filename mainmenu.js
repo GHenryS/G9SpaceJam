@@ -13,8 +13,8 @@ function mainMenu(){
     let winCentreX              =   window.innerWidth / 2;
     let winHeight               =   window.innerWidth * canRatio;
     let buttonWidth             =   400 * scale;
-    let buttonHeight            =   75 * scale;
-    let hover                   =   1.2;
+    let buttonHeight            =   60 * scale;
+    let hover                   =   1.15;
     let openingButtonY          =   0.25;
     let settingsButtonY         =   0.35;
     let leaderButtonY           =   0.45;
@@ -28,8 +28,8 @@ function mainMenu(){
     let red;
     let grn;
     let blu;
-    let topOfBanner             =   window.innerWidth * canRatio * 0.05;
-    let bottomOfBanner          =   topOfBanner + 100 * scale;
+    let topOfBanner             =   10 * scale;
+    let bottomOfBanner          =   topOfBanner + 110 * scale;
 
     // set canvas and background //
     createCanvas(window.innerWidth - 4, window.innerHeight - 4)
@@ -107,15 +107,15 @@ function mainMenu(){
  
     // create background for header
     noStroke();
-    fill(0,0,0);
-    rectMode(CENTER);
-    square(winCentreX, winHeight * 0.11, 600 * scale, 5 * scale);
+    fill(0,0,0,180);
+    rectMode(CENTER,CENTER);
+    rect(winCentreX, 66 * scale, 580 * scale, 90 * scale);
     // add header text
     textAlign(CENTER,CENTER);
     textSize(90 * scale);
     stroke(0,0,0,0);
-    fill(200,200,200);
-    text("MAIN MENU", winCentreX, winHeight * 0.1);
+    fill(255,255,255);
+    text("MAIN MENU", winCentreX, 70 * scale);
     imageMode(CENTER)
     // add stars
     
@@ -155,25 +155,25 @@ function mainMenu(){
     for(i = 0; i < starArray.length; i++){
         starArray[i][0]                  =  starArray[i][0] * 1000; 
     }
-
     // remove dead stars from the starArray
     if(starArray[0][0] < 0){
         starArray.shift();
     }
- 
     // draw stars
     for(i = 0; i < starArray.length; i++){
         image(star, starArray[i][1], starArray[i][2], starArray[i][3], starArray[i][3]);
     }
-
 
     // opening scene button
     image(openingButtonImg  , winCentreX, winHeight * openingButtonY   , buttonWidth, buttonHeight);
     if(mouseX > winCentreX - buttonWidth / 2 && mouseX < winCentreX + buttonWidth / 2 && mouseY > winHeight * openingButtonY - buttonHeight / 2 && mouseY < winHeight * openingButtonY + buttonHeight / 2){
         image(openingButtonImg , winCentreX, winHeight * openingButtonY , buttonWidth * hover, buttonHeight * hover);
         if(mouseIsPressed){
-            gameState           = "splash";       // switch the gameState to run the settings page
-            fadeInCounter       =   0;
+            gameState           =   "splash";       // switch the gameState to run 
+            fadeInSetting       =   0;
+            fadeOutSetting      =   255;
+            fadeOut();
+            //introScreenSetup()
         }
     }
  
@@ -227,7 +227,10 @@ function mainMenu(){
         if(mouseIsPressed){
             gameState           =   "playgame";       // switch the gameState to run the settings page
             fadeInCounter       =   0;
+            fadeInSetting       =   0;
         }
     }
+    fadeIn();
+    
 }
 
