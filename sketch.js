@@ -3,7 +3,7 @@
 // function specific variables must be declared in the specific function 
 
 let gameState           = "splash";     // the splash page is the first page to run  "splash"
-let canRatio            = 0.55;          // set the game canvas ratio height : width
+let canRatio            = 0.45;          // set the game canvas ratio height : width
 
 // splashSreen variables
 let splashCount         = 2000;

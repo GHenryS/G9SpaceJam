@@ -23,25 +23,22 @@ function splashScreen(){
    
 }
 
-
-
 // ------------------ FUNCTION TO PLAY INTRO SCREEN ---------------------- //
 function introScreen(){
  
     createCanvas(window.innerWidth - 4, window.innerWidth * canRatio);
 
     let windowScale           =   window.innerWidth / window.screen.width;
-    window.innerHeight        =   window.innerWidth * canRatio
-    window.focus(window.innerWidth, window.innerHeight);
+    //window.innerHeight        =   window.innerWidth * canRatio
+    //window.focus(window.innerWidth, window.innerHeight);
+
     textFont(SplashScreenFont)
     textAlign(CENTER)
     textSize(40 * windowScale)
     strokeWeight(0.5)
     stroke(0,255,0)
     fill(0,255,0)
-
-    
-   
+     
     //  This if/else statement scrolls the screen down
     //  To adjust how farthe screen will scor ll adjust the if statement 
     //  To adjust the scroll speed adjust the frame count multiplier
