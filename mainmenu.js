@@ -4,6 +4,9 @@ function mainMenu(){
     // set main menu page
     createCanvas(window.innerWidth - 4, window.innerWidth * canRatio);
     background(0,0,0);
+   
+    // fade-in variables
+    let fadeInCounter           =   2000;
 
     // function variables
     let scale                   =   window.innerWidth / window.screen.width ; // resize to fit window
@@ -170,6 +173,7 @@ function mainMenu(){
         image(openingButtonImg , winCentreX, winHeight * openingButtonY , buttonWidth * hover, buttonHeight * hover);
         if(mouseIsPressed){
             gameState           = "splash";       // switch the gameState to run the settings page
+            fadeInCounter       =   0;
         }
     }
  
@@ -180,6 +184,7 @@ function mainMenu(){
         image(settingsButtonImg, winCentreX, winHeight * settingsButtonY, buttonWidth * hover, buttonHeight * hover);
         if(mouseIsPressed){
             gameState           = "settings";       // switch the gameState to run the settings page
+            fadeInCounter       =   0;
         }   
     }
 
@@ -189,6 +194,7 @@ function mainMenu(){
         image(leaderboardButtonImg , winCentreX, winHeight * leaderButtonY, buttonWidth * hover, buttonHeight * hover);
         if(mouseIsPressed){
             gameState           = "leaderboard";       // switch the gameState to run the settings page
+            fadeInCounter       =   0;
         }
     }
 
@@ -198,6 +204,7 @@ function mainMenu(){
         image(infoButtonImg  , winCentreX, winHeight * infoButtonY , buttonWidth * hover, buttonHeight * hover);
         if(mouseIsPressed){
             gameState           = "information";       // switch the gameState to run the settings page
+            fadeInCounter       =   0;
         }
     }
 
@@ -207,6 +214,7 @@ function mainMenu(){
         image(resetGameButtonImg   , winCentreX, winHeight * resetButtonY , buttonWidth * hover, buttonHeight * hover);
         if(mouseIsPressed){
             gameState           = "resetgame";       // switch the gameState to run the settings page
+            fadeInCounter       =   0;
         }
     }
 
@@ -217,9 +225,9 @@ function mainMenu(){
     if(mouseX > winCentreX - buttonWidth / 2 && mouseX < winCentreX + buttonWidth / 2 && mouseY > winHeight * playGameButtonY  - buttonHeight / 2 && mouseY < winHeight * playGameButtonY  + buttonHeight / 2){
         image(playGameButtonImg   , winCentreX, winHeight * playGameButtonY , buttonWidth * hover, buttonHeight * hover);
         if(mouseIsPressed){
-            gameState           = "playgame";       // switch the gameState to run the settings page
+            gameState           =   "playgame";       // switch the gameState to run the settings page
+            fadeInCounter       =   0;
         }
     }
-
-
 }
+
