@@ -1,5 +1,5 @@
 /* Contributor = Todd */
-// Does this work?
+// Does this work? yes
 // ------------------ FUNCTION TO SETUP INTRO SCREEN ---------------------- //
 
 function splashScreen(){
