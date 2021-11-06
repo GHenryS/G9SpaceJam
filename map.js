@@ -4,7 +4,7 @@ function maplayout(){
         const spriteHeight = 20;
         const spriteWidth = 20;
         
-        // Varibles declared  function 
+        // Varibles declared for function 
         let nothing;
         let floor;
         let wall;
@@ -23,7 +23,7 @@ function maplayout(){
         let texture8;
         let texture9;
         
-        // Varibles declared for groups of sprite
+        // Varibles declared for groups of sprites
         let allNothing;
         let allFloor;
         let allWall;
@@ -44,7 +44,8 @@ function maplayout(){
         
         // Map array set as empty Array
         let maparray = new Array();
-    
+
+        // Declare all Sprite Groups
         allNothing = new Group;
         allFloor = new Group;
         allWall = new Group;
@@ -65,7 +66,7 @@ function maplayout(){
     
     
     for(let i = 0 ; i < mapLayoutTxt.length ; i++){    // takes strings from txt file and puts them into maparray array 
-        maparray[i] = splitTokens(maplayouttxt[i] , '\t');
+        maparray[i] = splitTokens(maplayouttxt[i] , '\t'); //Sepearates String using tab
         }
         for(let j = 0 ; j < maparray.length ; j++){
             for(let i = 0 ; i < maparray[0].length ; i++){ // Uses the row and column index of the arrays to designate x and y pos. Then checks 
