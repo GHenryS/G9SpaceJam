@@ -7,7 +7,6 @@ function setup(){
     createCanvas(300,300);
 
     mainCharacter               =   new HumanObject(200 , 250); // create the mainCharacter using the HumanObject class
-    dude                        =   new HumanObject(400 , 250); // create the mainCharacter using the HumanObject class
 
 }
 
