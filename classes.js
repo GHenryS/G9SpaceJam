@@ -92,6 +92,7 @@ class ColourBanner{
 }
 
 // ----------CLASS TO CREATE ADJUSTABLE HORISONTAL BARS ----------------------//
+/*
 class SettingsBars{
     // barName, xPos, yPos are compulsory inputs
     // optional inputs = width, height, bgColour 'rgb(0,0,0)' , frameColour, barColour 'rgb(0,0,0)' , buttonSize, bgButtonColour 'rgb(0,0,0)', buttonColour 'rgb(0,0,0)', borderColour 'rgb(0,0,0)'
@@ -111,4 +112,4 @@ class SettingsBars{
     draw(){
         
     }
-}
+}*/
