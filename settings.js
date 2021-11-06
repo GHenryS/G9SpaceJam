@@ -8,7 +8,7 @@ function gameSettings(){
     // make the top banner colours float
     colourBannerTop.floatColours();
     pageHeader("GAME SETTINGS", 800, 90);   // see globalfunctions.js for detail
-    addStars(75, 0.05, 0.2 , 0.95, 0.8);    // see globalfunctions.js for detail
+    addStars(50, 0.05, 0.2 , 0.95, 1.5);    // see globalfunctions.js for detail
      // draw the top banner
      colourBannerBottom.drawBanner();
      // make the top banner colours float
