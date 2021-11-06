@@ -59,7 +59,7 @@ function maplayout(){
     
     
     
-    for(let i = 0 ; i < maplayouttxt.length ; i++){    // takes strings from txt file and puts them into maparray array 
+    for(let i = 0 ; i < mapLayoutTxt.length ; i++){    // takes strings from txt file and puts them into maparray array 
         maparray[i] = splitTokens(maplayouttxt[i] , '\t');
         }
         for(let j = 0 ; j < maparray.length ; j++){

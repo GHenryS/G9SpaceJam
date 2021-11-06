@@ -77,6 +77,6 @@ function preLoadFonts(){
 }
 // ------------------ FUNCTION TO PRELOAD STRINGS FOR MAP    ---------------- //
 function preLoadStrings(){
-  maplayouttxt = loadStrings('testtxt3.txt');
+  mapLayoutTxt = loadStrings('gameMap.txt');
 
 }
