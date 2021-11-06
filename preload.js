@@ -9,7 +9,7 @@ function preLoadAllImages(){
   preLoadImages();
   // preLoadSound();
   preLoadFonts();
-
+  preLoadStrings();
 }
 
 // ------------------ FUNCTION TO PRELOAD GAME BUTTONS ---------------------- //
@@ -42,6 +42,25 @@ function preLoadImages(){
 
   // -------------- Menu page --------------------------------------------//
   star                        =   loadImage('images/star.png'); 
+
+  // -------------- Map Images --------------------------------------------//
+  
+  floorImage = loadImage('images/floor.png');             
+  wallImage = loadImage('images/wall.png');
+  elevatorImage = loadImage('images/elevator.png');
+  nothingImage = loadImage('images/nothing.png');
+  lockDoorImage = loadImage('images/LD.png');
+  selfOpeningDoorImage = loadImage('images/selfOD.png');
+  lockedLiftDoorImage = loadImage('images/lockedLD.png');
+  ladderImage = loadImage('images/ladder.png');           
+  texture1Image = loadImage('images/texture1.png');       //  Solitary Cell Back wall 
+  texture2Image = loadImage('images/texture2.png');       //  Guard Posst Back Wal
+  texture3Image = loadImage('images/texture3.png');       //  Large Group Cell Back Wall 
+  texture4Image = loadImage('images/texture4.png');       //  Main Prison Hall Back Wall 
+  texture5Image = loadImage('images/texture5.png');       //  Maintenance Room Back Wall
+  texture6Image = loadImage('images/texture6.png');       //  Guard Break Room Back Wall
+  texture7Image = loadImage('images/texture7.png');       //  Haunted Hallway Back Wall
+
 }
 
 // ------------------ FUNCTION TO PRELOAD SOUNDS    ---------------------- //
@@ -54,5 +73,10 @@ function preLoadSound(){
 function preLoadFonts(){
   SplashScreenFont            =   loadFont('fonts/CollegiateBlackFLF.ttf');   // Author: Casady & Greene , Downloaded from www.fonts.google.com 
   scribble                    =   loadFont('fonts/PermanentMarker-Regular.ttf');     // Author: Apache , Downloaded from: www.fonts.google.com
+
+}
+// ------------------ FUNCTION TO PRELOAD STRINGS FOR MAP    ---------------- //
+function preLoadStrings(){
+  mapLayoutTxt = loadStrings('gameMap.txt');
 
 }
