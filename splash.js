@@ -1,12 +1,11 @@
 /* Contributor = Todd */
-// Does this work?
 // ------------------ FUNCTION TO SETUP INTRO SCREEN ---------------------- //
 
 function splashScreen(){
   // All the functions which should be called to run the splash screen
   // The splashScreen() function should be the only function in the setup function for the splash screen
   introScreen();
-   
+  completeSplash();
 }
 
 // ------------------ FUNCTION TO PLAY INTRO SCREEN ---------------------- //
@@ -66,7 +65,7 @@ function introScreen(){
     }
     //At thia point the rocketship will come into view from
     //left screen
-    rocketStartFrame            =   600;
+    rocketStartFrame            =   430;
     if(frameCount > rocketStartFrame){
         // radius  = width * 2.5 * windowScale   // Size of the radius of the orbit 
         
@@ -93,29 +92,27 @@ function introScreen(){
     } 
 }
 
+// ---------------- FUNCTION TO FADE SPLASH OUT AT END OF SCENE AND TO SET THE GAMESTATE TO MAINMENU ------------ //
 function completeSplash(){
     splashCount--;
-
     rectMode(CENTER,CENTER);
     xPos                    =   window.innerWidth / 2;
     yPos                    =   window.innerWidth  * canRatio / 2;
-    opagueChange            =   255/fadeOutSetting;
+    opaqueChange            =   255/fadeOutSetting;
     rectMode(CENTER,CENTER);
     // create a fadeout effect to softern the transition from splash to mainmenu
     if(splashCount < fadeOutSetting){
         stroke(0,0,0);
-        fill(0,0,0,opagueValue)
+        fill(0,0,0,opaqueValue)
         rect(xPos, yPos, window.innerWidth, window.innerWidth * canRatio);   
-        opagueValue         =   opagueValue + opagueChange;
+        opaqueValue         =   opaqueValue + opaqueChange;
     }
-    // change the gameStae to mainmenu
+    // change the gameState to mainmenu
     if(splashCount < 1){
-        
+        gameState           = "mainmenu"    // go to main menu page
     }
     if(keyIsPressed){
-        
-        newWindow();
-        gameState           = "mainmenu" // go to main menu page
+        gameState           = "mainmenu"    // go to main menu page
     }
 }
 

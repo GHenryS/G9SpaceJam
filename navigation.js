@@ -2,7 +2,7 @@
 function setGameState(){
     
     if( gameState == "splash"){
-        splash();                   //  switch to splash page
+        splashScreen();                   //  switch to splash page
     }
     if( gameState == "mainmenu"){
         mainMenu();                 //  switch to splash page
@@ -24,16 +24,6 @@ function setGameState(){
     }     
 }
 
-// ------------------ FUNCTION TO RUN ALL GAME SETUPS -------------------- //
-function runSetupFunctions(){
-   
-}
 
 
-// ------------------ FUNCTION TO RUN SPLASH SCREEN ---------------------- //
-function splash(){
-    
-    introScreen();
-    completeSplash();
-  
-}
+

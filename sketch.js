@@ -6,28 +6,33 @@ let gameState           = "splash";     // the splash page is the first page to 
 let canRatio            = 0.45;          // set the game canvas ratio height : width
 
 // splashSreen variables
-let splashCount         = 1500;
-let opagueValue         = 0;
+let splashCount         = 1300;
+let opaqueValue         = 0;
 
-// mainMenu variables
+// banner variables
 let bannerFirstTime     = 0;
+let colourBannerTop;
+let colourBannerBottom;
 
-// global functions variables
+// global variables
 let gamePath            = "http://127.0.0.1:5500/index.html";
 let fadeInSetting       = 255;
-let fadeOutSetting      = 255;
-let setBright           = 105;
+let fadeOutSetting      = 0;
+let setBright           = 250;
+let setContrast         = 150;
+let setOpacity          = 150;
+let setSaturation       = 150;
+let scale;
 
 // ------------------------ GLOBAL ARRAYS -------------------------------//
 // declare arrays which will be used over multiple functions
 // arrays which are specific to a function should be declared in the function 
-let bannerArray         = new Array();  // banner for menu page
+
 let starArray           = new Array();  // 
 
 // ------------------------ FUNCTION PRELOAD -------------------------------//
 
 function preload(){
-
   preLoadAllImages();        // see preload.js
 
 }
@@ -37,7 +42,6 @@ function preload(){
 function setup(){
   // all functions required as part of the setup is called using the runSetupFunction
   runSetupFunctions()     // see navigation.js
- 
 }
 
 // ------------------------ FUNCTION DRAW -------------------------------//

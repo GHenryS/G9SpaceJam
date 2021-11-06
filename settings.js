@@ -2,25 +2,25 @@
 
 function gameSettings(){
 
-    setPage();          // see globalfunctions.js for detail  
-    colourBanner();     // see globalfunctions.js for detail
-    ll
-    settingsPsge();
+    setPage();                              // see globalfunctions.js for detail  
+    // draw the top banner
+    colourBannerTop.drawBanner();
+    // make the top banner colours float
+    colourBannerTop.floatColours();
+    pageHeader("GAME SETTINGS", 800, 90);   // see globalfunctions.js for detail
+    addStars(75, 0.05, 0.2 , 0.95, 0.8);    // see globalfunctions.js for detail
+     // draw the top banner
+     colourBannerBottom.drawBanner();
+     // make the top banner colours float
+     colourBannerBottom.floatColours();   
+    
+
+    //settingsPage();
 }
 
-function settingsPsge(){
+function settingsPage(){
     fadeIn();
     let winCentreX              =   window.innerWidth / 2;
-    let winHeight               =   window.innerWidth * canRatio;
-    let buttonWidth             =   400 * scale;
-    let buttonHeight            =   60 * scale;
-    let hover                   =   1.15;
-    let openingButtonY          =   0.25;
-    let settingsButtonY         =   0.35;
-    let leaderButtonY           =   0.45;
-    let infoButtonY             =   0.55;
-    let resetButtonY            =   0.65;
-    let playGameButtonY         =   0.75;
 
     // create background for header
     noStroke();
@@ -28,12 +28,7 @@ function settingsPsge(){
     rectMode(CENTER,CENTER);
     rect(winCentreX, 66 * scale, 580 * scale, 90 * scale);
 
-    // add header text
-    textAlign(CENTER,CENTER);
-    textSize(90 * scale);
-    stroke(0,0,0,0);
-    fill(255,255,255,setBright);
-    text("GAME SETTINGS", winCentreX, 70 * scale);
+ 
     imageMode(CENTER)
 
     // add stars
