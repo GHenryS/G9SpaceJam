@@ -5,6 +5,7 @@ function splashScreen(){
   // All the functions which should be called to run the splash screen
   // The splashScreen() function should be the only function in the setup function for the splash screen
   introScreen();
+  completeSplash();
 }
 
 // ------------------ FUNCTION TO PLAY INTRO SCREEN ---------------------- //
