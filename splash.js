@@ -1,5 +1,5 @@
 /* Contributor = Todd */
-
+// Does this work?
 // ------------------ FUNCTION TO SETUP INTRO SCREEN ---------------------- //
 
 function splashScreen(){
