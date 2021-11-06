@@ -20,6 +20,8 @@ function maplayout(){
         let texture5;
         let texture6;
         let texture7;
+        let texture8;
+        let texture9;
         
         // Varibles declared for groups of sprite
         let allNothing;
@@ -37,6 +39,8 @@ function maplayout(){
         let allTexture5;
         let allTexture6;
         let allTexture7;
+        let allTexture8;
+        let allTexture9;
         
         // Map array set as empty Array
         let maparray = new Array();
@@ -56,7 +60,8 @@ function maplayout(){
         allTexture5 = new Group;
         allTexture6 = new Group;
         allTexture7 = new Group;
-    
+        allTexture8 = new Group;
+        allTexture9 = new Group;
     
     
     for(let i = 0 ; i < mapLayoutTxt.length ; i++){    // takes strings from txt file and puts them into maparray array 
@@ -169,6 +174,20 @@ function maplayout(){
                     texture7Image.resize(spriteWidth , spriteHeight);
                     texture7.setDefaultCollider();  // sets collider at the defualt size
                     allTexture7.add(texture7);         // puts all floor sprites in 1 group for ease in collision detection
+                }
+                if(maparray[j][i] == '15'){
+                    texture8 = createSprite(spriteWidth / 2 + i * spriteWidth , spriteHeight /2 +j * spriteHeight);
+                    texture8.addImage(texture8Image);
+                    texture8Image.resize(spriteWidth , spriteHeight);
+                    texture8.setDefaultCollider(); // sets collider at the defualt size
+                    allTexture8.add(texture8);        // puts all floor sprites in 1 group for ease in collision detection
+                }
+                if(maparray[j][i] == '16'){
+                    texture9 = createSprite(spriteWidth / 2 + i * spriteWidth , spriteHeight /2 +j * spriteHeight);
+                    texture9.addImage(texture9Image);
+                    texture9Image.resize(spriteWidth , spriteHeight);
+                    texture9.setDefaultCollider();  // sets collider at the defualt size
+                    allTexture9.add(texture9);         // puts all floor sprites in 1 group for ease in collision detection
                 }
             }
         }
