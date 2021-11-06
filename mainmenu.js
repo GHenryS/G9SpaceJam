@@ -31,10 +31,6 @@ function mainMenu(){
     let topOfBanner             =   10 * scale;
     let bottomOfBanner          =   topOfBanner + 110 * scale;
 
-    // set canvas and background //
-    createCanvas(window.innerWidth - 4, window.innerHeight - 4)
-    background(0,0,0);
- 
     // setup page header
     // header banner
     if(bannerFirstTime == 0 || window.innerWidth != windowSize){
@@ -237,11 +233,9 @@ function mainMenu(){
             gameState           =   "playgame";       // switch the gameState to run the settings page
             fadeInCounter       =   0;
             fadeInSetting       =   0;
-        }
-    setBrightness();    
+        }  
     }
-    
-    
+      
     fadeIn();
 }
 

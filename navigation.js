@@ -8,7 +8,7 @@ function setGameState(){
         mainMenu();                 //  switch to splash page
     }
     if( gameState == "settings"){
-        settings();                 //  switch to leaderboard page
+        gameSettings();                 //  switch to leaderboard page
     }    
     if( gameState == "leaderboard"){
         leaderBoard();              //  switch to leaderboard page

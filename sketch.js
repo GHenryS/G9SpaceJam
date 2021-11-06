@@ -16,7 +16,7 @@ let bannerFirstTime     = 0;
 let gamePath            = "http://127.0.0.1:5500/index.html";
 let fadeInSetting       = 255;
 let fadeOutSetting      = 255;
-let setBright           = 100;
+let setBright           = 255;
 
 // ------------------------ GLOBAL ARRAYS -------------------------------//
 // declare arrays which will be used over multiple functions
