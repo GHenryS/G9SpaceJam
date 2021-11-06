@@ -1,8 +1,8 @@
 // ------------------ FUNCTION TO RUN ALL GAME SETUPS -------------------- //
 function runSetupFunctions(){
     // new class objects
-    colourBannerBottom          =   new ColourBanner(window.screen.width * canRatio - 10, 10); 
-    colourBannerTop             =   new ColourBanner(10,110);
+    colourBannerBottom          =   new ColourBanner(880, -10); 
+    colourBannerTop             =   new ColourBanner(10,120);
 }
 
 
@@ -40,10 +40,6 @@ function fadeOut(){
         text(frameCount, 100, 200)
     } 
 }
-
-
-
-
 
 // ----------FUNCTION TO CREATE THE CANVAS AND TO MANAGE THE WINDOW SCALE VARIABLE ---------------//
 
@@ -133,6 +129,10 @@ function addStars(stars, leftBoundary, topBoundary, rightBoundary, bottomBoundar
     // remove dead stars from the starArray
     if(starArray[0][0] < 0){
         starArray.shift();
+    }
+    // move stars
+    for(i = 0; i < starArray.length; i++){
+        starArray[i][2] = starArray[i][2] + 0.05;
     }
     // draw stars   
     for(i = 0; i < starArray.length; i++){

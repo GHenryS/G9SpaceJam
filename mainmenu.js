@@ -26,7 +26,7 @@ function mainMenu(){
     // add header text
     pageHeader("MAIN MENU", 580, 90);
     // add stars to the background
-    addStars(75, 0.05, 0.2 , 0.95, 0.8);
+    addStars(70, 0.05, 0.2 , 0.95, 1);
     // draw the bottom banner
     colourBannerBottom.drawBanner();
     // make the bottom banner colours float
@@ -56,6 +56,7 @@ function mainMenu(){
         if(mouseIsPressed){
             gameState           =   "splash";       // switch the gameState to run 
             splashCount         =   1300;
+            frameCount          =   0;
         }
     }
  
