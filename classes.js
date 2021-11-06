@@ -23,6 +23,7 @@ class ColourBanner{
         this.topOfBanner            =   this.fromTopY * scale;
         this.bottomOfBanner         =   this.topOfBanner + this.bannerHeight * scale;
         let windowSize;
+    
         // header banner
         if(this.bannerFirstTime == 0 || window.innerWidth != windowSize){
                 redColour           =   255;
@@ -31,7 +32,7 @@ class ColourBanner{
                 red                 =   1 / scale;
                 grn                 =   2 / scale;
                 blu                 =   3 / scale;
-                for(let i = 0 ; i < window.innerWidth - 4; i++){
+                for(let i = 0 ; i < window.screen.width - 4; i++){
                 // keep colour rage between 0and 255
                 if(redColour > 254 || redColour < 0){
                     red = -red;
@@ -62,10 +63,11 @@ class ColourBanner{
         }
     }
     drawBanner(){
+       
         // draw banner
         for(let i = 0 ; i < this.bannerArray.length; i++){
             stroke(this.bannerArray[i][0], this.bannerArray[i][1], this.bannerArray[i][2],setBright);
-            line(i, this.topOfBanner, i, this.bottomOfBanner)    
+            line(i, this.topOfBanner * scale, i, this.bottomOfBanner * scale)    
         }  
     }
     floatColours(){
@@ -87,4 +89,26 @@ class ColourBanner{
         this.bannerArray.push(tempArray);
         this.bannerArray.shift();  
     }  
+}
+
+// ----------CLASS TO CREATE ADJUSTABLE HORISONTAL BARS ----------------------//
+class SettingsBars{
+    // barName, xPos, yPos are compulsory inputs
+    // optional inputs = width, height, bgColour 'rgb(0,0,0)' , frameColour, barColour 'rgb(0,0,0)' , buttonSize, bgButtonColour 'rgb(0,0,0)', buttonColour 'rgb(0,0,0)', borderColour 'rgb(0,0,0)'
+    constructor( barName, xPos, yPos, width, height, bgColour , barColour){
+    this.name                   =   barName;   
+    this.xPos                   =   xPos;
+    this.yPos                   =   yPos;
+    this.value                  =   255;
+
+    if(width == true){ this.width = width;} else {this.width = 100;}
+    if(height == true){ this.height = height;} else {this.height = 100;}
+    if(bgColour == true){ this.bgColour = bgColour;} else {this.bgColour = color('rgba(255, 255, 255, '+setOpacity+')');}
+    if(barColour == true){ this.barColour = barColour;} else {this.barColour = color('rgba(255, 0, 0,'+setOpacity+')');}
+    if(borderColour == true){ this.borderColour = borderColour;} else {this.borderColour = color('rgba(255, 0, 0,'+setOpacity+')');}  
+
+    }
+    draw(){
+        
+    }
 }
