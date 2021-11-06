@@ -1,3 +1,11 @@
+// ------------------ FUNCTION TO RUN ALL GAME SETUPS -------------------- //
+function runSetupFunctions(){
+    // new class objects
+    colourBannerBottom          =   new ColourBanner(window.screen.width * canRatio - 10, 10); 
+    colourBannerTop             =   new ColourBanner(10,110);
+}
+
+
 // ----------FUNCTION TO CREATE A FADE IN EFFECT ---------------------------//
 
 function fadeIn(){
@@ -18,110 +26,116 @@ function fadeIn(){
 
 function fadeOut(){
     // function variables
-    xPos                    =   window.innerWidth / 2;
-    yPos                    =   window.innerWidth * canRatio / 2; 
-    rectWidth               =   window.innerWidth;
-    rectHeight              =   window.innerWidth * canRatio;
-    // create fadeIn effect
-    while(fadeInSetting < 255){
-        if(fadeOutSetting < 256 && fadeOutSetting > 0){
-            fill(0,0,0, fadeInSetting);
-            rect(xPos, yPos, rectWidth, rectHeight);
-            fadeInSetting++;
-        }
-    }
-}
+ 
+    count                   =   0;
+    maxCount                =   100000;
+    step                    =   255 / maxCount;
+    setting                 =   0;
+    frameCount              =   0;
+    rectMode(CORNER);
 
-// ----------FUNCTION TO CREATE A CHANGING COLOUR BANNER AT THE TOP OF THE PAGE ----------------------//
-
-function colourBanner(){
-    // banner variables
-    let redColour;
-    let grnColour;
-    let bluColour;
-    let red;
-    let grn;
-    let blu;
-    let topOfBanner             =   10 * scale;
-    let bottomOfBanner          =   topOfBanner + 110 * scale;
-    // setup page header
-    // header banner
-    if(bannerFirstTime == 0 || window.innerWidth != windowSize){
-            redColour           =   255;
-            grnColour           =   150;
-            bluColour           =   50;
-            red                 =   1 / scale;
-            grn                 =   2 / scale;
-            blu                 =   3 / scale;
-            for(i = 0 ; i < window.innerWidth - 4; i++){
-            // keep colour rage between 0and 255
-            if(redColour > 254 || redColour < 0){
-                red = -red;
-            }
-            if(grnColour > 254 || grnColour < 0){
-                grn = -grn;
-            }  
-            if(bluColour > 254 || bluColour < 0){
-                blu = -blu;
-            }    
-            // step the colours
-            redColour           =   redColour + red;
-            grnColour           =   grnColour + grn;
-            bluColour           =   bluColour + blu;
-            // clear the tempArray
-            tempArray           =   [];
-            // add colours to tempArray 
-            tempArray.push(redColour);
-            tempArray.push(grnColour);
-            tempArray.push(bluColour);
-             // add tempArray content to the banner array
-            bannerArray.push(tempArray);
-        }   
-        // set variable so to prevent the banner creation loop from running again
-        bannerFirstTime         =   1;
-        // variable to check the window size have changed
-        // if the window size have changed the array will be re-created
-        windowSize              =   window.innerWidth;  
-        redC                    =   1 / scale;
-        grnC                    =   2 / scale;
-        bluC                    =   3 / scale;
-    }
-    // draw banner
-    for(i = 0 ; i < bannerArray.length; i++){
-        stroke(bannerArray[i][0], bannerArray[i][1], bannerArray[i][2],setBright);
-        line(i, topOfBanner, i, bottomOfBanner)     
-    }  
-    // add a new line to the end of the array and remove the first line from the array
-    bLength                     =   bannerArray.length - 1;
-    tempArray                   =   [];
-    if(bannerArray[bLength][0] + redC > 255 || bannerArray[bLength][0] + redC < 0 ){
-        redC    = -redC; 
-    }
-    if(bannerArray[bLength][1] + grnC > 255 || bannerArray[bLength][1] + grnC < 0 ){
-        grnC    = -grnC; 
-    }
-    if(bannerArray[bLength][2] + bluC > 255 || bannerArray[bLength][2] + bluC < 0 ){
-        bluC    = -bluC; 
-    }
-    tempArray[0]                =   bannerArray[bLength][0] + redC;
-    tempArray[1]                =   bannerArray[bLength][1] + grnC;
-    tempArray[2]                =   bannerArray[bLength][2] + bluC;
-    bannerArray.push(tempArray);
-    bannerArray.shift();  
-}
-
-function newWindow(){
-    if(keyIsPressed){
-        gameState           =   "mainmenu" // go to main menu page
-    }
+    for(i = 0 ; i < maxCount; i++){
+        console.log(frameCount);
+        stroke(255,255,255)
+        text(frameCount, 100, 200)
+    } 
 }
 
 
-// ----------FUNCTION TO CREATE THE CANVAS AND TO MANAGE THE WINDOW SCALE    VARIABLE ----------------------//
+
+
+
+// ----------FUNCTION TO CREATE THE CANVAS AND TO MANAGE THE WINDOW SCALE VARIABLE ---------------//
 
 function setPage(){
-    let scale                   =   window.innerWidth / window.screen.width ; // resize to fit window
+    scale                   =   window.innerWidth / window.screen.width ; // resize to fit window
     // create canvas and set background
     createCanvas(window.innerWidth, window.innerWidth * canRatio);
-    background(0,0,0);
+ 
+}
+
+// ----------FUNCTION TO APPLY ATTRIBUTES TO IMAGES -----------------------------------------//
+function imageSettings(){
+    imgSet              =   "brightness("+(setBright/255)+"), contrast("+(setContrast/255)+"), opacity ("+(setOpacity/255)+"), saturation ("+(setSaturation/255)+")";
+    star.filter.style   =   imgSet;
+    
+}
+// ----------FUNCTION TO ADD HEADER TEXT TO A PAGE -----------------------------------------//
+function pageHeader(headertext, width, height){
+        
+    headText                =   headertext;
+    headerWidth             =   width;
+    headerHeight            =   height;
+
+    winCentreX              =   window.innerWidth /2;
+    
+    // create background for header
+    noStroke();
+    fill(0,0,0,180);
+    rectMode(CENTER,CENTER);
+    rect(winCentreX, 66 * scale, headerWidth * scale, headerHeight * scale);
+    // add header text
+    textAlign(CENTER,CENTER);
+    textSize(90 * scale);
+    stroke(0,0,0,0);
+    fill(255,255,255,setBright);
+    text(headertext, winCentreX, headerHeight * 0.8 * scale);
+    imageMode(CENTER)
+}
+
+// ----------FUNCTION TO ADD STARS TO BACKGROUND -----------------------------------------//
+// add the number of stars and set the container boundaries
+//number of starts, left Boundary (0-1), topBoundary (0-1), rightBoundary(0-1), bottomBoundary(0-1))
+function addStars(stars, leftBoundary, topBoundary, rightBoundary, bottomBoundary){
+    //inputs
+    starNumber                  =   stars;
+    fromLeft                    =   leftBoundary;
+    fromTop                     =   topBoundary;
+    fromRight                   =   rightBoundary;
+    fromBottom                  =   bottomBoundary;
+    // scale to fit window
+    scale                       =   window.innerWidth / window.screen.width;
+    // add stars
+    if(starArray.length < starNumber){
+        tempArray               =   [];
+        xPos                    =   random(fromLeft * window.screen.width, fromRight * window.screen.width);
+        yPos                    =   random(fromTop * window.screen.width * canRatio, window.screen.width * canRatio * 0.8);
+        starSize                =   random(10 * scale, 15 * scale);
+        starLive                =   random(200, 500);
+        tempArray[0]            =   starLive;
+        tempArray[1]            =   xPos;
+        tempArray[2]            =   yPos;
+        tempArray[3]            =   starSize;
+        starArray.push(tempArray);
+    }
+    // animate stars
+    for(i = 0; i < starArray.length; i++){
+        starArray[i][3]         =   starArray[i][3] + random( -2, 2);
+        // prevents the star from growing to large
+        if(starArray[i][3] > 20 * scale){
+            starArray[i][3]     =  starArray[i][3] - 1 * scale ;
+        }
+        // create a fade away if the star gets close to its end of live
+        if(starArray[i][0] < 200){
+            starArray[i][3] = starArray[i][3] + 0.7 * scale;
+        }
+        // reduce the star's live
+        starArray[i][0]         =   starArray[i][0] - 0.5;
+    }
+    // sort array to put stars with sortest life first in the que for removal
+    for(i = 0; i < starArray.length; i++){
+        starArray[i][0]                  =  starArray[i][0] / 1000; 
+    }   
+    starArray.sort();   
+    for(i = 0; i < starArray.length; i++){
+        starArray[i][0]                  =  starArray[i][0] * 1000; 
+    }
+    // remove dead stars from the starArray
+    if(starArray[0][0] < 0){
+        starArray.shift();
+    }
+    // draw stars   
+    for(i = 0; i < starArray.length; i++){
+    image(star, starArray[i][1] * scale, starArray[i][2] * scale, starArray[i][3] * scale, starArray[i][3] * scale);
+    }
 }
