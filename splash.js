@@ -1,24 +1,10 @@
 /* Contributor = Todd */
-// ------------------ FUNCTION TO SETUP INTRO SCREEN ---------------------- //
-
-function introScreenSetup(){
-    // setup page
-    createCanvas(window.innerWidth - 4 , window.innerHeight - 4);
-    background(0,0,0);
-    // create/clear a temporary array
-    theta                 = []; 
-    // fill theta array for all spinning things
-    for(let i=0 ; i < 360 ; i++){   
-      theta[i]            = i;  
-    }
-}
 
 // ------------------ FUNCTION TO SETUP INTRO SCREEN ---------------------- //
 
 function splashScreen(){
   // All the functions which should be called to run the splash screen
   // The splashScreen() function should be the only function in the setup function for the splash screen
-  // introScreenSetup();
   introScreen();
    
 }
@@ -27,10 +13,8 @@ function splashScreen(){
 function introScreen(){
  
     createCanvas(window.innerWidth - 4, window.innerWidth * canRatio);
-
+    // scalling factor fit to window
     let windowScale           =   window.innerWidth / window.screen.width;
-    //window.innerHeight        =   window.innerWidth * canRatio
-    //window.focus(window.innerWidth, window.innerHeight);
 
     textFont(SplashScreenFont)
     textAlign(CENTER)
@@ -82,38 +66,36 @@ function introScreen(){
     }
     //At thia point the rocketship will come into view from
     //left screen
-    rocketStartFrame            =   700;
+    rocketStartFrame            =   600;
     if(frameCount > rocketStartFrame){
         // radius  = width * 2.5 * windowScale   // Size of the radius of the orbit 
         
-        startX          =   window.screen.width /2;
-        startXDist      =   startX;
-        stopX           =   startXDist;
-        startY          =   window.screen.width * canRatio * 1.9;
-        yStartDist      =   startY + 0.3 * window.innerWidth * canRatio;
-        yStopDist       =   yStartDist;     
-        radius          =   sqrt(pow(startXDist,2) + pow(yStartDist,2));
-        yCorrection     =   0.32;
+        startX              =   window.innerWidth / 2;
+        startXDist          =   window.innerWidth * 1.9;
+        startY              =   window.innerWidth * canRatio * 0.9;
+        yStartDist          =   startY + 0.3 * window.innerWidth * canRatio;   
+        radius              =   sqrt(pow(startXDist,2) + pow(yStartDist,2));
+        curveCorrection     =   0.1;
         if(frameCount > rocketStartFrame && frameCount < rocketStartFrame + 5){
-            radians     =   PI + atan(yStartDist / startXDist);
+            radians         =   PI + atan(yStartDist / startXDist);
         }
-        thetaChange     =   0.0015;
+        thetaChange         =   0.002;
         // calculate the rockets position
-        radians = radians + thetaChange
-        let xpos = startX * windowScale + radius * cos(radians)  // X position of rocketship
-        let ypos = startY * windowScale + yCorrection * radius * sin(radians) // Y position of rocketship
+        radians = radians + thetaChange;
+        let xpos = startX + radius * windowScale * cos(radians)  // X position of rocketship
+        let ypos = startY + curveCorrection * radius * sin(radians) // Y position of rocketship
                     
-        rocketship=createSprite(xpos * windowScale, ypos * windowScale);
+        rocketship          =   createSprite(xpos , ypos );
         rocketImage.resize(150 * windowScale, 300 * windowScale)
         rocketship.addImage(rocketImage)
-        rocketship.rotation = 75 + (40 * (xpos * windowScale) / window.innerWidth ) // This is a ham-fisted attempt to keep the ship level with the planet
-        drawSprite(rocketship)
+        rocketship.rotation = 75 + (60 * (xpos * windowScale) / window.innerWidth ) // This is a ham-fisted attempt to keep the ship level with the planet
+        drawSprite(rocketship);
     } 
 }
 
 function completeSplash(){
     splashCount--;
-    text(splashCount, 100 ,100);
+
     rectMode(CENTER,CENTER);
     xPos                    =   window.innerWidth / 2;
     yPos                    =   window.innerWidth  * canRatio / 2;
@@ -128,7 +110,12 @@ function completeSplash(){
     }
     // change the gameStae to mainmenu
     if(splashCount < 1){
-        gameState           = "mainmenu" // go to main menu page  
+        
+    }
+    if(keyIsPressed){
+        
+        newWindow();
+        gameState           = "mainmenu" // go to main menu page
     }
 }
 

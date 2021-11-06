@@ -2,7 +2,7 @@
 
 function mainMenu(){
     // set main menu page
-    createCanvas(window.innerWidth - 4, window.innerWidth * canRatio);
+    createCanvas(window.innerWidth, window.innerWidth * canRatio);
     background(0,0,0);
    
     // fade-in variables
@@ -75,7 +75,7 @@ function mainMenu(){
         // variable to check the window size have changed
         // if the window size have changed the array will be re-created
         windowSize              =   window.innerWidth;  
-       // console.log(bannerArray); 
+
         redC                    =   1 / scale;
         grnC                    =   2 / scale;
         bluC                    =   3 / scale;
@@ -83,7 +83,7 @@ function mainMenu(){
 
     // draw banner
     for(i = 0 ; i < bannerArray.length; i++){
-        stroke(bannerArray[i][0], bannerArray[i][1], bannerArray[i][2]);
+        stroke(bannerArray[i][0], bannerArray[i][1], bannerArray[i][2],setBright);
         line(i, topOfBanner, i, bottomOfBanner)     
     }
     
@@ -114,15 +114,15 @@ function mainMenu(){
     textAlign(CENTER,CENTER);
     textSize(90 * scale);
     stroke(0,0,0,0);
-    fill(255,255,255);
+    fill(255,255,255,setBright);
     text("MAIN MENU", winCentreX, 70 * scale);
     imageMode(CENTER)
     // add stars
     
     if(starArray.length < 50){
         tempArray               =   [];
-        xPos                    =   random(10 * scale, window.innerWidth - 14 * scale);
-        yPos                    =   random(window.innerWidth * canRatio * 0.2, window.innerWidth * canRatio * 0.8);
+        xPos                    =   random(10 * scale, window.screen.width - 14 * scale);
+        yPos                    =   random(window.screen.width * canRatio * 0.2, window.screen.width * canRatio * 0.8);
         starSize                =   random(10 * scale, 15 * scale);
         starLive                =   random(200, 500);
         tempArray[0]            =   starLive;
@@ -159,9 +159,18 @@ function mainMenu(){
     if(starArray[0][0] < 0){
         starArray.shift();
     }
+    // apply graphics filters
+    star.filter.style = "brightness("+(setBright/255)+"),  ";
+
     // draw stars
+    
     for(i = 0; i < starArray.length; i++){
-        image(star, starArray[i][1], starArray[i][2], starArray[i][3], starArray[i][3]);
+
+        
+
+        console.log(star.filter.style);
+
+        image(star, starArray[i][1] * scale, starArray[i][2] * scale, starArray[i][3] * scale, starArray[i][3] * scale);
     }
 
     // opening scene button
@@ -229,8 +238,10 @@ function mainMenu(){
             fadeInCounter       =   0;
             fadeInSetting       =   0;
         }
+    setBrightness();    
     }
-    fadeIn();
     
+    
+    fadeIn();
 }
 

@@ -32,3 +32,21 @@ function fadeOut(){
         }
     }
 }
+
+// ----------FUNCTION TO CONTROL THE SCREEN BRIGHTNESS ----------------------//
+
+function setBrightness(){
+
+
+    
+}
+
+function newWindow(){
+    if(keyIsPressed){
+        
+        ww                  =   window.screen.width;
+        wh                  =   ww * canRatio;
+        //myWindow = window.open('http://127.0.0.1:5500/index.html','_blank', "width=1200, height=570, menubar=no, resizable = no, scrollbars = no", '') 
+        gameState           =   "mainmenu" // go to main menu page
+    }
+}

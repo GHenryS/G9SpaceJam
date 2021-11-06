@@ -13,15 +13,16 @@ let opagueValue         = 0;
 let bannerFirstTime     = 0;
 
 // global functions variables
+let gamePath            = "http://127.0.0.1:5500/index.html";
 let fadeInSetting       = 255;
 let fadeOutSetting      = 255;
+let setBright           = 100;
 
 // ------------------------ GLOBAL ARRAYS -------------------------------//
 // declare arrays which will be used over multiple functions
 // arrays which are specific to a function should be declared in the function 
 let bannerArray         = new Array();  // banner for menu page
 let starArray           = new Array();  // 
-
 
 // ------------------------ FUNCTION PRELOAD -------------------------------//
 
@@ -34,12 +35,9 @@ function preload(){
 
 // ------------------------ FUNCTION SETUP -------------------------------//
 function setup(){
-
   // all functions required as part of the setup is called using the runSetupFunction
   runSetupFunctions()     // see navigation.js
-
-  introScreenSetup()
-
+ 
 }
 
 // ------------------------ FUNCTION DRAW -------------------------------//
@@ -49,12 +47,11 @@ function draw() {
   // setGameState is the first function to run
   // the setGameState controles which page to show and which code to run for that page
 
-  //window.resizeTo(window.innerWidth, window.innerWidth * canRatio)
-  window.resizeTo(100, 100)
-  window.focus();
-
   setGameState(); 
 }
+
+
+
 
 
 
