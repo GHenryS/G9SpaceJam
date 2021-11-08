@@ -174,7 +174,7 @@ let distX2 = 1600;  // The camera will draw the sprites up to 1600 px to the rig
 let distY1 = -1200;  // The camera will draw the sprites up to 1200 px to the above of the hero
 let distY2 = 1200;  // The camera will draw the sprites up to 1600 px to the below of the hero
 
-// This code is just for exploring the map , just uncomment it 
+// This code is just for exploring the map with bob , delete when main character ready
 /*
 if(keyIsDown('65')){   // a key  ---- hero  left
     hero.setSpeed(50,180)
@@ -198,7 +198,7 @@ for(i = 0 ; i < allFloor.length ; i++){
     if(allFloor[i].position.x > camera.position.x + distX1 && allFloor[i].position.x < camera.position.x + distX2){
         if(allFloor[i].position.y > camera.position.y + distY1 && allFloor[i].position.y < camera.position.y + distY2){
             drawSprite(allFloor[i]);    // The for loop will run through the entire group and the if statements check
-        }                               // if the spprite is within the required range. If it is that sprite will be drawn
+        }                               // if the sprite is within the required range. If it is then that sprite will be drawn
     }
 }
 for(i = 0 ; i < allWall.length ; i++){
