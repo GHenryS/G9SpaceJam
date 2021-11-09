@@ -166,8 +166,8 @@ heroImage.resize(120 , 360);        // Delete Bob when the main character is rea
 function drawMap(){
 background('white');   // This is to be replaced by stars
 
-let distX1 = -2400;  // The camera will draw the sprites up to 1600 px to the left of the hero
-let distX2 = 24000;  // The camera will draw the sprites up to 1600 px to the right of the hero
+let distX1 = -2500;  // The camera will draw the sprites up to 1600 px to the left of the hero
+let distX2 = 2500;  // The camera will draw the sprites up to 1600 px to the right of the hero
 let distY1 = -2000;  // The camera will draw the sprites up to 1200 px to the above of the hero
 let distY2 = 2000;  // The camera will draw the sprites up to 1600 px to the below of the hero
 
@@ -187,7 +187,7 @@ if(keyIsDown('65')){   // a key  ---- hero  left
 */
 camera.zoom = 0.5;                   // Use this to set the zoom
 camera.position.x = hero.position.x; // This line and the next line set the camera to hero position
-camera.position.y = hero.position.y;
+camera.position.y = hero.position.y - width * 0.0379; 
 
 // These if statements check whether each of the spite groups are within the desired draw distance
 
