@@ -53,7 +53,7 @@ function preLoadImages(){
   lockedLiftDoorImage = loadImage('images/lockedLD.png');
   ladderImage = loadImage('images/ladder.png');           
   texture1Image = loadImage('images/texture1.png');       //  Solitary Cell Back wall 
-  texture2Image = loadImage('images/texture2.png');       //  Guard Posst Back Wal
+  texture2Image = loadImage('images/texture2.png');       //  Guard Post Back Wal
   texture3Image = loadImage('images/texture3.png');       //  Large Group Cell Back Wall 
   texture4Image = loadImage('images/texture4.png');       //  Main Prison Hall Back Wall 
   texture5Image = loadImage('images/texture5.png');       //  Maintenance Room Back Wall
