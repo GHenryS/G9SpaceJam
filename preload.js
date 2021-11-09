@@ -59,9 +59,9 @@ function preLoadImages(){
   texture5Image = loadImage('images/texture5.png');       //  Maintenance Room Back Wall
   texture6Image = loadImage('images/texture6.png');       //  Guard Break Room Back Wall
   texture7Image = loadImage('images/texture7.png');       //  Haunted Hallway Back Wall
-  texture8Image = loadImage('images/texture8.png');        //  Crew Quarters Back Wall 
-  texture9Image = loadImage('images/texture9.png');        //  Haunted Hallway Back Wall
-  texture10Image = loadImage('images/texture10.png');      // Large Group Cell (top) Back Wall
+  texture8Image = loadImage('images/texture8.png');       //  Crew Quarters Back Wall 
+  texture9Image = loadImage('images/texture9.png');       // Cockpit back wall
+  texture10Image = loadImage('images/texture10.png');     // Large Group Cell (top) Back Wall
 
 }
 
