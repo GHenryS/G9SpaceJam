@@ -48,7 +48,7 @@ function preLoadImages(){
   floorImage = loadImage('images/floor.png');             
   wallImage = loadImage('images/wall.png');
   elevatorImage = loadImage('images/elevator.png');
-  nothingImage = loadImage('images/nothing.png');
+ // nothingImage = loadImage('images/nothing.png');
   lockDoorImage = loadImage('images/LD.png');
   selfOpeningDoorImage = loadImage('images/selfOD.png');
   lockedLiftDoorImage = loadImage('images/lockedLD.png');
