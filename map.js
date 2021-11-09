@@ -33,6 +33,7 @@ allTexture6 = new Group;
 allTexture7 = new Group;
 allTexture8 = new Group;
 allTexture9 = new Group;
+allTexture10 = new Group;
 
 for(let i = 0 ; i < maplayouttxt.length ; i++){    // takes strings from txt file and puts them into maparray array 
     maparray[i] = splitTokens(maplayouttxt[i] , '\t');
@@ -94,66 +95,62 @@ for(let i = 0 ; i < maplayouttxt.length ; i++){    // takes strings from txt fil
                 texture1 = createSprite(spriteWidth / 2 + i * spriteWidth , spriteHeight / 2 + j * spriteHeight);
                 texture1.addImage(texture1Image);
                 texture1Image.resize(spriteWidth , spriteHeight);
-                texture1.setDefaultCollider();  
                 allTexture1.add(texture1);         
             }
             if(maparray[j][i] == '9'){
                 texture2 = createSprite(spriteWidth / 2 + i * spriteWidth , spriteHeight / 2 + j * spriteHeight);
                 texture2.addImage(texture2Image);
                 texture2Image.resize(spriteWidth , spriteHeight);
-                texture2.setDefaultCollider(); 
                 allTexture2.add(texture2);         
             }
             if(maparray[j][i] == '10'){
                 texture3 = createSprite(spriteWidth / 2 + i * spriteWidth , spriteHeight / 2 + j * spriteHeight);
-                texture3.addImage(texture3Image);
-                texture3Image.resize(spriteWidth , spriteHeight);
-                texture3.setDefaultCollider();
+                texture3.addImage(texture10Image);
+                texture10Image.resize(spriteWidth , spriteHeight);
                 allTexture3.add(texture3);         
             }
             if(maparray[j][i] == '11'){
                 texture4 = createSprite(spriteWidth / 2 + i * spriteWidth , spriteHeight / 2 + j * spriteHeight);
                 texture4.addImage(texture4Image);
                 texture4Image.resize(spriteWidth , spriteHeight);
-                texture4.setDefaultCollider();  
                 allTexture4.add(texture4);         
             }
             if(maparray[j][i] == '12'){
                 texture5 = createSprite(spriteWidth / 2 + i * spriteWidth , spriteHeight / 2 + j * spriteHeight);
                 texture5.addImage(texture5Image);
-                texture5Image.resize(spriteWidth , spriteHeight);
-                texture5.setDefaultCollider();  
+                texture5Image.resize(spriteWidth , spriteHeight); 
                 allTexture5.add(texture5);         
             }
             if(maparray[j][i] == '13'){
                 texture6 = createSprite(spriteWidth / 2 + i * spriteWidth , spriteHeight / 2 + j * spriteHeight);
                 texture6.addImage(texture6Image);
-                texture6Image.resize(spriteWidth , spriteHeight);
-                texture6.setDefaultCollider();  
+                texture6Image.resize(spriteWidth , spriteHeight); 
                 allTexture6.add(texture6);         
             }
             if(maparray[j][i] == '14'){
                 texture7 = createSprite(spriteWidth / 2 + i * spriteWidth , spriteHeight /2 +j * spriteHeight);
                 texture7.addImage(texture7Image);
-                texture7Image.resize(spriteWidth , spriteHeight);
-                texture7.setDefaultCollider();  
+                texture7Image.resize(spriteWidth , spriteHeight);  
                 allTexture7.add(texture7);         
             }
             if(maparray[j][i] == '15'){
                 texture8 = createSprite(spriteWidth / 2 + i * spriteWidth , spriteHeight / 2 + j * spriteHeight);
                 texture8.addImage(texture8Image);
                 texture8Image.resize(spriteWidth , spriteHeight);
-                texture8.setDefaultCollider();  
                 allTexture8.add(texture8);         
             }
             if(maparray[j][i] == '16'){
                 texture9 = createSprite(spriteWidth / 2 + i * spriteWidth , spriteHeight / 2 + j * spriteHeight);
                 texture9.addImage(texture9Image);
-                texture9Image.resize(spriteWidth , spriteHeight);
-                texture9.setDefaultCollider(); 
+                texture9Image.resize(spriteWidth , spriteHeight); 
                 allTexture9.add(texture9);       
             }
-
+            if(maparray[j][i] == '17'){
+                texture10 = createSprite(spriteWidth / 2 + i * spriteWidth , spriteHeight /2 +j * spriteHeight);
+                texture10.addImage(texture3Image);
+                texture3Image.resize(17 * spriteWidth , 5 * spriteHeight);
+                allTexture10.add(texture10);       
+            }
         }
     }
 let startX = (spriteWidth / 2 + 3 * spriteWidth);  // Hero Start Point
@@ -169,12 +166,12 @@ heroImage.resize(120 , 360);        // Delete Bob when the main character is rea
 function drawMap(){
 background('white');   // This is to be replaced by stars
 
-let distX1 = -1600;  // The camera will draw the sprites up to 1600 px to the left of the hero
-let distX2 = 1600;  // The camera will draw the sprites up to 1600 px to the right of the hero
-let distY1 = -1200;  // The camera will draw the sprites up to 1200 px to the above of the hero
-let distY2 = 1200;  // The camera will draw the sprites up to 1600 px to the below of the hero
+let distX1 = -2400;  // The camera will draw the sprites up to 1600 px to the left of the hero
+let distX2 = 24000;  // The camera will draw the sprites up to 1600 px to the right of the hero
+let distY1 = -2000;  // The camera will draw the sprites up to 1200 px to the above of the hero
+let distY2 = 2000;  // The camera will draw the sprites up to 1600 px to the below of the hero
 
-// This code is just for exploring the map with bob , delete when main character ready
+// This code is just for exploring the map , just uncomment it 
 /*
 if(keyIsDown('65')){   // a key  ---- hero  left
     hero.setSpeed(50,180)
@@ -198,7 +195,7 @@ for(i = 0 ; i < allFloor.length ; i++){
     if(allFloor[i].position.x > camera.position.x + distX1 && allFloor[i].position.x < camera.position.x + distX2){
         if(allFloor[i].position.y > camera.position.y + distY1 && allFloor[i].position.y < camera.position.y + distY2){
             drawSprite(allFloor[i]);    // The for loop will run through the entire group and the if statements check
-        }                               // if the sprite is within the required range. If it is then that sprite will be drawn
+        }                               // if the spprite is within the required range. If it is that sprite will be drawn
     }
 }
 for(i = 0 ; i < allWall.length ; i++){
@@ -303,6 +300,13 @@ for(i = 0 ; i < allTexture9.length ; i++){
     if(allTexture9[i].position.x > camera.position.x + distX1 && allTexture9[i].position.x < camera.position.x + distX2){
         if(allTexture9[i].position.y > camera.position.y + distY1 && allTexture9[i].position.y < camera.position.y + distY2){
             drawSprite(allTexture9[i]);
+        }
+    }
+}
+for(i=0 ; i<allTexture10.length ; i++){
+    if(allTexture10[i].position.x > camera.position.x + distX1 && allTexture10[i].position.x < camera.position.x + distX2){
+        if(allTexture10[i].position.y > camera.position.y + distY1 && allTexture10[i].position.y < camera.position.y + distY2){
+            drawSprite(allTexture10[i]);
         }
     }
 }

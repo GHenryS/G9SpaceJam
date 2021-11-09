@@ -54,13 +54,14 @@ function preLoadImages(){
   ladderImage = loadImage('images/ladder.png');           
   texture1Image = loadImage('images/texture1.png');       //  Solitary Cell Back wall 
   texture2Image = loadImage('images/texture2.png');       //  Guard Post Back Wal
-  texture3Image = loadImage('images/texture3.png');       //  Large Group Cell 1 Back Wall 
+  texture3Image = loadImage('images/texture3.png');       //  Large Group Cell (bottom) Back Wall 
   texture4Image = loadImage('images/texture4.png');       //  Main Prison Hall Back Wall 
   texture5Image = loadImage('images/texture5.png');       //  Maintenance Room Back Wall
   texture6Image = loadImage('images/texture6.png');       //  Guard Break Room Back Wall
   texture7Image = loadImage('images/texture7.png');       //  Haunted Hallway Back Wall
   texture8Image = loadImage('images/texture8.png');        //  Crew Quarters Back Wall 
   texture9Image = loadImage('images/texture9.png');        //  Haunted Hallway Back Wall
+  texture10Image = loadImage('images/texture10.png');      // Large Group Cell (top) Back Wall
 
 }
 
