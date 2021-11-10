@@ -48,10 +48,6 @@ function preLoadImages(){
   floorImage = loadImage('images/floor.png');             
   wallImage = loadImage('images/wall.png');
   elevatorImage = loadImage('images/elevator.png');
-//<<<<<<< HEAD
-  nothingImage = loadImage('images/nothing.png');
-//=======
-//>>>>>>> 76e588f85766ae0f9708d84521e0a8a4faf73e61
   lockDoorImage = loadImage('images/LD.png');
   selfOpeningDoorImage = loadImage('images/selfOD.png');
   lockedLiftDoorImage = loadImage('images/lockedLD.png');
@@ -67,7 +63,8 @@ function preLoadImages(){
   texture9Image = loadImage('images/texture9.png');       // Cockpit back wall
   texture10Image = loadImage('images/texture10.png');     // Large Group Cell (top) Back Wall
   elevatorCarriageImage = loadImage('images/elevatorCarriage.png')
-  
+  doorImage = loadImage('images/door.png')
+  doorLImage = loadImage('images/door.png')
 }
 
 // ------------------ FUNCTION TO PRELOAD SOUNDS    ---------------------- //

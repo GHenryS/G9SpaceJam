@@ -38,6 +38,7 @@ allTexture7 = new Group;
 allTexture8 = new Group;
 allTexture9 = new Group;
 allTexture10 = new Group;
+allDoor = new Group;
 
 for(let i = 0 ; i < maplayouttxt.length ; i++){    // takes strings from txt file and puts them into maparray array 
     maparray[i] = splitTokens(maplayouttxt[i] , '\t');
@@ -65,7 +66,13 @@ for(let i = 0 ; i < maplayouttxt.length ; i++){    // takes strings from txt fil
                 lockedDoor.addImage(lockDoorImage);
                 lockDoorImage.resize(spriteWidth , spriteHeight);
                 lockedDoor.setDefaultCollider();  
-                allLockedDoor.add(lockedDoor);        
+                allLockedDoor.add(lockedDoor); 
+                
+                doorL = createSprite(spriteWidth / 2 + i * spriteWidth , spriteHeight /2 +j * spriteHeight);
+                doorL.addImage(doorLImage)
+                doorLImage.resize(spriteWidth * 0.8 , 5 * spriteHeight)
+                doorL.setDefaultCollider()
+                allDoor.add(doorL)
             }            
             if(maparray[j][i] == '4'){
                 elevator = createSprite(spriteWidth / 2 + i * spriteWidth , spriteHeight / 2 + j * spriteHeight);
@@ -89,7 +96,13 @@ for(let i = 0 ; i < maplayouttxt.length ; i++){    // takes strings from txt fil
                 selfOpeningDoor.addImage(selfOpeningDoorImage);
                 selfOpeningDoorImage.resize(spriteWidth , spriteHeight);
                 selfOpeningDoor.setDefaultCollider();  
-                allSelfOpeningingDoor.add(selfOpeningDoor);         
+                allSelfOpeningingDoor.add(selfOpeningDoor);
+                
+                door = createSprite(spriteWidth / 2 + i * spriteWidth , spriteHeight /2 +j * spriteHeight);
+                door.addImage(doorImage);
+                doorImage.resize(0.8 * spriteWidth , 5* spriteHeight);
+                door.setDefaultCollider();
+                allDoor.add(door);
             }
             if(maparray[j][i] == '6'){
                 lockedElevatorDoor = createSprite(spriteWidth / 2 + i * spriteWidth , spriteHeight / 2 + j * spriteHeight);
@@ -170,7 +183,7 @@ for(let i = 0 ; i < maplayouttxt.length ; i++){    // takes strings from txt fil
 let startX = (spriteWidth / 2 + 3 * spriteWidth);  // Hero Start Point
 let startY = (spriteHeight /2 + 16 * spriteHeight);
 
-elevatorAnchorY = spriteHeight
+anchor = spriteHeight;
 
 hero = createSprite(startX , startY); // This is Bob
 hero.addImage(heroImage);           // Bob helps me look around the map
@@ -205,13 +218,34 @@ camera.zoom = 0.5;                   // Use this to set the zoom
 camera.position.x = hero.position.x; // This line and the next line set the camera to hero position
 camera.position.y = hero.position.y - width * 0.0379; 
 
-// These if statements check whether each of the spite groups are within the desired draw distance
+// These if statements check whether each of the spite groups are within the desired draw distance then draw them if they are
 
+for(i = 0 ; i < allLockedDoor.length ; i++){
+    if(allLockedDoor[i].position.x > camera.position.x + distX1 && allLockedDoor[i].position.x < camera.position.x + distX2){
+        if(allLockedDoor[i].position.y > camera.position.y + distY1 && allLockedDoor[i].position.y < camera.position.y + distY2){
+            drawSprite(allLockedDoor[i]);
+        }
+    }
+}
+for(i = 0 ; i < allSelfOpeningingDoor.length ; i++){
+    if(allSelfOpeningingDoor[i].position.x > camera.position.x + distX1 && allSelfOpeningingDoor[i].position.x < camera.position.x + distX2){
+        if(allSelfOpeningingDoor[i].position.y > camera.position.y + distY1 && allSelfOpeningingDoor[i].position.y < camera.position.y + distY2){
+            drawSprite(allSelfOpeningingDoor[i]);
+        }
+    }
+}
+for(i=0 ; i<allDoor.length ; i++){
+    if(allDoor[i].position.x > camera.position.x + distX1 && allDoor[i].position.x < camera.position.x + distX2){
+        if(allDoor[i].position.y > camera.position.y + distY1 && allDoor[i].position.y < camera.position.y + distY2){
+            drawSprite(allDoor[i]);
+        }
+    }
+}
 for(i = 0 ; i < allFloor.length ; i++){   
     if(allFloor[i].position.x > camera.position.x + distX1 && allFloor[i].position.x < camera.position.x + distX2){
         if(allFloor[i].position.y > camera.position.y + distY1 && allFloor[i].position.y < camera.position.y + distY2){
-            drawSprite(allFloor[i]);    // The for loop will run through the entire group and the if statements check
-        }                               // if the spprite is within the required range. If it is that sprite will be drawn
+            drawSprite(allFloor[i]);    
+        }                               
     }
 }
 for(i = 0 ; i < allWall.length ; i++){
@@ -221,13 +255,7 @@ for(i = 0 ; i < allWall.length ; i++){
         }
     }
 }
-for(i = 0 ; i < allLockedDoor.length ; i++){
-    if(allLockedDoor[i].position.x > camera.position.x + distX1 && allLockedDoor[i].position.x < camera.position.x + distX2){
-        if(allLockedDoor[i].position.y > camera.position.y + distY1 && allLockedDoor[i].position.y < camera.position.y + distY2){
-            drawSprite(allLockedDoor[i]);
-        }
-    }
-}
+
 for(i = 0 ; i < allElevator.length ; i++){
     if(allElevator[i].position.x > camera.position.x + distX1 && allElevator[i].position.x < camera.position.x + distX2){
         if(allElevator[i].position.y > camera.position.y + distY1 && allElevator[i].position.y < camera.position.y + distY2){
@@ -327,48 +355,59 @@ for(i=0 ; i<allTexture10.length ; i++){
     }
 }
 
-drawSprite(elevatorCarriage1)
-drawSprite(elevatorCarriage2)
+drawSprite(elevatorCarriage1);
+drawSprite(elevatorCarriage2);
 
 drawSprite(hero); //This is Bob
 
-if(hero.position.x < elevatorCarriage1.position.x + 200 && hero.position.x > elevatorCarriage1.position.x - 200 ){  //These were going to be buttons but I ran out of time
-    textSize(30)
-    stroke('yellow')
-    fill('yellow')
-    text("Up = u button" , elevatorCarriage1.position.x-elevatorAnchorY , elevatorCarriage1.position.y - 260)
-    text("Down = j button", elevatorCarriage1.position.x-elevatorAnchorY , elevatorCarriage1.position.y - 230)
-}
-if(hero.position.x < elevatorCarriage2.position.x + 200 && hero.position.x > elevatorCarriage2.position.x - 200 ){  //These were going to be buttons but I ran out of time
-    textSize(30)
-    stroke('yellow')
-    fill('yellow')
-    text("Up = i button" , elevatorCarriage2.position.x-120 , elevatorCarriage2.position.y - 260)
-    text("Down = k button", elevatorCarriage2.position.x-120 , elevatorCarriage2.position.y - 230)
+//This code moves the door up as the hero approaches it, it doesnt move it back down yet
+for(i=0 ; i < allDoor.length ; i++){
+    if(hero.position.x < allDoor[i].position.x + 100 && hero.position.x > allDoor[i].position.x - 100 && hero.position.y < allDoor[i].position.y + 200 && hero.position.y > allDoor[i].position.y - 200){
+    allDoor[i].setSpeed(5,270);
+    }else if(allDoor[i].position.y < (hero.position.y - 5 * anchor)){
+        allDoor[i].setSpeed(0,270); 
+    }else if(allDoor[i].position.y > (hero.position.y)  && hero.position.x > allDoor[i].position.x + 100 && hero.position.x < allDoor[i].position.x - 100){
+        allDoor[i].setSpeed(5,90);
+    }
 }
 
-if(keyDown(74) && elevatorCarriage1.position.y < 39 * elevatorAnchorY){ // If on bottom floor, the elevator wont try to go any further
-    elevatorCarriage1.setSpeed(5,90)                            // Go Down  "j"
-}else if(keyDown(85) && elevatorCarriage1.position.y > 17 * elevatorAnchorY){  // If on top floor, the elevator wont try to go any further
-    elevatorCarriage1.setSpeed(5,270)                           // Go Up    "u"
-}else if(elevatorCarriage1.position.y == 21.5*elevatorAnchorY){  // Stop at 4th floor
-    elevatorCarriage1.setSpeed(0,90)
-}else if(elevatorCarriage1.position.y == 27.5*elevatorAnchorY){  // Stop at 3rd floor
-    elevatorCarriage1.setSpeed(0,90)
-}else if(elevatorCarriage1.position.y == 33.5*elevatorAnchorY){  // Stop at 2nd floor
-    elevatorCarriage1.setSpeed(0,90)
-}else if(elevatorCarriage1.collide(allFloor)){                   // Stops at Bottom and Top Floor
-    elevatorCarriage1.setSpeed(0,0)
+if(hero.position.x < elevatorCarriage1.position.x + 200 && hero.position.x > elevatorCarriage1.position.x - 200 ){  //These were going to be buttons but I ran out of time
+    textSize(30);
+    stroke('yellow');
+    fill('yellow');
+    text("Up = u button" , elevatorCarriage1.position.x-anchor , elevatorCarriage1.position.y - 260);
+    text("Down = j button", elevatorCarriage1.position.x-anchor , elevatorCarriage1.position.y - 230);
 }
-if(keyDown(75) && elevatorCarriage2.position.y < 33 * elevatorAnchorY){ // If on bottom floor, the elevator wont try to go any further    
-    elevatorCarriage2.setSpeed(5,90)                            // Go Down  "i"
-}else if(keyDown(73)&& elevatorCarriage2.position.y > 17 * elevatorAnchorY){  // If on top floor, the elevator wont try to go any further
-    elevatorCarriage2.setSpeed(5,270)                           // Go Up  "k"
-}else if(elevatorCarriage2.position.y == 21.5*elevatorAnchorY){  // Stop at 4th floor
-    elevatorCarriage2.setSpeed(0,90)
-}else if(elevatorCarriage2.position.y == 27.5*elevatorAnchorY){  // Stop at 3rd floor
-    elevatorCarriage2.setSpeed(0,90)
+if(hero.position.x < elevatorCarriage2.position.x + 200 && hero.position.x > elevatorCarriage2.position.x - 200 ){  //These were going to be buttons but I ran out of time
+    textSize(30);
+    stroke('yellow');
+    fill('yellow');
+    text("Up = i button" , elevatorCarriage2.position.x-120 , elevatorCarriage2.position.y - 260);
+    text("Down = k button", elevatorCarriage2.position.x-120 , elevatorCarriage2.position.y - 230);
+}
+
+if(keyDown(74) && elevatorCarriage1.position.y < 39 * anchor){ // If on bottom floor, the elevator wont try to go any further
+    elevatorCarriage1.setSpeed(5,90);                            // Go Down  "j"
+}else if(keyDown(85) && elevatorCarriage1.position.y > 17 * anchor){  // If on top floor, the elevator wont try to go any further
+    elevatorCarriage1.setSpeed(5,270);                           // Go Up    "u"
+}else if(elevatorCarriage1.position.y == 21.5*anchor){  // Stop at 4th floor
+    elevatorCarriage1.setSpeed(0,90);
+}else if(elevatorCarriage1.position.y == 27.5*anchor){  // Stop at 3rd floor
+    elevatorCarriage1.setSpeed(0,90);
+}else if(elevatorCarriage1.position.y == 33.5*anchor){  // Stop at 2nd floor
+    elevatorCarriage1.setSpeed(0,90);
+}else if(elevatorCarriage1.collide(allFloor)){                   // Stops at Bottom and Top Floor
+    elevatorCarriage1.setSpeed(0,0);
+}
+if(keyDown(75) && elevatorCarriage2.position.y < 33 * anchor){ // If on bottom floor, the elevator wont try to go any further    
+    elevatorCarriage2.setSpeed(5,90);                            // Go Down  "i"
+}else if(keyDown(73)&& elevatorCarriage2.position.y > 17 * anchor){  // If on top floor, the elevator wont try to go any further
+    elevatorCarriage2.setSpeed(5,270);                           // Go Up  "k"
+}else if(elevatorCarriage2.position.y == 21.5*anchor){  // Stop at 4th floor
+    elevatorCarriage2.setSpeed(0,90);
+}else if(elevatorCarriage2.position.y == 27.5*anchor){  // Stop at 3rd floor
+    elevatorCarriage2.setSpeed(0,90);
 }else if(elevatorCarriage2.collide(allFloor)){                   // Stops at Bottom and Top Floor
-    elevatorCarriage2.setSpeed(0,0)
+    elevatorCarriage2.setSpeed(0,0);
 }
 }
