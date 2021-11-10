@@ -1,6 +1,10 @@
-// ------------------ MAIN FUNCTION FOR MAP SCREEN ---------------------- //
+//--------------------GLOBAL VARIABLES FOR MAP SCREEN-----------------------//
 
 let hero  // This is Bob, I have been using him to look around the map
+
+let elevatorCarriage1,elevatorCarriage2 //I need these as global variables
+
+// ------------------ MAIN FUNCTION FOR MAP SCREEN ---------------------- //
 
 function mapScreen(){
 setupMap();
@@ -68,7 +72,17 @@ for(let i = 0 ; i < maplayouttxt.length ; i++){    // takes strings from txt fil
                 elevator.addImage(elevatorImage);
                 elevatorImage.resize(spriteWidth , spriteHeight);
                 elevator.setDefaultCollider();  
-                allElevator.add(elevator);         
+                allElevator.add(elevator);
+                
+                elevatorCarriage1 = createSprite( 26 * spriteWidth , spriteHeight /2 + 15* spriteHeight)
+                elevatorCarriage1.addImage(elevatorCarriageImage)
+                elevatorCarriageImage.resize(2 * spriteWidth , 5 * spriteHeight)
+                //elevatorCarriage1.setCollider(spriteWidth / 2 + i * spriteWidth , spriteHeight /2 +j * spriteHeight)
+
+                elevatorCarriage2 = createSprite(55 * spriteWidth , spriteHeight /2 + 15 * spriteHeight)
+                elevatorCarriage2.addImage(elevatorCarriageImage)
+                elevatorCarriageImage.resize(2 * spriteWidth , 5 * spriteHeight)
+                //elevatorCarriage2.setCollider(spriteWidth / 2 + i * spriteWidth , spriteHeight /2 +j * spriteHeight)
             }
             if(maparray[j][i] == '5'){
                 selfOpeningDoor = createSprite(spriteWidth / 2 + i * spriteWidth , spriteHeight / 2 + j * spriteHeight);
@@ -155,6 +169,8 @@ for(let i = 0 ; i < maplayouttxt.length ; i++){    // takes strings from txt fil
     }
 let startX = (spriteWidth / 2 + 3 * spriteWidth);  // Hero Start Point
 let startY = (spriteHeight /2 + 16 * spriteHeight);
+
+elevatorAnchorY = spriteHeight
 
 hero = createSprite(startX , startY); // This is Bob
 hero.addImage(heroImage);           // Bob helps me look around the map
@@ -310,5 +326,34 @@ for(i=0 ; i<allTexture10.length ; i++){
         }
     }
 }
+
+drawSprite(elevatorCarriage1)
+drawSprite(elevatorCarriage2)
+
 drawSprite(hero); //This is Bob
+
+if(keyDown(74) && elevatorCarriage1.position.y < 39 * elevatorAnchorY){ // If on bottom floor, the elevator wont try to go any further
+    elevatorCarriage1.setSpeed(5,90)                            // Go Down  "j"
+}else if(keyDown(85) && elevatorCarriage1.position.y > 17 * elevatorAnchorY){  // If on top floor, the elevator wont try to go any further
+    elevatorCarriage1.setSpeed(5,270)                           // Go Up    "u"
+}else if(elevatorCarriage1.position.y == 21.5*elevatorAnchorY){  // Stop at 4th floor
+    elevatorCarriage1.setSpeed(0,90)
+}else if(elevatorCarriage1.position.y == 27.5*elevatorAnchorY){  // Stop at 3rd floor
+    elevatorCarriage1.setSpeed(0,90)
+}else if(elevatorCarriage1.position.y == 33.5*elevatorAnchorY){  // Stop at 2nd floor
+    elevatorCarriage1.setSpeed(0,90)
+}else if(elevatorCarriage1.collide(allFloor)){                   // Stops at Bottom and Top Floor
+    elevatorCarriage1.setSpeed(0,0)
+}
+if(keyDown(75) && elevatorCarriage2.position.y < 33 * elevatorAnchorY){ // If on bottom floor, the elevator wont try to go any further    
+    elevatorCarriage2.setSpeed(5,90)                            // Go Down  "i"
+}else if(keyDown(73)&& elevatorCarriage2.position.y > 17 * elevatorAnchorY){  // If on top floor, the elevator wont try to go any further
+    elevatorCarriage2.setSpeed(5,270)                           // Go Up  "k"
+}else if(elevatorCarriage2.position.y == 21.5*elevatorAnchorY){  // Stop at 4th floor
+    elevatorCarriage2.setSpeed(0,90)
+}else if(elevatorCarriage2.position.y == 27.5*elevatorAnchorY){  // Stop at 3rd floor
+    elevatorCarriage2.setSpeed(0,90)
+}else if(elevatorCarriage2.collide(allFloor)){                   // Stops at Bottom and Top Floor
+    elevatorCarriage2.setSpeed(0,0)
+}
 }

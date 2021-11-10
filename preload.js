@@ -62,7 +62,8 @@ function preLoadImages(){
   texture8Image = loadImage('images/texture8.png');       //  Crew Quarters Back Wall 
   texture9Image = loadImage('images/texture9.png');       // Cockpit back wall
   texture10Image = loadImage('images/texture10.png');     // Large Group Cell (top) Back Wall
-
+  elevatorCarriageImage = loadImage('images/elevatorCarriage.png')
+  
 }
 
 // ------------------ FUNCTION TO PRELOAD SOUNDS    ---------------------- //
