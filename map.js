@@ -332,6 +332,21 @@ drawSprite(elevatorCarriage2)
 
 drawSprite(hero); //This is Bob
 
+if(hero.position.x < elevatorCarriage1.position.x + 200 && hero.position.x > elevatorCarriage1.position.x - 200 ){  //These were going to be buttons but I ran out of time
+    textSize(30)
+    stroke('yellow')
+    fill('yellow')
+    text("Up = u button" , elevatorCarriage1.position.x-elevatorAnchorY , elevatorCarriage1.position.y - 260)
+    text("Down = j button", elevatorCarriage1.position.x-elevatorAnchorY , elevatorCarriage1.position.y - 230)
+}
+if(hero.position.x < elevatorCarriage2.position.x + 200 && hero.position.x > elevatorCarriage2.position.x - 200 ){  //These were going to be buttons but I ran out of time
+    textSize(30)
+    stroke('yellow')
+    fill('yellow')
+    text("Up = i button" , elevatorCarriage2.position.x-120 , elevatorCarriage2.position.y - 260)
+    text("Down = k button", elevatorCarriage2.position.x-120 , elevatorCarriage2.position.y - 230)
+}
+
 if(keyDown(74) && elevatorCarriage1.position.y < 39 * elevatorAnchorY){ // If on bottom floor, the elevator wont try to go any further
     elevatorCarriage1.setSpeed(5,90)                            // Go Down  "j"
 }else if(keyDown(85) && elevatorCarriage1.position.y > 17 * elevatorAnchorY){  // If on top floor, the elevator wont try to go any further
