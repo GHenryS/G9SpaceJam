@@ -434,6 +434,7 @@ class HumanObject{
         this.move();
         this.addBody(); 
         this.xPos = this.objectArray[0][9]; 
+        this.yPos = this.objectArray[1][9]; 
     }
 
     //////////////////////////// THE NEXR SECTION HANDLES WALKING TO LEFT ///////////////////////////////
