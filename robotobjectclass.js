@@ -4,7 +4,7 @@ let robotSprite;
 let robots = [];
 
 function preload(){
-    robotImage = loadSpriteSheet('/sprites/robot.png',500,500,12);
+    robotImage = loadSpriteSheet('sprites/robot.png',78,71,10);
     robotAnimation = loadAnimation(robotImage);
 }
 
@@ -16,7 +16,7 @@ function setup(){
     // ghostSprite2               =   new GhostObject(100, 150); // create the mainCharacter using the HumanObject class
     // ghosts.push(ghostSprite2);
    
-    for(let i = 0; i < 10; i++){
+    for(let i = 0; i < 1; i++){
         let yPos = random(50,450);
         let minX =  random(50, 200);
         let maxX = random(250,450); 
@@ -34,7 +34,6 @@ function draw(){
 
     drawSprites();
     
-    image(animation[frameCount % robots.length], 0, 0)
 }
 
 class RobotObject{
@@ -51,11 +50,10 @@ class RobotObject{
     this.robotSprite = createSprite(xPos,yPos);
     this.robotSprite.mirrorX(1);
     this.robotSprite.velocity.x = -1;
-    this.robotSprite.addAnimation('hover', robotImage);
-    this.robotSprite.scale = 0.5;
+    this.robotSprite.addAnimation('hover', robotAnimation);
+    this.robotSprite.scale = 1;
     this.robotSprite.debug = true;
     this.robotSprite.setCollider('circle',0,-20,30);
-    this.robotSprite.drawFrame(12,xPos,yPos)
     }
 
     move(){
