@@ -432,7 +432,8 @@ class HumanObject{
     //-------------------------- METHOD TO DRAW OBJECT -----------------------------------------//
     draw(){
         this.move();
-        this.addBody();  
+        this.addBody(); 
+        this.xPos = this.objectArray[0][9]; 
     }
 
     //////////////////////////// THE NEXR SECTION HANDLES WALKING TO LEFT ///////////////////////////////
