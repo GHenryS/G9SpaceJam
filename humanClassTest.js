@@ -5,7 +5,7 @@ let mainCharacter;              // declare variable to represent the main
 
 function setup(){
     createCanvas(300,300);
-    mainCharacter               =   new HumanObject(150, 150, 3); // create the mainCharacter using the HumanObject class
+    mainCharacter               =   new HumanObject(150, 150, 2.5); // create the mainCharacter using the HumanObject class
 }
 
 function draw(){
@@ -15,6 +15,7 @@ function draw(){
     mainCharacter.draw();
 
 }
+
 
 class HumanObject{
     // the constructor is like the setup function in P5
@@ -432,7 +433,9 @@ class HumanObject{
     //-------------------------- METHOD TO DRAW OBJECT -----------------------------------------//
     draw(){
         this.move();
-        this.addBody();  
+        this.addBody(); 
+        this.xPos = this.objectArray[0][9]; 
+        this.yPos = this.objectArray[1][9]; 
     }
 
     //////////////////////////// THE NEXR SECTION HANDLES WALKING TO LEFT ///////////////////////////////
@@ -1148,17 +1151,17 @@ class HumanObject{
 
     addBody(){
         // circle diameter
-        this.toeSize                =   4;
-        this.footSize               =   6;
-        this.ankleSize              =   10;
-        this.kneeSize               =   14;
-        this.hipSize                =   20;
-        this.shoulderSize           =   15;
-        this.chestSize              =   25;
-        this.neckSize               =   10;
-        this.elbowSize              =   10;
-        this.wristSize              =   7;
-        this.headSize               =   30;
+        this.toeSize                =   2 * this.size;
+        this.footSize               =   3 * this.size;
+        this.ankleSize              =   5 * this.size;
+        this.kneeSize               =   7 * this.size;
+        this.hipSize                =   10 * this.size;
+        this.shoulderSize           =   7.5 * this.size;
+        this.chestSize              =   12.5 * this.size;
+        this.neckSize               =   5 * this.size;
+        this.elbowSize              =   5 * this.size;
+        this.wristSize              =   3.5 * this.size;
+        this.headSize               =   15 * this.size;
 
         // ellipse colours
         this.toeRed                 =   255;
@@ -1740,6 +1743,18 @@ class HumanObject{
             this.objectArray[0][i] = this.objectArray[0][i] - this.moveXrate;
         }
     }
+    elevatorDown(rate){
+        this.elirate = rate;
+        for( let i = 0 ; i < this.objectArray[1].length; i++){
+            this.objectArray[1][i] = this.objectArray[1][i] + this.elirate;
+        }
+    }
+    elevatorUp(rate){
+        this.elirate = rate;
+        for( let i = 0 ; i < this.objectArray[1].length; i++){
+            this.objectArray[1][i] = this.objectArray[1][i] - this.elirate;
+        }
+    }
 
 
 
@@ -1801,3 +1816,5 @@ class HumanObject{
 
 
 }
+
+
