@@ -1,5 +1,5 @@
 
-function playgame(){
+function playGame(){
 
 setGameState("playgame")  // Set GameState
 
