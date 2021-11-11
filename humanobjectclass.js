@@ -1648,6 +1648,7 @@ class HumanObject{
         stroke(100,100,100);
         line(QX2,QY2, QX3,QY3);        
 
+        /*
         let chestXPos       =   this.objectArray[0][9] + this.dimensionArray[0][12] * cos(this.pivitArray[0][2])
         let chestYPos       =   this.objectArray[0][9] + (this.dimensionArray[0][12] - 10 * this.size) * sin(this.pivitArray[0][2])
 
@@ -1684,6 +1685,8 @@ class HumanObject{
         line(QX1,QY1, QX2,QY2); 
         line(QX3,QY3, QX4,QY4); 
  
+        */
+
         // upper chest
         QX1     =   this.objectArray[0][1] + this.neckSize/2;
         QY1     =   this.objectArray[1][1];
