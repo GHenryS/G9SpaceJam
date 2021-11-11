@@ -95,11 +95,11 @@ function introScreen(){
 // ---------------- FUNCTION TO FADE SPLASH OUT AT END OF SCENE AND TO SET THE GAMESTATE TO MAINMENU ------------ //
 function completeSplash(){
     splashCount--;
-    rectMode(CENTER);
+    rectMode(CENTER , CENTER);
     xPos                    =   window.innerWidth / 2;
     yPos                    =   window.innerWidth  * canRatio / 2;
     opaqueChange            =   255/fadeOutSetting;
-    rectMode(CENTER);
+    rectMode(CENTER , CENTER);
     // create a fadeout effect to softern the transition from splash to mainmenu
     if(splashCount < fadeOutSetting){
         stroke(0,0,0);
