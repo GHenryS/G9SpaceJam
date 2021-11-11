@@ -183,8 +183,9 @@ heroImage.resize(120 , 360)
 // ------------------ FUNCTION TO DRAW MAP SCREEN ---------------------- //
 
 function drawMap(){
-gameBackground = addStars(50 , 0 , 0 , width , height)
-image(gameBackground , 0, 0 , width, height)
+background(0,0,0)
+addStars(50 , 0 , 0 , width , height)
+
 let distX1 = -2500;  // The camera will draw the sprites up to 1600 px to the left of the hero
 let distX2 = 2500;  // The camera will draw the sprites up to 1600 px to the right of the hero
 let distY1 = -2000;  // The camera will draw the sprites up to 1200 px to the above of the hero
