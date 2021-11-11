@@ -28,7 +28,7 @@ let scale;
 // Map Global Variables
 let elevatorCarriage1;
 let elevatorCarriage2;
-
+let hero;
 
 // ------------------------ GLOBAL ARRAYS -------------------------------//
 // declare arrays which will be used over multiple functions
