@@ -1744,13 +1744,13 @@ class HumanObject{
     elevatorDown(rate){
         this.elirate = rate;
         for( let i = 0 ; i < this.objectArray[1].length; i++){
-            this.objectArray[1][i = this.objectArray[1][i]] + this.elirate;
+            this.objectArray[1][i] = this.objectArray[1][i] + this.elirate;
         }
     }
     elevatorUp(rate){
         this.elirate = rate;
         for( let i = 0 ; i < this.objectArray[1].length; i++){
-            this.objectArray[1][i = this.objectArray[1][i]] - this.elirate;
+            this.objectArray[1][i] = this.objectArray[1][i] - this.elirate;
         }
     }
 
