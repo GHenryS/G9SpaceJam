@@ -7,7 +7,7 @@ function runSetupFunctions(){
     // Map Setup
     setupMap();
 }
-}
+
 
 
 // ----------FUNCTION TO CREATE A FADE IN EFFECT ---------------------------//
