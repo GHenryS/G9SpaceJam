@@ -199,7 +199,7 @@ camera.zoom = 0.8;                   // Use this to set the zoomcamera.position.
 
 
 camera.position.x = hero.xPos  
-camera.position.y = hero.yPos + height *0.27
+camera.position.y = hero.yPos - height *0.27
 
 
 if(keyIsDown('65')){   // a key  ---- hero  left
