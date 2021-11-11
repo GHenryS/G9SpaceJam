@@ -8,13 +8,11 @@ class HumanObject{
         // for this object the xPos and yPos would be at the bottom - centre of the character 
         this.xPos                       =   xPos;
         this.yPos                       =   yPos;
-        // this.hMove                      =   0;          // hmove controls movement on the horisonal plane
-        // this.vMove                      =   0;          // hmove controls movement on the horisonal plane
         this.size                       =   size;       // scale the character
 
         // if stationary is "yes" the character will stay in one postion on the screen - it is assumed the screen will move //
         // if stationary is "no" the character will accross the screen - it ias assumed the screen will be stationary
-        this.stationary                 =   "yes"   // "no" or "yes"
+        this.stationary                 =   "yes"       // "no" or "yes"
         this.turn                       =   0;
         this.speed                      =   1;
         this.change                     =   0.03;       // determines the rateof animation
@@ -22,13 +20,9 @@ class HumanObject{
 
         // available object state "start", "turnleft", "walkleft", "stopleft"," turnright", "walkright", "stopright", "jumpup","jumpleft", "jumpright","climbUp", "climbdown"//  
         this.objectState                =   "front";
-        this.keyState                   =   "none";  // "none" for no key pressed, "yes" for keyIsPressed 
+    
                    
-
         ///////////////// THE NEXT SECTION SETS THE INITIAL STATE OF ANIMATIONS //////////////////////////////
-
-        // this is required to determine which animation to run
-        this.upright                    =   3;  // 1 = laying down, 2 = on knees, 3 = standup
 
 
         ///////////////// THE NEXT SECTION DECLARES THE FUNCTIONS ARRAY /////////////////////////////////////        
@@ -59,30 +53,26 @@ class HumanObject{
 
         this.turnFrontFromLeft          =   false;
         this.turnFrontFromRight         =   false;
-
-        //this.moveToFront                =   false;
-
-        //this.motion                     =   false;
-           
+          
 
         ///////////////// THE NEXT SECTION ASSIGNS DIMENTIONS TO THE BODY PARTS //////////////////////////////
 
-        this.rightToeFootDist            =   2 * this.size;
-        this.rightFootFootDist           =   3 * this.size;
+        this.rightToeFootDist            =   4 * this.size;
+        this.rightFootFootDist           =   5 * this.size;
         this.rightLowerLegDist           =   20 * this.size;
         this.rightUpperLegDist           =   20 * this.size;
-        this.leftToeFootDist             =   2 * this.size;
-        this.leftFootFootDist            =   3 * this.size;
+        this.leftToeFootDist             =   4 * this.size;
+        this.leftFootFootDist            =   5 * this.size;
         this.leftLowerLegDist            =   20 * this.size;
         this.leftUpperLegDist            =   20 * this.size;
         this.rightLowerArmDist           =   20 * this.size;
-        this.rightUpperArmDist           =   20 * this.size;
+        this.rightUpperArmDist           =   15 * this.size;
         this.leftLowerArmDist            =   20 * this.size;
-        this.leftUpperArmDist            =   20 * this.size;
+        this.leftUpperArmDist            =   15 * this.size;
         this.spineToShoulder             =   27 * this.size;
-        this.neck                        =   6 * this.size;
-        this.head                        =   8 * this.size;  
-        this.hipWidth                    =   15 * this.size;
+        this.neck                        =   7 * this.size;
+        this.head                        =   9 * this.size;  
+        this.hipWidth                    =   10 * this.size;
         this.shoulderWidth               =   26 * this.size;
 
          // load the variable into an array so that they can be used outside if the constructor       
@@ -123,9 +113,8 @@ class HumanObject{
         // add a second line to the pivitArray (this is only a place holder to prevent the first line from being deleted
         this.pivitArray.push(tempArray);
         
-
         // pivit Array //
-        // 0 - this.neck to this.head
+        // 0 - neck to head
         // 1 - shoulder to this.neck
         // 2 - hip to shoulder/this.neck
         // 3 - left shoulder to left elbow
@@ -310,12 +299,10 @@ class HumanObject{
         this.aniInputArray.push([C3  , 4.7 , 4.6 , 1.3 , 2.2 , 1.3 , 2.2 , 1.8 , 1.5 , C2  , C2  , 1.8 , 1.5 , C2  , C2  ]); // 1
         this.aniInputArray.push([C3  , 4.7 , 4.6 , 1.0 , 1.4 , 2.2 , 2.3 , 2.3 , 1.9 , 2.5 , 3.0 , 1.0 , 0.9 , 1.6 , 2.0 ]); // 2
         this.aniInputArray.push([C3  , 4.7 , 4.6 , 2.0 , 2.3 , 1.0 , 1.4 , 1.0 , 0.9 , 2.0 , 3.0 , 2.3 , 1.9 , 2.5 , 3.0 ]); // 3
-        this.aniInputArray.push([C3  , 4.73, 4.80, 1.84, 0.94, 1.84, 0.94, 1.34, 1.64 ,0.0 , 0.0 , 1.34, 1.64, 0.0 , 0.0 ]); // 4
+        this.aniInputArray.push([C3  , 4.73, 4.80, 1.84, 0.94, 1.84, 0.94, 1.34, 1.64 ,0.0 , 0.0 , 1.34, 1.64, 0.3 , 0.0 ]); // 4
         this.aniInputArray.push([C3  , 4.73, 4.82, 2.3 , 1.74, 1.14, 0.84, 0.6 , 1.24 ,1.14, 0.14, 2.3 , 2.45, 1.14, 0.14]); // 5
         this.aniInputArray.push([C3  , 4.73, 4.82, 1.14, 0.84, 2.3 , 1.74, 2.3 , 2.45 ,1.14, 0.14, 0.6 , 1.24, 1.14, 0.14]); // 6
         
-
-
         //............ ANIMATION ................//
 
         this.moveLinkArray   =   [
@@ -344,8 +331,7 @@ class HumanObject{
             for( let u = 0; u < arrayLine.length; u++){
                 tempArray[u] = (this.aniInputArray[this.moveLinkArray[i][0]][u] - this.aniInputArray[this.moveLinkArray[i][1]][u]) * this.change 
             }
-            this.aniArray.push(tempArray)  
-            console.log(this.aniArray)                       
+            this.aniArray.push(tempArray)          
         } 
     }
     constructAniArray(){
@@ -405,6 +391,7 @@ class HumanObject{
         //turn back to front
 
 
+
         // going right........................
         if(this.objectState == "faceright"){  
            this.firstStepToRight();
@@ -425,59 +412,15 @@ class HumanObject{
     }
 
 
-
     //-------------------------- METHOD TO DRAW OBJECT -----------------------------------------//
     draw(){
         this.move();
-        let value1;
-        let value2;        
-        for(let i = 0; i < this.linkArray.length; i++){
-            value1          =   this.linkArray[i][0];
-            value2          =   this.linkArray[i][1];       
-            stroke(0,255,0);
-            fill(0,255,0); 
-            
-        if( i == 6 || i == 7 || i == 15 || i == 16 || i == 17){
-            stroke(255,0,0);
-            fill(255,0,0);
-        } else if( i == 4 || i == 5 || i == 11 || i == 12 || i == 13){
-            stroke(0,0,255);
-            fill(0,0,255);
-        } else {
-            stroke(0,255,0);
-            fill(0,255,0);        
-        }
-        
-        line(this.objectArray[0][value1],this.objectArray[1][value1], this.objectArray[0][value2], this.objectArray[1][value2]);
-        noStroke()
-        fill(255,203,164);
-        ellipse(this.objectArray[0][value1], this.objectArray[1][value1], 10);
-        fill(255,203,164);
-        ellipse(this.objectArray[0][0], this.objectArray[1][0], 30, 38);  
-        
-
-        this.linkedVariables();
-        }       
+        this.addBody();  
     }
 
     //////////////////////////// THE NEXR SECTION HANDLES WALKING TO LEFT ///////////////////////////////
     //-------------------------- METHOD TO TURN FROM FRONT POSITION TO LEFT ---------------------------//
     
-    linkedVariables(){
-        this.leftHandX      =   this.objectArray[0][5];   
-        this.leftHandY      =   this.objectArray[1][5];
-
-        this.rightHandX     =   this.objectArray[0][8];
-        this.rightHandY     =   this.objectArray[1][8];
-
-        this.leftFootX      =   this.objectArray[0][14];
-        this.leftFootY      =   this.objectArray[1][14];
-
-        this.rightFootX     =   this.objectArray[0][18];
-        this.rightFootY     =   this.objectArray[1][18];
-
-    }
-
     faceLeftFromFront(){
 
         // run animation if the conditions are met 
@@ -509,7 +452,6 @@ class HumanObject{
                     // 4 FACING RIGHT
                     // 5 RIGHT - LEFT FOOT FORWARD
                     // 6 RIGHT - RIGHT FOOT FORWARD
-
                     this.noDrift(1);                  
                 }  
                 this.step                   =   this.step - this.change;                                   
@@ -549,7 +491,6 @@ class HumanObject{
                     // 4 FACING RIGHT
                     // 5 RIGHT - LEFT FOOT FORWARD
                     // 6 RIGHT - RIGHT FOOT FORWARD
-
                     this.noDrift(4)
                 }  
                 this.step                   =   this.step - this.change;                                   
@@ -588,7 +529,6 @@ class HumanObject{
                     // 4 FACING RIGHT
                     // 5 RIGHT - LEFT FOOT FORWARD
                     // 6 RIGHT - RIGHT FOOT FORWARD
-
                     this.noDrift(0)               
                 }  
                 this.step                   =   this.step - this.change;                                   
@@ -627,7 +567,6 @@ class HumanObject{
                     // 4 FACING RIGHT
                     // 5 RIGHT - LEFT FOOT FORWARD
                     // 6 RIGHT - RIGHT FOOT FORWARD
-
                     this.noDrift(1)             
                 }  
                 this.step                   =   this.step - this.change;                                   
@@ -640,7 +579,6 @@ class HumanObject{
     firstStepToleft(){
         
         // END WITH LEFT FOOT FORWARD - HALF STEP
-
         // run animation if the conditions are met
         if(keyIsPressed == true || this.stepToLeft1 == true) {
             if (keyCode == LEFT_ARROW || this.stepToLeft1 == true) { 
@@ -668,7 +606,6 @@ class HumanObject{
                     // 4 FACING RIGHT
                     // 5 RIGHT - LEFT FOOT FORWARD
                     // 6 RIGHT - RIGHT FOOT FORWARD
-
                     this.noDrift(2)
                 }  
                 this.step                   =   this.step - this.change;  
@@ -707,7 +644,6 @@ class HumanObject{
                     // 4 FACING RIGHT
                     // 5 RIGHT - LEFT FOOT FORWARD
                     // 6 RIGHT - RIGHT FOOT FORWARD
-
                     this.noDrift(6)
                 }  
                 this.step                   =   this.step - this.change;  
@@ -745,7 +681,6 @@ class HumanObject{
                     // 4 FACING RIGHT
                     // 5 RIGHT - LEFT FOOT FORWARD
                     // 6 RIGHT - RIGHT FOOT FORWARD
-
                     this.noDrift(3)
                 }  
                 this.step                   =   this.step - this.change;  
@@ -785,7 +720,6 @@ class HumanObject{
                     // 4 FACING RIGHT
                     // 5 RIGHT - LEFT FOOT FORWARD
                     // 6 RIGHT - RIGHT FOOT FORWARD
-
                     this.noDrift(5)
                 }  
                 this.step                   =   this.step - this.change;  
@@ -823,7 +757,6 @@ class HumanObject{
                     // 4 FACING RIGHT
                     // 5 RIGHT - LEFT FOOT FORWARD
                     // 6 RIGHT - RIGHT FOOT FORWARD
-
                     this.noDrift(2)
                 } 
                 this.step                   =   this.step - this.change;             
@@ -861,7 +794,6 @@ class HumanObject{
                     // 4 FACING RIGHT
                     // 5 RIGHT - LEFT FOOT FORWARD
                     // 6 RIGHT - RIGHT FOOT FORWARD
-
                     this.noDrift(6)
                 } 
                 this.step                   =   this.step - this.change;             
@@ -896,7 +828,6 @@ class HumanObject{
             // 4 FACING RIGHT
             // 5 RIGHT - LEFT FOOT FORWARD
             // 6 RIGHT - RIGHT FOOT FORWARD
-
             this.noDrift(1)
         }                             
     }
@@ -928,7 +859,6 @@ class HumanObject{
             // 4 FACING RIGHT
             // 5 RIGHT - LEFT FOOT FORWARD
             // 6 RIGHT - RIGHT FOOT FORWARD
-
             this.noDrift(4)
         }                             
     }
@@ -960,7 +890,6 @@ class HumanObject{
             // 4 FACING RIGHT
             // 5 RIGHT - LEFT FOOT FORWARD
             // 6 RIGHT - RIGHT FOOT FORWARD
-
             this.noDrift(1)
         } 
     }
@@ -1101,7 +1030,6 @@ class HumanObject{
         this.pivitArray[0][10]      =   this.pivitArray[0][10] + this.leftToe;
         this.objectArray[0][14]     =   this.objectArray[0][13] + this.dimensionArray[0][4] * cos(this.pivitArray[0][10]);
         this.objectArray[1][14]     =   this.objectArray[1][13] + this.dimensionArray[0][4] * sin(this.pivitArray[0][10]);
-
     }
 
     leftArm( leftUpperArm, leftLowerArm){
@@ -1116,7 +1044,6 @@ class HumanObject{
         this.pivitArray[0][4]       =   this.pivitArray[0][4] + this.leftLowerArm ;
         this.objectArray[0][5]      =   this.objectArray[0][4] + this.dimensionArray[0][8] * cos(this.pivitArray[0][4]);
         this.objectArray[1][5]      =   this.objectArray[1][4] + this.dimensionArray[0][8] * sin(this.pivitArray[0][4]);
-
     }
 
     rightArm(rightUpperArm, rightLowerArm){
@@ -1133,7 +1060,9 @@ class HumanObject{
     }
 
     noDrift(lineNumber){
-
+        ///////////////  THIS METHOD ENSURES THAT EACH ANIMATION REACHES THE TARGET CO-ORDS //////////////////////
+        // the X and Y co-ords tends to drift due to rounding and reactions to key strokes
+        // at the end of each simulation this method is run to force the X and Y co-ords to be equal to the target co-ords
         let tempArray               =   this.aniInputArray[lineNumber];
                 //////// ANI-INPUT-ARRAY LINE ELEMENTS
         // 0 - head
@@ -1199,121 +1128,595 @@ class HumanObject{
         this.objectArray[1][8]      =   this.objectArray[1][7] + this.dimensionArray[0][8] * sin(this.aniInputArray[lineNumber][6]);
 
     }
-/*
-    resetXandY(){
-        ///////////////// THE NEXT SECTION DEFINES THE CO-ORDINATES OF THE PIVIT POINTS //////////////////////////////
-        // spine, this.neck and this.head
-        let spineHipX                   =   this.xPos;               
-        let spineHipY                   =   this.yPos;
-        let spineShoulderX              =   spineHipX;               
-        let spineShoulderY              =   spineHipY - this.spineToShoulder;
-        let shoulderNeckX               =   spineHipX;                           
-        let shoulderNeckY               =   spineShoulderY;
-        let neckHeadX                   =   spineHipX;               
-        let neckHeadY                   =   shoulderNeckY - this.head;
-        let headX                       =   neckHeadX;
-        let headY                       =   neckHeadY - this.head;           
 
-        // right foot and leg
-        let rightHipX                   =   spineHipX - this.hipWidth/2;           
-        let rightHipY                   =   spineHipY
-        let rightKneeX                  =   rightHipX;                             
-        let rightKneeY                  =   rightHipY + this.rightUpperLegDist;
-        let rightAnkleX                 =   rightKneeX;                       
-        let rightAnkleY                 =   rightKneeY + this.rightLowerLegDist; 
-        let rightToeFootX               =   rightAnkleX;        
-        let rightToeFootY               =   rightAnkleY;               
-        let rightToeX                   =   rightToeFootX;        
-        let rightToeY                   =   rightToeFootY;           // -2 allows for fresh underneath the toe
+    addBody(){
+        // circle diameter
+        this.toeSize                =   4;
+        this.footSize               =   6;
+        this.ankleSize              =   10;
+        this.kneeSize               =   14;
+        this.hipSize                =   20;
+        this.shoulderSize           =   15;
+        this.chestSize              =   25;
+        this.neckSize               =   10;
+        this.elbowSize              =   10;
+        this.wristSize              =   7;
+        this.headSize               =   30;
 
-        // left foot and leg
-        let leftHipX                    =   spineHipX + this.hipWidth / 2;   
-        let leftHipY                    =   spineHipY;
-        let leftKneeX                   =   leftHipX;          
-        let leftKneeY                   =   leftHipY + this.leftUpperLegDist;
-        let leftAnkleX                  =   leftKneeX;          
-        let leftAnkleY                  =   leftKneeY + this.leftLowerLegDist; 
-        let leftToeFootX                =   leftAnkleX;           // Toe - Foot pointX position is same when hMove = 0
-        let leftToeFootY                =   leftAnkleY;           // Toe - Foot pointY position is same when hMove = 0
-        let leftToeX                    =   leftToeFootX;        
-        let leftToeY                    =   leftToeFootY;           // -2 allows for fresh underneath the toe
+        // ellipse colours
+        this.toeRed                 =   255;
+        this.toeGrn                 =   203;
+        this.toeBlu                 =   164; 
 
-        // left arm
-        let rightShoulderX              =   this.xPos - this.shoulderWidth / 2; 
-        let rightShoulderY              =   spineShoulderY;
-        let rightElbowX                 =   rightShoulderX;
-        let rightElbowY                 =   rightShoulderY + this.rightUpperArmDist;
-        let rightWristX                 =   rightElbowX
-        let rightWristY                 =   rightElbowY + this.rightLowerArmDist;
+        this.footRed                =   255;
+        this.footGrn                =   203;
+        this.footBlu                =   164;   
 
-        // right arm
-        let leftShoulderX               =   this.xPos + this.shoulderWidth / 2; 
-        let leftShoulderY               =   spineShoulderY;
-        let leftElbowX                  =   leftShoulderX;
-        let leftElbowY                  =   leftShoulderY + this.leftUpperArmDist;
-        let leftWristX                  =   leftElbowX
-        let leftWristY                  =   leftElbowY + this.leftLowerArmDist;
-
-        // create an array to store pivit points
-        let tempArray                   =   [];
-
-        // add X co-ords to tempArray
-        tempArray[0]                    =   headX;              // this.head pos
-        tempArray[1]                    =   neckHeadX;          // this.head to this.neck point
-        tempArray[2]                    =   shoulderNeckX;      // this.neck to torso point
-        tempArray[3]                    =   leftShoulderX;      // left shoulder
-        tempArray[4]                    =   leftElbowX;         // left elbow
-        tempArray[5]                    =   leftWristX;         // left elbow
-        tempArray[6]                    =   rightShoulderX;     // right shoulder
-        tempArray[7]                    =   rightElbowX;        // right elbow 
-        tempArray[8]                    =   rightWristX;        // right wrist
-        tempArray[9]                    =   spineHipX;          // spine to hip joint
-        tempArray[10]                   =   leftHipX;           // left hip
-        tempArray[11]                   =   leftKneeX;          // left knee
-        tempArray[12]                   =   leftAnkleX;         // left Ankle
-        tempArray[13]                   =   leftToeFootX;       // left foot pivit point
-        tempArray[14]                   =   leftToeX;           // left toe
-        tempArray[15]                   =   rightHipX;          // right hip
-        tempArray[16]                   =   rightKneeX;         // right knee
-        tempArray[17]                   =   rightAnkleX;        // right Ankle
-        tempArray[18]                   =   rightToeFootX;      // right foot pivit point
-        tempArray[19]                   =   rightToeX;          // right toe
-        // push X co-ords into this.objectArray[0]
-        this.objectArray.shift()
-        this.objectArray.unshift(tempArray);
-
-        // clear the tempArray
-        tempArray                       =   [];
+        this.ankleRed               =   255;
+        this.ankleGrn               =   203;
+        this.ankleBlu               =   164;  
         
-        // add Y co-ords to tempArray
-        tempArray[0]                    =   headY;              // this.head pos
-        tempArray[1]                    =   neckHeadY;          // this.head to this.neck point
-        tempArray[2]                    =   shoulderNeckY;      // this.neck to torso point
-        tempArray[3]                    =   leftShoulderY;      // left shoulder
-        tempArray[4]                    =   leftElbowY;         // left elbow
-        tempArray[5]                    =   leftWristY;         // left elbow
-        tempArray[6]                    =   rightShoulderY;     // right shoulder
-        tempArray[7]                    =   rightElbowY;        // right elbow 
-        tempArray[8]                    =   rightWristY;        // right wrist
-        tempArray[9]                    =   spineHipY;          // spine to hip joint
-        tempArray[10]                   =   leftHipY;           // left hip
-        tempArray[11]                   =   leftKneeY;          // left knee
-        tempArray[12]                   =   leftAnkleY;         // left Ankle
-        tempArray[13]                   =   leftToeFootY;       // left foot pivit point
-        tempArray[14]                   =   leftToeY;           // left toe
-        tempArray[15]                   =   rightHipY;          // right hip
-        tempArray[16]                   =   rightKneeY;         // right knee
-        tempArray[17]                   =   rightAnkleY;        // right Ankle
-        tempArray[18]                   =   rightToeFootY;      // right foot pivit point
-        tempArray[19]                   =   rightToeY;          // right toe
+        this.kneeRed                =   255;
+        this.kneeGrn                =   50;
+        this.kneeBlu                =   50;
+        
+        this.hipRed                 =   255;
+        this.hipGrn                 =   50;
+        this.hipBlu                 =   50;
+        
+        this.shoulderRed            =   255;
+        this.shoulderGrn            =   203;
+        this.shoulderBlu            =   164;
 
-        // push X co-ords into this.objectArray[0]
-        this.objectArray.pop();
-        this.objectArray.push(tempArray);
+        this.chestRed               =   255;
+        this.chestGrn               =   203;
+        this.chestBlu               =   164;
+
+        this.chestRed               =   255;
+        this.chestGrn               =   203;
+        this.chestBlu               =   164;
+
+        this.neckRed                =   255;
+        this.neckGrn                =   203;
+        this.neckBlu                =   164;
+
+        this.faceRed                =   255;
+        this.faceGrn                =   203;
+        this.faceBlu                =   164;
+        
+        this.elbowRed               =   255;
+        this.elbowGrn               =   203;
+        this.elbowBlu               =   164;
+
+        this.wristRed               =   255;
+        this.wristGrn               =   203;
+        this.wristBlu               =   164;
+
+        // quad colours
+        this.frontFootRed           =   255;
+        this.frontFootGrn           =   203;
+        this.frontFFootBlu          =   164; 
+
+        this.backFootRed            =   255;
+        this.backFootGrn            =   203;
+        this.backFootBlu            =   164;   
+
+        this.lowerLegRed            =   255;
+        this.lowerLegGrn            =   50;
+        this.lowerLegBlu            =   50;  
+        
+        this.upperLegRed            =   255;
+        this.upperLegGrn            =   50;
+        this.upperLegBlu            =   50;
+        
+        this.pelvisRed              =   255;
+        this.pelvisGrn              =   50;
+        this.pelvisBlu              =   50;
+        
+        this.torsoRed               =   150;
+        this.torsoGrn               =   203;
+        this.torsoBlu               =   164;
+
+        this.upperArmRed            =   255;
+        this.upperArmGrn            =   203;
+        this.upperArmBlu            =   164;
+
+        this.lowerArmRed            =   255;
+        this.lowerArmGrn            =   203;
+        this.lowerArmBlu            =   164;
+
+        this.qNeckRed               =   255;
+        this.qNeckGrn               =   203;
+        this.qNeckBlu               =   164;
+
+        if(this.objectState == "front" || this.objectState == "faceright" || this.objectState == "walkright1" 
+        || this.objectState == "walkright2" || this.objectState == "stopright1" || this.objectState == "stopright2"
+        || this.objectState == "rightstop1" || this.objectState == "rightstop2"){
+        // facing right
+        this.shade                  =   0.6;
+        this.drawObjectRightSide();
+        this.shade                  =   0.8;
+        this.drawObjectCentre();  
+        this.shade                  =   1.0;
+        this.drawObjectLeftSide();
+        }
+
+        if(this.objectState == "front"){
+        // facing right
+        this.shade                  =   1.0;
+        this.drawObjectCentre();          
+        this.shade                  =   1.0;
+        this.drawObjectRightSide();
+        this.shade                  =   1.0;
+        this.drawObjectLeftSide();
+        }
 
 
+        if(this.objectState == "faceleft" || this.objectState == "walkleft1" || this.objectState == "walkleft2" 
+        || this.objectState == "stopleft1" || this.objectState == "stopleft2" || this.objectState == "leftstop1" 
+        || this.objectState == "leftstop2" ){
+        // facing left
+        this.shade                  =   0.6;
+        this.drawObjectLeftSide();
+        this.shade                  =   0.8;
+        this.drawObjectCentre();  
+        this.shade                  =   1.0;
+        this.drawObjectRightSide();
+        }
     }
-    */
+
+    drawObjectRightSide(){
+        noStroke();
+        ///// DRAW THE RIGHT SIDE LIMBS
+        //circles
+        fill(this.shoulderRed * this.shade, this.shoulderGrn * this.shade, this.shoulderBlu * this.shade);
+        ellipse(this.objectArray[0][6], this.objectArray[1][6], this.shoulderSize, this.shoulderSize);      // shouder
+        fill(this.elbowRed * this.shade, this.elbowGrn * this.shade, this.selbowBlu * this.shade);
+        ellipse(this.objectArray[0][7], this.objectArray[1][7], this.elbowSize, this.elbowSize);            // elboe
+        fill(this.wristRed * this.shade, this.wristGrn * this.shade, this.wristBlu * this.shade );
+        ellipse(this.objectArray[0][8], this.objectArray[1][8], this.wristSize , this.wristSize );          // wrist
+        fill(this.hipRed * this.shade, this.hipGrn * this.shade, this.hipBlu * this.shade );
+        ellipse(this.objectArray[0][15], this.objectArray[1][15], this.hipSize , this.hipSize );            // hip
+        fill(this.kneeRed * this.shade, this.kneeGrn * this.shade, this.kneeBlu * this.shade );
+        ellipse(this.objectArray[0][16], this.objectArray[1][16], this.kneeSize  , this.kneeSize  );        // knee
+        fill(this.ankleRed * this.shade, this.ankleGrn * this.shade, this.ankleBlu * this.shade );
+        ellipse(this.objectArray[0][17], this.objectArray[1][17], this.ankleSize  , this.ankleSize);        // ankle
+        fill(this.footRed * this.shade, this.footGrn * this.shade, this.footBlu * this.shade );
+        ellipse(this.objectArray[0][18], this.objectArray[1][18], this.footSize , this.footSize);           // foot
+        fill(this.toeRed * this.shade, this.toeGrn * this.shade, this.toeBlu * this.shade );
+        ellipse(this.objectArray[0][19], this.objectArray[1][19], this.toeSize , this.toeSize);             // toe
+
+        //quads
+        // point 1
+        let QX1;
+        let QY1;
+        let QX2;
+        let QY2;
+        let QX3;
+        let QY3;
+        let QX4;
+        let QY4;
+
+        let joint1;
+        let joint2;
+        let size1;
+        let size2;
+        let pivit;
+
+        // right upper leg
+        joint1  =   15;
+        joint2  =   16;
+        size1   =   this.hipSize;
+        size2   =   this.kneeSize;
+        pivit   =   11;
+
+        QX1     =   this.objectArray[0][joint1] + size1/2 * cos(this.pivitArray[0][pivit] + PI/2)
+        QY1     =   this.objectArray[1][joint1] + size1/2 * sin(this.pivitArray[0][pivit] + PI/2)
+        QX2     =   this.objectArray[0][joint1] + size1/2 * cos(this.pivitArray[0][pivit] - PI/2)
+        QY2     =   this.objectArray[1][joint1] + size1/2 * sin(this.pivitArray[0][pivit] - PI/2)
+        QX3     =   this.objectArray[0][joint2] + size2/2 * cos(this.pivitArray[0][pivit] - PI/2)
+        QY3     =   this.objectArray[1][joint2] + size2/2 * sin(this.pivitArray[0][pivit] - PI/2)       
+        QX4     =   this.objectArray[0][joint2] + size2/2 * cos(this.pivitArray[0][pivit] + PI/2)
+        QY4     =   this.objectArray[1][joint2] + size2/2 * sin(this.pivitArray[0][pivit] + PI/2)  
+
+        noStroke();
+        fill(this.upperLegRed  * this.shade, this.upperLegGrn  * this.shade, this.upperLegBlu  * this.shade );
+        quad(QX1,QY1,QX2,QY2,QX3,QY3,QX4,QY4);
+        stroke(100,100,100);
+        line(QX1,QY1, QX4,QY4);
+        line(QX2,QY2, QX3,QY3);
+
+        //right lower leg
+        joint1  =   16;
+        joint2  =   17;
+        size1   =   this.kneeSize;
+        size2   =   this.ankleSize;
+        pivit   =   12;
+
+        QX1     =   this.objectArray[0][joint1] + size1/2 * cos(this.pivitArray[0][pivit] + PI/2)
+        QY1     =   this.objectArray[1][joint1] + size1/2 * sin(this.pivitArray[0][pivit] + PI/2)
+        QX2     =   this.objectArray[0][joint1] + size1/2 * cos(this.pivitArray[0][pivit] - PI/2)
+        QY2     =   this.objectArray[1][joint1] + size1/2 * sin(this.pivitArray[0][pivit] - PI/2)
+        QX3     =   this.objectArray[0][joint2] + size2/2 * cos(this.pivitArray[0][pivit] - PI/2)
+        QY3     =   this.objectArray[1][joint2] + size2/2 * sin(this.pivitArray[0][pivit] - PI/2)       
+        QX4     =   this.objectArray[0][joint2] + size2/2 * cos(this.pivitArray[0][pivit] + PI/2)
+        QY4     =   this.objectArray[1][joint2] + size2/2 * sin(this.pivitArray[0][pivit] + PI/2)  
+
+        noStroke();
+        fill(this.lowerLegRed  * this.shade, this.lowerLegGrn  * this.shade, this.lowerLegBlu  * this.shade );
+        quad(QX1,QY1,QX2,QY2,QX3,QY3,QX4,QY4);
+        stroke(100,100,100);
+        line(QX1,QY1, QX4,QY4);
+        line(QX2,QY2, QX3,QY3);       
+
+        //right foot
+        joint1  =   17;
+        joint2  =   18;
+        size1   =   this.ankleSize;
+        size2   =   this.footSize;
+        pivit   =   13;
+
+        QX1     =   this.objectArray[0][joint1] + size1/2 * cos(this.pivitArray[0][pivit] + PI/2)
+        QY1     =   this.objectArray[1][joint1] + size1/2 * sin(this.pivitArray[0][pivit] + PI/2)
+        QX2     =   this.objectArray[0][joint1] + size1/2 * cos(this.pivitArray[0][pivit] - PI/2)
+        QY2     =   this.objectArray[1][joint1] + size1/2 * sin(this.pivitArray[0][pivit] - PI/2)
+        QX3     =   this.objectArray[0][joint2] + size2/2 * cos(this.pivitArray[0][pivit] - PI/2)
+        QY3     =   this.objectArray[1][joint2] + size2/2 * sin(this.pivitArray[0][pivit] - PI/2)       
+        QX4     =   this.objectArray[0][joint2] + size2/2 * cos(this.pivitArray[0][pivit] + PI/2)
+        QY4     =   this.objectArray[1][joint2] + size2/2 * sin(this.pivitArray[0][pivit] + PI/2)  
+
+        noStroke();
+        fill(this.backFootRed  * this.shade, this.backFootGrn  * this.shade, this.backFootBlu  * this.shade );
+        quad(QX1,QY1,QX2,QY2,QX3,QY3,QX4,QY4);
+        stroke(100,100,100);
+        line(QX1,QY1, QX4,QY4);
+        line(QX2,QY2, QX3,QY3);  
+
+         //right toe
+         joint1  =   18;
+         joint2  =   19;
+         size1   =   this.footSize;
+         size2   =   this.toeSize;
+         pivit   =   14;
+ 
+         QX1     =   this.objectArray[0][joint1] + size1/2 * cos(this.pivitArray[0][pivit] + PI/2)
+         QY1     =   this.objectArray[1][joint1] + size1/2 * sin(this.pivitArray[0][pivit] + PI/2)
+         QX2     =   this.objectArray[0][joint1] + size1/2 * cos(this.pivitArray[0][pivit] - PI/2)
+         QY2     =   this.objectArray[1][joint1] + size1/2 * sin(this.pivitArray[0][pivit] - PI/2)
+         QX3     =   this.objectArray[0][joint2] + size2/2 * cos(this.pivitArray[0][pivit] - PI/2)
+         QY3     =   this.objectArray[1][joint2] + size2/2 * sin(this.pivitArray[0][pivit] - PI/2)       
+         QX4     =   this.objectArray[0][joint2] + size2/2 * cos(this.pivitArray[0][pivit] + PI/2)
+         QY4     =   this.objectArray[1][joint2] + size2/2 * sin(this.pivitArray[0][pivit] + PI/2)  
+ 
+         noStroke();
+         fill(this.frontFootRed  * this.shade, this.frontFGrn  * this.shade, this.frontFBlu  * this.shade );
+         quad(QX1,QY1,QX2,QY2,QX3,QY3,QX4,QY4);
+         stroke(100,100,100);
+         line(QX1,QY1, QX4,QY4);
+         line(QX2,QY2, QX3,QY3);   
+         
+          //right upper arm
+          joint1  =   6;
+          joint2  =   7;
+          size1   =   this.shoulderSize;
+          size2   =   this.elbowSize;
+          pivit   =   5;
+  
+          QX1     =   this.objectArray[0][joint1] + size1/2 * cos(this.pivitArray[0][pivit] + PI/2)
+          QY1     =   this.objectArray[1][joint1] + size1/2 * sin(this.pivitArray[0][pivit] + PI/2)
+          QX2     =   this.objectArray[0][joint1] + size1/2 * cos(this.pivitArray[0][pivit] - PI/2)
+          QY2     =   this.objectArray[1][joint1] + size1/2 * sin(this.pivitArray[0][pivit] - PI/2)
+          QX3     =   this.objectArray[0][joint2] + size2/2 * cos(this.pivitArray[0][pivit] - PI/2)
+          QY3     =   this.objectArray[1][joint2] + size2/2 * sin(this.pivitArray[0][pivit] - PI/2)       
+          QX4     =   this.objectArray[0][joint2] + size2/2 * cos(this.pivitArray[0][pivit] + PI/2)
+          QY4     =   this.objectArray[1][joint2] + size2/2 * sin(this.pivitArray[0][pivit] + PI/2)  
+  
+          noStroke();
+          fill(this.upperArmRed  * this.shade, this.upperArmGrn  * this.shade, this.upperArmBlu  * this.shade );
+          quad(QX1,QY1,QX2,QY2,QX3,QY3,QX4,QY4);
+          stroke(100,100,100);
+          line(QX1,QY1, QX4,QY4);
+          line(QX2,QY2, QX3,QY3);
+
+          //right lower arm
+          joint1  =   7;
+          joint2  =   8;
+          size1   =   this.elbowSize;
+          size2   =   this.wristSize;
+          pivit   =   5;
+  
+          QX1     =   this.objectArray[0][joint1] + size1/2 * cos(this.pivitArray[0][pivit] + PI/2)
+          QY1     =   this.objectArray[1][joint1] + size1/2 * sin(this.pivitArray[0][pivit] + PI/2)
+          QX2     =   this.objectArray[0][joint1] + size1/2 * cos(this.pivitArray[0][pivit] - PI/2)
+          QY2     =   this.objectArray[1][joint1] + size1/2 * sin(this.pivitArray[0][pivit] - PI/2)
+          QX3     =   this.objectArray[0][joint2] + size2/2 * cos(this.pivitArray[0][pivit] - PI/2)
+          QY3     =   this.objectArray[1][joint2] + size2/2 * sin(this.pivitArray[0][pivit] - PI/2)       
+          QX4     =   this.objectArray[0][joint2] + size2/2 * cos(this.pivitArray[0][pivit] + PI/2)
+          QY4     =   this.objectArray[1][joint2] + size2/2 * sin(this.pivitArray[0][pivit] + PI/2)  
+  
+          noStroke();
+          fill(this.upperArmRed  * this.shade, this.upperArmGrn  * this.shade, this.upperArmBlu  * this.shade );
+          quad(QX1,QY1,QX2,QY2,QX3,QY3,QX4,QY4);
+          stroke(100,100,100);
+          line(QX1,QY1, QX4,QY4);
+          line(QX2,QY2, QX3,QY3);  
+    }
+
+    drawObjectLeftSide(){
+        noStroke();
+        ///// DRAW THE LEFT SIDE LIMBS
+        //circles
+        fill(this.shoulderRed * this.shade, this.shoulderGrn * this.shade, this.shoulderBlu * this.shade);
+        ellipse(this.objectArray[0][3], this.objectArray[1][3], this.shoulderSize, this.shoulderSize);      // shouder
+        fill(this.elbowRed * this.shade, this.elbowGrn * this.shade, this.selbowBlu * this.shade);
+        ellipse(this.objectArray[0][4], this.objectArray[1][4], this.elbowSize, this.elbowSize);            // elboe
+        fill(this.wristRed * this.shade, this.wristGrn * this.shade, this.wristBlu * this.shade );
+        ellipse(this.objectArray[0][5], this.objectArray[1][5], this.wristSize , this.wristSize );          // wrist
+        fill(this.hipRed * this.shade, this.hipGrn * this.shade, this.hipBlu * this.shade );
+        ellipse(this.objectArray[0][10], this.objectArray[1][10], this.hipSize , this.hipSize );            // hip
+        fill(this.kneeRed * this.shade, this.kneeGrn * this.shade, this.kneeBlu * this.shade );
+        ellipse(this.objectArray[0][11], this.objectArray[1][11], this.kneeSize  , this.kneeSize  );        // knee
+        fill(this.ankleRed * this.shade, this.ankleGrn * this.shade, this.ankleBlu * this.shade );
+        ellipse(this.objectArray[0][12], this.objectArray[1][12], this.ankleSize  , this.ankleSize);        // ankle
+        fill(this.footRed * this.shade, this.footGrn * this.shade, this.footBlu * this.shade );
+        ellipse(this.objectArray[0][13], this.objectArray[1][13], this.footSize , this.footSize);           // foot
+        fill(this.toeRed * this.shade, this.toeGrn * this.shade, this.toeBlu * this.shade );
+        ellipse(this.objectArray[0][14], this.objectArray[1][14], this.toeSize , this.toeSize);             // toe  
+        
+        //quads
+        // point 1
+        let QX1;
+        let QY1;
+        let QX2;
+        let QY2;
+        let QX3;
+        let QY3;
+        let QX4;
+        let QY4;
+
+        let joint1;
+        let joint2;
+        let size1;
+        let size2;
+        let pivit;
+
+        // left upper leg
+        joint1  =   10;
+        joint2  =   11;
+        size1   =   this.hipSize;
+        size2   =   this.kneeSize;
+        pivit   =   7;
+
+        QX1     =   this.objectArray[0][joint1] + size1/2 * cos(this.pivitArray[0][pivit] + PI/2)
+        QY1     =   this.objectArray[1][joint1] + size1/2 * sin(this.pivitArray[0][pivit] + PI/2)
+        QX2     =   this.objectArray[0][joint1] + size1/2 * cos(this.pivitArray[0][pivit] - PI/2)
+        QY2     =   this.objectArray[1][joint1] + size1/2 * sin(this.pivitArray[0][pivit] - PI/2)
+        QX3     =   this.objectArray[0][joint2] + size2/2 * cos(this.pivitArray[0][pivit] - PI/2)
+        QY3     =   this.objectArray[1][joint2] + size2/2 * sin(this.pivitArray[0][pivit] - PI/2)       
+        QX4     =   this.objectArray[0][joint2] + size2/2 * cos(this.pivitArray[0][pivit] + PI/2)
+        QY4     =   this.objectArray[1][joint2] + size2/2 * sin(this.pivitArray[0][pivit] + PI/2)  
+
+        noStroke();
+        fill(this.upperLegRed  * this.shade, this.upperLegGrn  * this.shade, this.upperLegBlu  * this.shade );
+        quad(QX1,QY1,QX2,QY2,QX3,QY3,QX4,QY4);
+        stroke(100,100,100);
+        line(QX1,QY1, QX4,QY4);
+        line(QX2,QY2, QX3,QY3);
+
+        //left lower leg
+        joint1  =   11;
+        joint2  =   12;
+        size1   =   this.kneeSize;
+        size2   =   this.ankleSize;
+        pivit   =   8;
+
+        QX1     =   this.objectArray[0][joint1] + size1/2 * cos(this.pivitArray[0][pivit] + PI/2)
+        QY1     =   this.objectArray[1][joint1] + size1/2 * sin(this.pivitArray[0][pivit] + PI/2)
+        QX2     =   this.objectArray[0][joint1] + size1/2 * cos(this.pivitArray[0][pivit] - PI/2)
+        QY2     =   this.objectArray[1][joint1] + size1/2 * sin(this.pivitArray[0][pivit] - PI/2)
+        QX3     =   this.objectArray[0][joint2] + size2/2 * cos(this.pivitArray[0][pivit] - PI/2)
+        QY3     =   this.objectArray[1][joint2] + size2/2 * sin(this.pivitArray[0][pivit] - PI/2)       
+        QX4     =   this.objectArray[0][joint2] + size2/2 * cos(this.pivitArray[0][pivit] + PI/2)
+        QY4     =   this.objectArray[1][joint2] + size2/2 * sin(this.pivitArray[0][pivit] + PI/2)  
+
+        noStroke();
+        fill(this.lowerLegRed  * this.shade, this.lowerLegGrn  * this.shade, this.lowerLegBlu  * this.shade );
+        quad(QX1,QY1,QX2,QY2,QX3,QY3,QX4,QY4);
+        stroke(100,100,100);
+        line(QX1,QY1, QX4,QY4);
+        line(QX2,QY2, QX3,QY3);       
+
+        //left foot
+        joint1  =   12;
+        joint2  =   13;
+        size1   =   this.ankleSize;
+        size2   =   this.footSize;
+        pivit   =   9;
+
+        QX1     =   this.objectArray[0][joint1] + size1/2 * cos(this.pivitArray[0][pivit] + PI/2)
+        QY1     =   this.objectArray[1][joint1] + size1/2 * sin(this.pivitArray[0][pivit] + PI/2)
+        QX2     =   this.objectArray[0][joint1] + size1/2 * cos(this.pivitArray[0][pivit] - PI/2)
+        QY2     =   this.objectArray[1][joint1] + size1/2 * sin(this.pivitArray[0][pivit] - PI/2)
+        QX3     =   this.objectArray[0][joint2] + size2/2 * cos(this.pivitArray[0][pivit] - PI/2)
+        QY3     =   this.objectArray[1][joint2] + size2/2 * sin(this.pivitArray[0][pivit] - PI/2)       
+        QX4     =   this.objectArray[0][joint2] + size2/2 * cos(this.pivitArray[0][pivit] + PI/2)
+        QY4     =   this.objectArray[1][joint2] + size2/2 * sin(this.pivitArray[0][pivit] + PI/2)  
+
+        noStroke();
+        fill(this.backFootRed  * this.shade, this.backFootGrn  * this.shade, this.backFootBlu  * this.shade );
+        quad(QX1,QY1,QX2,QY2,QX3,QY3,QX4,QY4);
+        stroke(100,100,100);
+        line(QX1,QY1, QX4,QY4);
+        line(QX2,QY2, QX3,QY3);  
+
+         //left toe
+         joint1  =   13;
+         joint2  =   14;
+         size1   =   this.footSize;
+         size2   =   this.toeSize;
+         pivit   =   10;
+ 
+         QX1     =   this.objectArray[0][joint1] + size1/2 * cos(this.pivitArray[0][pivit] + PI/2)
+         QY1     =   this.objectArray[1][joint1] + size1/2 * sin(this.pivitArray[0][pivit] + PI/2)
+         QX2     =   this.objectArray[0][joint1] + size1/2 * cos(this.pivitArray[0][pivit] - PI/2)
+         QY2     =   this.objectArray[1][joint1] + size1/2 * sin(this.pivitArray[0][pivit] - PI/2)
+         QX3     =   this.objectArray[0][joint2] + size2/2 * cos(this.pivitArray[0][pivit] - PI/2)
+         QY3     =   this.objectArray[1][joint2] + size2/2 * sin(this.pivitArray[0][pivit] - PI/2)       
+         QX4     =   this.objectArray[0][joint2] + size2/2 * cos(this.pivitArray[0][pivit] + PI/2)
+         QY4     =   this.objectArray[1][joint2] + size2/2 * sin(this.pivitArray[0][pivit] + PI/2)  
+ 
+         noStroke();
+         fill(this.frontFootRed  * this.shade, this.frontFGrn  * this.shade, this.frontFBlu  * this.shade );
+         quad(QX1,QY1,QX2,QY2,QX3,QY3,QX4,QY4);
+         stroke(100,100,100);
+         line(QX1,QY1, QX4,QY4);
+         line(QX2,QY2, QX3,QY3);   
+         
+          //left upper arm
+          joint1  =   3;
+          joint2  =   4;
+          size1   =   this.shoulderSize;
+          size2   =   this.elbowSize;
+          pivit   =   5;
+  
+          QX1     =   this.objectArray[0][joint1] + size1/2 * cos(this.pivitArray[0][pivit] + PI/2)
+          QY1     =   this.objectArray[1][joint1] + size1/2 * sin(this.pivitArray[0][pivit] + PI/2)
+          QX2     =   this.objectArray[0][joint1] + size1/2 * cos(this.pivitArray[0][pivit] - PI/2)
+          QY2     =   this.objectArray[1][joint1] + size1/2 * sin(this.pivitArray[0][pivit] - PI/2)
+          QX3     =   this.objectArray[0][joint2] + size2/2 * cos(this.pivitArray[0][pivit] - PI/2)
+          QY3     =   this.objectArray[1][joint2] + size2/2 * sin(this.pivitArray[0][pivit] - PI/2)       
+          QX4     =   this.objectArray[0][joint2] + size2/2 * cos(this.pivitArray[0][pivit] + PI/2)
+          QY4     =   this.objectArray[1][joint2] + size2/2 * sin(this.pivitArray[0][pivit] + PI/2)  
+  
+          noStroke();
+          fill(this.upperArmRed  * this.shade, this.upperArmGrn  * this.shade, this.upperArmBlu  * this.shade );
+          quad(QX1,QY1,QX2,QY2,QX3,QY3,QX4,QY4);
+          stroke(100,100,100);
+          line(QX1,QY1, QX4,QY4);
+          line(QX2,QY2, QX3,QY3);
+
+          //left lower arm
+          joint1  =   4;
+          joint2  =   5;
+          size1   =   this.elbowSize;
+          size2   =   this.wristSize;
+          pivit   =   6;
+  
+          QX1     =   this.objectArray[0][joint1] + size1/2 * cos(this.pivitArray[0][pivit] + PI/2)
+          QY1     =   this.objectArray[1][joint1] + size1/2 * sin(this.pivitArray[0][pivit] + PI/2)
+          QX2     =   this.objectArray[0][joint1] + size1/2 * cos(this.pivitArray[0][pivit] - PI/2)
+          QY2     =   this.objectArray[1][joint1] + size1/2 * sin(this.pivitArray[0][pivit] - PI/2)
+          QX3     =   this.objectArray[0][joint2] + size2/2 * cos(this.pivitArray[0][pivit] - PI/2)
+          QY3     =   this.objectArray[1][joint2] + size2/2 * sin(this.pivitArray[0][pivit] - PI/2)       
+          QX4     =   this.objectArray[0][joint2] + size2/2 * cos(this.pivitArray[0][pivit] + PI/2)
+          QY4     =   this.objectArray[1][joint2] + size2/2 * sin(this.pivitArray[0][pivit] + PI/2)  
+  
+          noStroke();
+          fill(this.upperArmRed  * this.shade, this.upperArmGrn  * this.shade, this.upperArmBlu  * this.shade );
+          quad(QX1,QY1,QX2,QY2,QX3,QY3,QX4,QY4);
+          stroke(100,100,100);
+          line(QX1,QY1, QX4,QY4);
+          line(QX2,QY2, QX3,QY3);  
+    }
+
+    drawObjectCentre(){
+        noStroke();
+        ///// DRAW THE CENTRE BODY PARTS
+        //left lower arm
+        let QX1;
+        let QY1;
+        let QX2;
+        let QY2;
+        let QX3;
+        let QY3;
+        let QX4;
+        let QY4;
+
+        // pelvis
+        QX1     =   this.objectArray[0][10] 
+        QY1     =   this.objectArray[1][10] - this.hipSize/2;
+        QX2     =   this.objectArray[0][10] 
+        QY2     =   this.objectArray[1][10] + this.hipSize/2;
+        QX3     =   this.objectArray[0][15] 
+        QY3     =   this.objectArray[1][15]  + this.hipSize/2;     
+        QX4     =   this.objectArray[0][15] 
+        QY4     =   this.objectArray[1][15] - this.hipSize/2;
+
+        noStroke();
+        fill(this.upperArmRed  * this.shade, this.upperArmGrn  * this.shade, this.upperArmBlu  * this.shade );
+        quad(QX1,QY1,QX2,QY2,QX3,QY3,QX4,QY4);
+        stroke(100,100,100);
+        line(QX2,QY2, QX3,QY3);        
+
+        let chestXPos       =   this.objectArray[0][9] + this.dimensionArray[0][12] * cos(this.pivitArray[0][2])
+        let chestYPos       =   this.objectArray[0][9] + (this.dimensionArray[0][12] - 10 * this.size) * sin(this.pivitArray[0][2])
+
+        // lower torso
+        QX1     =   chestXPos + this.chestSize /2;
+        QY1     =   chestYPos,
+        QX2     =   this.objectArray[0][10] + this.hipSize/2;
+        QY2     =   this.objectArray[1][10]
+        QX3     =   this.objectArray[0][15] - this.hipSize/2;
+        QY3     =   this.objectArray[1][15];     
+        QX4     =   chestXPos - this.chestSize /2;
+        QY4     =   chestYPos
+
+        noStroke();
+        fill(this.torsoRed  * this.shade, this.torsoGrn  * this.shade, this.torsoBlu  * this.shade );
+        quad(QX1,QY1,QX2,QY2,QX3,QY3,QX4,QY4);
+        stroke(100,100,100);
+        line(QX2,QY2, QX3,QY3); 
+
+        // upper torso
+        QX1     =   chestXPos + this.chestSize /2;
+        QY1     =   chestYPos,
+        QX2     =   this.objectArray[0][3] + this.shoulderSize/2;
+        QY2     =   this.objectArray[1][3]
+        QX3     =   this.objectArray[0][6] - this.shoulderSize/2;
+        QY3     =   this.objectArray[1][6];     
+        QX4     =   chestXPos - this.chestSize /2;
+        QY4     =   chestYPos
+
+        noStroke();
+        fill(this.torsoRed  * this.shade, this.torsoGrn  * this.shade, this.torsoBlu  * this.shade );
+        quad(QX1,QY1,QX2,QY2,QX3,QY3,QX4,QY4);
+        stroke(100,100,100);
+        line(QX1,QY1, QX2,QY2); 
+        line(QX3,QY3, QX4,QY4); 
+ 
+        // upper chest
+        QX1     =   this.objectArray[0][1] + this.neckSize/2;
+        QY1     =   this.objectArray[1][1];
+        QX2     =   this.objectArray[0][3] + this.shoulderSize/2;
+        QY2     =   this.objectArray[1][3]
+        QX3     =   this.objectArray[0][6] - this.shoulderSize/2;
+        QY3     =   this.objectArray[1][6]      
+        QX4     =   this.objectArray[0][1] - this.neckSize/2;
+        QY4     =   this.objectArray[1][1]
+
+        noStroke();
+        fill(this.torsoRed  * this.shade, this.torsoGrn  * this.shade, this.torsoBlu  * this.shade );
+        quad(QX1,QY1,QX2,QY2,QX3,QY3,QX4,QY4);
+        stroke(100,100,100);
+        line(QX1,QY1, QX2, QY2);
+        line(QX3,QY3, QX4, QY4);        
+
+        noStroke();
+        fill(this.neckRed * this.shade, this.neckGrn * this.shade, this.neckBlu * this.shade);
+        ellipse(this.objectArray[0][1], this.objectArray[1][1], this.neckSize, this.neckSize);              // neck
+        fill(this.neckRed * this.shade, this.neckGrn * this.shade, this.neckBlu * this.shade);
+        ellipse(this.objectArray[0][2], this.objectArray[1][1], this.neckSize , this.neckSize);             // chest
+        fill(this.torsoRed  * this.shade, this.torsoGrn  * this.shade, this.torsoBlu  * this.shade );
+        ellipse(chestXPos, chestYPos, this.chestSize , this.chestSize);                                     // chest
+        fill(this.faceRed * this.shade, this.faceGrn * this.shade, this.faceBlu * this.shade);
+        ellipse(this.objectArray[0][0], this.objectArray[1][0], this.headSize , this.headSize * 1.2 );      // head   
+        
+        
+
+        
+    }
+/*
+    
         ////////////////////// ARRAYS REFERENCE LISTS ////////////////////////
 
         /* ------------- OBJECT-ARRAY ELEMENT POSTIONS -------------------- */
@@ -1360,13 +1763,11 @@ class HumanObject{
         // 9 - this.rightUpperArmDist, 
         // 10 - this.leftLowerArmDist,
         // 11 - this.leftUpperArmDist, 
-        // 12 - this.spineToShoulder, 
+        // 12 - spineToShoulder, 
         // 13 - this.neck,
         // 14 - this.head,
         // 15 - this.shoulderWidth,
         // 16 - this.hipWidth,
-
-
 
 
 }
