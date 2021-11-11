@@ -191,7 +191,8 @@ let distX2 = 2500;  // The camera will draw the sprites up to 1600 px to the rig
 let distY1 = -2000;  // The camera will draw the sprites up to 1200 px to the above of the hero
 let distY2 = 2000;  // The camera will draw the sprites up to 1600 px to the below of the hero
 
-addStars(500 , hero.position.x + distX1 , hero.position.y + distY1 , hero.position.x + distX2 , hero.position.y + distY2 );
+addStars(500 , -2000 , -2000 , 5000 , 5000)
+//addStars(5000 , hero.position.x + distX2 , hero.position.y + distY2 , hero.position.x + distX1 , hero.position.y + distY1 );
 
 // This code is just for exploring the map , just uncomment it 
 
@@ -207,7 +208,7 @@ if(keyIsDown('65')){   // a key  ---- hero  left
     hero.setSpeed(0,0)
 }
 
-camera.zoom = 0.8;                   // Use this to set the zoomcamera.position.x = hero.position.x; // This line and the next line set the camera to hero position
+camera.zoom = 0.5;                   // Use this to set the zoomcamera.position.x = hero.position.x; // This line and the next line set the camera to hero position
 camera.position.x = hero.position.x;
 camera.position.y = hero.position.y - width * 0.0379; 
 
