@@ -28,7 +28,7 @@ let scale;
 // Map Global Variables
 let elevatorCarriage1;
 let elevatorCarriage2;
-
+let hero;
 
 // ------------------------ GLOBAL ARRAYS -------------------------------//
 // declare arrays which will be used over multiple functions
@@ -48,6 +48,7 @@ function preload(){
 function setup(){
   // all functions required as part of the setup is called using the runSetupFunction
   runSetupFunctions()     // see navigation.js
+  setupMap()
 }
 
 // ------------------------ FUNCTION DRAW -------------------------------//

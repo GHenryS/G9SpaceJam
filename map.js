@@ -1,6 +1,3 @@
-//--------------------GLOBAL VARIABLES FOR MAP SCREEN-----------------------//
-
-
 
 // ------------------ FUNCTION TO SETUP MAP SCREEN ---------------------- //
 function setupMap(){
@@ -31,18 +28,18 @@ allTexture9 = new Group;
 allTexture10 = new Group;
 allDoor = new Group;
 
-for(let i = 0 ; i < maplayouttxt.length ; i++){    // takes strings from txt file and puts them into maparray array 
-    maparray[i] = splitTokens(maplayouttxt[i] , '\t');
+for(let i = 0 ; i < mapLayoutTxt.length ; i++){    // takes strings from txt file and puts them into maparray array 
+    maparray[i] = splitTokens(mapLayoutTxt[i] , '\t');
     }
     for(let j = 0 ; j < maparray.length ; j++){         // Uses the row and column index of the arrays to designate x and y pos. Then checks
         for(let i = 0 ; i < maparray[0].length ; i++){  //that against the recorded string in that cell, then does this with the all other nested sprites
             //that against the recorded string in that cell, then does this with the all other nested sprites
             if(maparray[j][i] == '1'){              
-                floor = createSprite(spriteWidth / 2 + i * spriteWidth ,spriteHeight / 2 + j * spriteHeight);
-                floor.addImage(floorImage);
+                floors = createSprite(spriteWidth / 2 + i * spriteWidth ,spriteHeight / 2 + j * spriteHeight);
+                floors.addImage(floorImage);
                 floorImage.resize(spriteWidth , spriteHeight);  // resizes image according to sprite sizes
-                floor.setDefaultCollider();  // sets collider at the defualt size
-                allFloor.add(floor);        // puts all floor sprites in 1 group for ease in collision detection
+                floors.setDefaultCollider();  // sets collider at the defualt size
+                allFloor.add(floors);        // puts all floors sprites in 1 group for ease in collision detection
             }
             if(maparray[j][i] == '2'){
                 wall = createSprite(spriteWidth / 2 + i * spriteWidth , spriteHeight / 2 + j * spriteHeight);
@@ -55,7 +52,7 @@ for(let i = 0 ; i < maplayouttxt.length ; i++){    // takes strings from txt fil
             if(maparray[j][i] == '3'){
                 lockedDoor = createSprite(spriteWidth / 2 + i * spriteWidth , spriteHeight / 2 + j * spriteHeight);
                 lockedDoor.addImage(lockDoorImage);
-                lockDoorImage.resize(spriteWidth , spriteHeight);
+                lockDoorImage.resize(spriteWidth , 5 * spriteHeight);
                 lockedDoor.setDefaultCollider();  
                 allLockedDoor.add(lockedDoor); 
                 
@@ -85,20 +82,20 @@ for(let i = 0 ; i < maplayouttxt.length ; i++){    // takes strings from txt fil
             if(maparray[j][i] == '5'){
                 selfOpeningDoor = createSprite(spriteWidth / 2 + i * spriteWidth , spriteHeight / 2 + j * spriteHeight);
                 selfOpeningDoor.addImage(selfOpeningDoorImage);
-                selfOpeningDoorImage.resize(spriteWidth , spriteHeight);
+                selfOpeningDoorImage.resize(spriteWidth , 5 *  spriteHeight);
                 selfOpeningDoor.setDefaultCollider();  
                 allSelfOpeningingDoor.add(selfOpeningDoor);
                 
                 door = createSprite(spriteWidth / 2 + i * spriteWidth , spriteHeight /2 +j * spriteHeight);
                 door.addImage(doorImage);
-                doorImage.resize(0.8 * spriteWidth , 5* spriteHeight);
+                doorImage.resize(0.8 * spriteWidth , 5 * spriteHeight);
                 door.setDefaultCollider();
                 allDoor.add(door);
             }
             if(maparray[j][i] == '6'){
                 lockedElevatorDoor = createSprite(spriteWidth / 2 + i * spriteWidth , spriteHeight / 2 + j * spriteHeight);
                 lockedElevatorDoor.addImage(lockedLiftDoorImage);
-                lockedLiftDoorImage.resize(spriteWidth , spriteHeight);
+                lockedLiftDoorImage.resize(spriteWidth , 5 *  spriteHeight);
                 lockedElevatorDoor.setDefaultCollider(); // 
                 allLockedLiftDoor.add(lockedElevatorDoor);         
             }
@@ -112,25 +109,25 @@ for(let i = 0 ; i < maplayouttxt.length ; i++){    // takes strings from txt fil
             if(maparray[j][i] == '8'){
                 texture1 = createSprite(spriteWidth / 2 + i * spriteWidth , spriteHeight / 2 + j * spriteHeight);
                 texture1.addImage(texture1Image);
-                texture1Image.resize(spriteWidth , spriteHeight);
+                texture1Image.resize(11 * spriteWidth , 5 * spriteHeight);
                 allTexture1.add(texture1);         
             }
             if(maparray[j][i] == '9'){
                 texture2 = createSprite(spriteWidth / 2 + i * spriteWidth , spriteHeight / 2 + j * spriteHeight);
                 texture2.addImage(texture2Image);
-                texture2Image.resize(spriteWidth , spriteHeight);
+                texture2Image.resize(11 * spriteWidth , 5 * spriteHeight);
                 allTexture2.add(texture2);         
             }
             if(maparray[j][i] == '10'){
                 texture3 = createSprite(spriteWidth / 2 + i * spriteWidth , spriteHeight / 2 + j * spriteHeight);
                 texture3.addImage(texture10Image);
-                texture10Image.resize(spriteWidth , spriteHeight);
+                texture10Image.resize(23 * spriteWidth , 5*  spriteHeight);
                 allTexture3.add(texture3);         
             }
             if(maparray[j][i] == '11'){
                 texture4 = createSprite(spriteWidth / 2 + i * spriteWidth , spriteHeight / 2 + j * spriteHeight);
                 texture4.addImage(texture4Image);
-                texture4Image.resize(spriteWidth , spriteHeight);
+                texture4Image.resize(13 * spriteWidth , 5* spriteHeight);
                 allTexture4.add(texture4);         
             }
             if(maparray[j][i] == '12'){
@@ -142,25 +139,25 @@ for(let i = 0 ; i < maplayouttxt.length ; i++){    // takes strings from txt fil
             if(maparray[j][i] == '13'){
                 texture6 = createSprite(spriteWidth / 2 + i * spriteWidth , spriteHeight / 2 + j * spriteHeight);
                 texture6.addImage(texture6Image);
-                texture6Image.resize(spriteWidth , spriteHeight); 
+                texture6Image.resize(11 * spriteWidth , 5 * spriteHeight); 
                 allTexture6.add(texture6);         
             }
             if(maparray[j][i] == '14'){
                 texture7 = createSprite(spriteWidth / 2 + i * spriteWidth , spriteHeight /2 +j * spriteHeight);
                 texture7.addImage(texture7Image);
-                texture7Image.resize(spriteWidth , spriteHeight);  
+                texture7Image.resize(15 * spriteWidth , 5 * spriteHeight);  
                 allTexture7.add(texture7);         
             }
             if(maparray[j][i] == '15'){
                 texture8 = createSprite(spriteWidth / 2 + i * spriteWidth , spriteHeight / 2 + j * spriteHeight);
                 texture8.addImage(texture8Image);
-                texture8Image.resize(spriteWidth , spriteHeight);
+                texture8Image.resize(25 * spriteWidth , 5 * spriteHeight);
                 allTexture8.add(texture8);         
             }
             if(maparray[j][i] == '16'){
                 texture9 = createSprite(spriteWidth / 2 + i * spriteWidth , spriteHeight / 2 + j * spriteHeight);
                 texture9.addImage(texture9Image);
-                texture9Image.resize(spriteWidth , spriteHeight); 
+                texture9Image.resize(19 * spriteWidth , 3 * spriteHeight); 
                 allTexture9.add(texture9);       
             }
             if(maparray[j][i] == '17'){
@@ -175,25 +172,55 @@ let startX = (spriteWidth / 2 + 3 * spriteWidth);  // Hero Start Point
 let startY = (spriteHeight /2 + 16 * spriteHeight);
 
 anchor = spriteHeight;
-hero  =   new HumanObject(startX, startY, 3*spriteHeight)
+
+hero = createSprite(startX,startY)
+hero.addImage(heroImage)
+heroImage.resize(120 , 360)
+
+//hero  =   new HumanObject(startX, startY, 3*spriteHeight)
 }
 
 // ------------------ FUNCTION TO DRAW MAP SCREEN ---------------------- //
 
 function drawMap(){
-background('white');   // This is to be replaced by stars
+background(0,0,0)
+
 
 let distX1 = -2500;  // The camera will draw the sprites up to 1600 px to the left of the hero
 let distX2 = 2500;  // The camera will draw the sprites up to 1600 px to the right of the hero
 let distY1 = -2000;  // The camera will draw the sprites up to 1200 px to the above of the hero
 let distY2 = 2000;  // The camera will draw the sprites up to 1600 px to the below of the hero
 
-camera.zoom = 0.5;                   // Use this to set the zoom
-camera.position.x = hero.position.x; // This line and the next line set the camera to hero position
+addStars(50000 , -2000 , -2000 , 5000 , 5000)
+//addStars(5000 , hero.position.x + distX2 , hero.position.y + distY2 , hero.position.x + distX1 , hero.position.y + distY1 );
+
+// This code is just for exploring the map , just uncomment it 
+
+if(keyIsDown('65')){   // a key  ---- hero  left
+    hero.setSpeed(50,180)
+}else if(keyIsDown('68')){   // d key ------hero  right
+    hero.setSpeed(50,0)
+}else if(keyIsDown('87')){  // w key  ------hero up
+    hero.setSpeed(50,270)       
+}else if(keyIsDown('83')){   //s key  ------ hero down
+    hero.setSpeed(50,90)
+}else{
+    hero.setSpeed(0,0)
+}
+
+camera.zoom = 0.8;                   // Use this to set the zoomcamera.position.x = hero.position.x; // This line and the next line set the camera to hero position
+camera.position.x = hero.position.x;
 camera.position.y = hero.position.y - width * 0.0379; 
 
 // These if statements check whether each of the spite groups are within the desired draw distance then draw them if they are
 
+for(i = 0 ; i < allSelfOpeningingDoor.length ; i++){
+    if(allSelfOpeningingDoor[i].position.x > camera.position.x + distX1 && allSelfOpeningingDoor[i].position.x < camera.position.x + distX2){
+        if(allSelfOpeningingDoor[i].position.y > camera.position.y + distY1 && allSelfOpeningingDoor[i].position.y < camera.position.y + distY2){
+            drawSprite(allSelfOpeningingDoor[i]);
+        }
+    }
+}
 for(i = 0 ; i < allLockedDoor.length ; i++){
     if(allLockedDoor[i].position.x > camera.position.x + distX1 && allLockedDoor[i].position.x < camera.position.x + distX2){
         if(allLockedDoor[i].position.y > camera.position.y + distY1 && allLockedDoor[i].position.y < camera.position.y + distY2){
@@ -234,13 +261,6 @@ for(i = 0 ; i < allElevator.length ; i++){
     if(allElevator[i].position.x > camera.position.x + distX1 && allElevator[i].position.x < camera.position.x + distX2){
         if(allElevator[i].position.y > camera.position.y + distY1 && allElevator[i].position.y < camera.position.y + distY2){
             drawSprite(allElevator[i]);
-        }
-    }
-}
-for(i = 0 ; i < allSelfOpeningingDoor.length ; i++){
-    if(allSelfOpeningingDoor[i].position.x > camera.position.x + distX1 && allSelfOpeningingDoor[i].position.x < camera.position.x + distX2){
-        if(allSelfOpeningingDoor[i].position.y > camera.position.y + distY1 && allSelfOpeningingDoor[i].position.y < camera.position.y + distY2){
-            drawSprite(allSelfOpeningingDoor[i]);
         }
     }
 }
@@ -332,7 +352,9 @@ for(i=0 ; i<allTexture10.length ; i++){
 drawSprite(elevatorCarriage1);
 drawSprite(elevatorCarriage2);
 
-hero.draw()
+drawSprite(hero)
+
+//hero.draw()
 
 //This code moves the door up as the hero approaches it, it doesnt move it back down yet
 for(i=0 ; i < allDoor.length ; i++){
@@ -360,28 +382,28 @@ if(hero.position.x < elevatorCarriage2.position.x + 200 && hero.position.x > ele
     text("Down = k button", elevatorCarriage2.position.x-120 , elevatorCarriage2.position.y - 230);
 }
 
-if(keyDown(74) && elevatorCarriage1.position.y < 39 * anchor){ // If on bottom floor, the elevator wont try to go any further
+if(keyDown(74) && elevatorCarriage1.position.y < 39 * anchor){ // If on bottom floors, the elevator wont try to go any further
     elevatorCarriage1.setSpeed(5,90);                            // Go Down  "j"
-}else if(keyDown(85) && elevatorCarriage1.position.y > 17 * anchor){  // If on top floor, the elevator wont try to go any further
+}else if(keyDown(85) && elevatorCarriage1.position.y > 17 * anchor){  // If on top floors, the elevator wont try to go any further
     elevatorCarriage1.setSpeed(5,270);                           // Go Up    "u"
-}else if(elevatorCarriage1.position.y == 21.5*anchor){  // Stop at 4th floor
+}else if(elevatorCarriage1.position.y == 21.5*anchor){  // Stop at 4th floors
     elevatorCarriage1.setSpeed(0,90);
-}else if(elevatorCarriage1.position.y == 27.5*anchor){  // Stop at 3rd floor
+}else if(elevatorCarriage1.position.y == 27.5*anchor){  // Stop at 3rd floors
     elevatorCarriage1.setSpeed(0,90);
-}else if(elevatorCarriage1.position.y == 33.5*anchor){  // Stop at 2nd floor
+}else if(elevatorCarriage1.position.y == 33.5*anchor){  // Stop at 2nd floors
     elevatorCarriage1.setSpeed(0,90);
-}else if(elevatorCarriage1.collide(allFloor)){                   // Stops at Bottom and Top Floor
+}else if(elevatorCarriage1.collide(allFloor)){                   // Stops at Bottom and Top floors
     elevatorCarriage1.setSpeed(0,0);
 }
-if(keyDown(75) && elevatorCarriage2.position.y < 33 * anchor){ // If on bottom floor, the elevator wont try to go any further    
+if(keyDown(75) && elevatorCarriage2.position.y < 33 * anchor){ // If on bottom floors, the elevator wont try to go any further    
     elevatorCarriage2.setSpeed(5,90);                            // Go Down  "i"
-}else if(keyDown(73)&& elevatorCarriage2.position.y > 17 * anchor){  // If on top floor, the elevator wont try to go any further
+}else if(keyDown(73)&& elevatorCarriage2.position.y > 17 * anchor){  // If on top floors, the elevator wont try to go any further
     elevatorCarriage2.setSpeed(5,270);                           // Go Up  "k"
-}else if(elevatorCarriage2.position.y == 21.5*anchor){  // Stop at 4th floor
+}else if(elevatorCarriage2.position.y == 21.5*anchor){  // Stop at 4th floors
     elevatorCarriage2.setSpeed(0,90);
-}else if(elevatorCarriage2.position.y == 27.5*anchor){  // Stop at 3rd floor
+}else if(elevatorCarriage2.position.y == 27.5*anchor){  // Stop at 3rd floors
     elevatorCarriage2.setSpeed(0,90);
-}else if(elevatorCarriage2.collide(allFloor)){                   // Stops at Bottom and Top Floor
+}else if(elevatorCarriage2.collide(allFloor)){                   // Stops at Bottom and Top floors
     elevatorCarriage2.setSpeed(0,0);
 }
 }

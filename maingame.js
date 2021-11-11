@@ -1,9 +1,11 @@
 
-function playgame(){
+function playGame(){
+   
 
-setGameState("playgame")  // Set GameState
+//runSetupFunctions(setupMap())   // Setup Map
 
-runSetupFunctions(setupMap())   // Setup Map
+
+
 
 drawMap()// Draw Map
 
