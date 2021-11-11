@@ -204,7 +204,7 @@ if(keyIsDown('65')){   // a key  ---- hero  left
     hero.setSpeed(0,0)
 }
 
-camera.zoom = 1.1;                   // Use this to set the zoomcamera.position.x = hero.position.x; // This line and the next line set the camera to hero position
+camera.zoom = 0.8;                   // Use this to set the zoomcamera.position.x = hero.position.x; // This line and the next line set the camera to hero position
 camera.position.x = hero.position.x;
 camera.position.y = hero.position.y - width * 0.0379; 
 
