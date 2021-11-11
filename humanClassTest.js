@@ -361,8 +361,7 @@ class HumanObject{
             for( let u = 0; u < arrayLine.length; u++){
                 tempArray[u] = (this.aniInputArray[this.moveLinkArray[i][0]][u] - this.aniInputArray[this.moveLinkArray[i][1]][u]) * this.change 
             }
-            this.aniArray.push(tempArray)  
-            console.log(this.aniArray)                       
+            this.aniArray.push(tempArray)          
         } 
     }
     constructAniArray(){
@@ -446,6 +445,8 @@ class HumanObject{
     //-------------------------- METHOD TO DRAW OBJECT -----------------------------------------//
     draw(){
         this.move();
+        this.addBody();
+        /*
         let value1;
         let value2;        
         for(let i = 0; i < this.linkArray.length; i++){
@@ -472,7 +473,8 @@ class HumanObject{
         fill(255,203,164);
         ellipse(this.objectArray[0][0], this.objectArray[1][0], 30, 38);  
         
-        }       
+        }  
+         */    
     }
 
     //////////////////////////// THE NEXR SECTION HANDLES WALKING TO LEFT ///////////////////////////////
@@ -1133,7 +1135,9 @@ class HumanObject{
     }
 
     noDrift(lineNumber){
-
+        ///////////////  THIS METHOD ENSURES THAT EACH ANIMATION REACHES THE TARGET CO-ORDS //////////////////////
+        // the X and Y co-ords tends to drift due to rounding and reactions to key strokes
+        // at the end of each simulation this method is run to force the X and Y co-ords to be equal to the target co-ords
         let tempArray               =   this.aniInputArray[lineNumber];
                 //////// ANI-INPUT-ARRAY LINE ELEMENTS
         // 0 - head
@@ -1198,6 +1202,197 @@ class HumanObject{
         this.objectArray[0][8]      =   this.objectArray[0][7] + this.dimensionArray[0][8] * cos(this.aniInputArray[lineNumber][6]);
         this.objectArray[1][8]      =   this.objectArray[1][7] + this.dimensionArray[0][8] * sin(this.aniInputArray[lineNumber][6]);
 
+    }
+
+    addBody(){
+        // circle diameter
+        this.toeSize                =   4;
+        this.footSize               =   6;
+        this.ankleSize              =   10;
+        this.kneeSize               =   13;
+        this.hipSize                =   15;
+        this.shoulderSize           =   15;
+        this.chestSize              =   15;
+        this.neckSize               =   10;
+        this.elbowSize              =   7;
+        this.wristSize              =   5;
+        this.headSize               =   30;
+
+        // ellipse colours
+        this.toeRed                 =   255;
+        this.toeGrn                 =   203;
+        this.toeBlu                 =   164; 
+
+        this.footRed                =   255;
+        this.footGrn                =   203;
+        this.footBlu                =   164;   
+
+        this.ankleRed               =   255;
+        this.ankleGrn               =   203;
+        this.ankleBlu               =   164;  
+        
+        this.kneeRed                =   255;
+        this.kneeGrn                =   203;
+        this.kneeBlu                =   164;
+        
+        this.hipRed                 =   255;
+        this.hipGrn                 =   203;
+        this.hipBlu                 =   164;
+        
+        this.shoulderRed            =   255;
+        this.shoulderGrn            =   203;
+        this.shoulderBlu            =   164;
+
+        this.chestRed               =   255;
+        this.chestGrn               =   203;
+        this.chestBlu               =   164;
+
+        this.chestRed               =   255;
+        this.chestGrn               =   203;
+        this.chestBlu               =   164;
+
+        this.neckRed                =   255;
+        this.neckGrn                =   203;
+        this.neckBlu                =   164;
+
+        this.faceRed                =   255;
+        this.faceGrn                =   203;
+        this.faceBlu                =   164;
+        
+        this.elbowRed               =   255;
+        this.elbowGrn               =   203;
+        this.elbowBlu               =   164;
+
+        this.wristRed               =   255;
+        this.wristGrn               =   203;
+        this.wristBlu               =   164;
+
+        // quad colours
+        this.frontFootRed           =   255;
+        this.frontFootGrn           =   203;
+        this.frontFFootBlu          =   164; 
+
+        this.backFootRed            =   255;
+        this.backFootGrn            =   203;
+        this.backFootBlu            =   164;   
+
+        this.lowerLegRed            =   255;
+        this.lowerLegGrn            =   203;
+        this.lowerLegBlu            =   164;  
+        
+        this.upperLegRed            =   255;
+        this.upperLegGrn            =   203;
+        this.upperLegBlu            =   164;
+        
+        this.pelvisRed              =   255;
+        this.pelvisGrn              =   203;
+        this.pelvisBlu              =   164;
+        
+        this.torsoRed               =   255;
+        this.torsoGrn               =   203;
+        this.torsoBlu               =   164;
+
+        this.upperArmRed            =   255;
+        this.upperArmGrn            =   203;
+        this.upperArmBlu            =   164;
+
+        this.lowerArmRed            =   255;
+        this.lowerArmGrn            =   203;
+        this.lowerArmBlu            =   164;
+
+        this.qNeckRed               =   255;
+        this.qNeckGrn               =   203;
+        this.qNeckBlu               =   164;
+
+        
+
+        if(this.objectState == "front" || this.objectState == "faceright" || this.objectState == "walkright1" 
+        || this.objectState == "walkright2" || this.objectState == "stopright1" || this.objectState == "stopright2"
+        || this.objectState == "rightstop1" || this.objectState == "rightstop2"){
+        // facing right
+        this.shade                  =   0.8;
+        this.drawObjectRightSide();
+        this.shade                  =   0.9;
+        this.drawObjectCentre();  
+        this.shade                  =   1.0;
+        this.drawObjectLeftSide();
+        }
+
+        if(this.objectState == "front"){
+        // facing right
+        this.shade                  =   1.0;
+        this.drawObjectRightSide();
+        this.shade                  =   0.9;
+        this.drawObjectCentre();  
+        this.shade                  =   1.0;
+        this.drawObjectLeftSide();
+        }
+
+
+        if(this.objectState == "faceleft" || this.objectState == "walkleft1" || this.objectState == "walkleft2" 
+        || this.objectState == "stopleft1" || this.objectState == "stopleft2" || this.objectState == "leftstop1" 
+        || this.objectState == "leftstop2" ){
+        // facing left
+        this.shade                  =   0.8;
+        this.drawObjectLeftSide();
+        this.shade                  =   0.9;
+        this.drawObjectCentre();  
+        this.shade                  =   1.0;
+        this.drawObjectRightSide();
+        }
+    }
+
+    drawObjectRightSide(){
+        noStroke();
+        ///// DRAW THE RIGHT SIDE LIMBS
+        fill(this.shoulderRed * this.shade, this.shoulderGrn * this.shade, this.shoulderBlu * this.shade);
+        ellipse(this.objectArray[0][6], this.objectArray[1][6], this.shoulderSize, this.shoulderSize);      // shouder
+        fill(this.elbowRed * this.shade, this.elbowGrn * this.shade, this.selbowBlu * this.shade);
+        ellipse(this.objectArray[0][7], this.objectArray[1][7], this.elbowSize, this.elbowSize);            // elboe
+        fill(this.wristRed * this.shade, this.wristGrn * this.shade, this.wristBlu * this.shade );
+        ellipse(this.objectArray[0][8], this.objectArray[1][8], this.wristSize , this.wristSize );          // wrist
+        fill(this.hipRed * this.shade, this.hipGrn * this.shade, this.hipBlu * this.shade );
+        ellipse(this.objectArray[0][15], this.objectArray[1][15], this.hipSize , this.hipSize );            // hip
+        fill(this.kneeRed * this.shade, this.kneeGrn * this.shade, this.kneeBlu * this.shade );
+        ellipse(this.objectArray[0][16], this.objectArray[1][16], this.kneeSize  , this.kneeSize  );        // knee
+        fill(this.ankleRed * this.shade, this.ankleGrn * this.shade, this.ankleBlu * this.shade );
+        ellipse(this.objectArray[0][17], this.objectArray[1][17], this.ankleSize  , this.ankleSize);        // ankle
+        fill(this.footRed * this.shade, this.footGrn * this.shade, this.footBlu * this.shade );
+        ellipse(this.objectArray[0][18], this.objectArray[1][18], this.footSize , this.footSize);           // foot
+        fill(this.toeRed * this.shade, this.toeGrn * this.shade, this.toeBlu * this.shade );
+        ellipse(this.objectArray[0][19], this.objectArray[1][19], this.toeSize , this.toeSize);             // toe
+    }
+
+    drawObjectLeftSide(){
+        noStroke();
+        ///// DRAW THE LEFT SIDE LIMBS
+        fill(this.shoulderRed * this.shade, this.shoulderGrn * this.shade, this.shoulderBlu * this.shade);
+        ellipse(this.objectArray[0][3], this.objectArray[1][3], this.shoulderSize, this.shoulderSize);      // shouder
+        fill(this.elbowRed * this.shade, this.elbowGrn * this.shade, this.selbowBlu * this.shade);
+        ellipse(this.objectArray[0][4], this.objectArray[1][4], this.elbowSize, this.elbowSize);            // elboe
+        fill(this.wristRed * this.shade, this.wristGrn * this.shade, this.wristBlu * this.shade );
+        ellipse(this.objectArray[0][5], this.objectArray[1][5], this.wristSize , this.wristSize );          // wrist
+        fill(this.hipRed * this.shade, this.hipGrn * this.shade, this.hipBlu * this.shade );
+        ellipse(this.objectArray[0][10], this.objectArray[1][10], this.hipSize , this.hipSize );            // hip
+        fill(this.kneeRed * this.shade, this.kneeGrn * this.shade, this.kneeBlu * this.shade );
+        ellipse(this.objectArray[0][11], this.objectArray[1][11], this.kneeSize  , this.kneeSize  );        // knee
+        fill(this.ankleRed * this.shade, this.ankleGrn * this.shade, this.ankleBlu * this.shade );
+        ellipse(this.objectArray[0][12], this.objectArray[1][12], this.ankleSize  , this.ankleSize);        // ankle
+        fill(this.footRed * this.shade, this.footGrn * this.shade, this.footBlu * this.shade );
+        ellipse(this.objectArray[0][13], this.objectArray[1][13], this.footSize , this.footSize);           // foot
+        fill(this.toeRed * this.shade, this.toeGrn * this.shade, this.toeBlu * this.shade );
+        ellipse(this.objectArray[0][14], this.objectArray[1][14], this.toeSize , this.toeSize);             // toe   
+    }
+
+    drawObjectCentre(){
+        noStroke();
+        ///// DRAW THE CENTRE BODY PARTS
+        fill(this.faceRed * this.shade, this.faceGrn * this.shade, this.faceBlu * this.shade);
+        ellipse(this.objectArray[0][0], this.objectArray[1][0], this.headSize , this.headSize );            // head
+        fill(this.neckRed * this.shade, this.neckGrn * this.shade, this.neckBlu * this.shade);
+        ellipse(this.objectArray[0][1], this.objectArray[1][1], this.neckSize, this.neckSize);              // neck
+        fill(this.neckRed * this.shade, this.neckGrn * this.shade, this.neckBlu * this.shade);
+        ellipse(this.objectArray[0][1], this.objectArray[1][1], this.chestSize , this.chestSize);           // chest
     }
 /*
     resetXandY(){
