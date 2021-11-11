@@ -1,4 +1,21 @@
 
+
+// varables
+let mainCharacter;              // declare variable to represent the main
+
+function setup(){
+    createCanvas(300,300);
+    mainCharacter               =   new HumanObject(150, 150, 2); // create the mainCharacter using the HumanObject class
+}
+
+function draw(){
+    background(0,0,0);
+
+    //mainCharacter.move();  
+    mainCharacter.draw();
+
+}
+
 class HumanObject{
     // the constructor is like the setup function in P5
     constructor(xPos, yPos, size){
@@ -582,7 +599,7 @@ class HumanObject{
         // run animation if the conditions are met
         if(keyIsPressed == true || this.stepToLeft1 == true) {
             if (keyCode == LEFT_ARROW || this.stepToLeft1 == true) { 
-                this.xPos = this.xPos - 1
+                
                 // check if the routine is run for the first time
                 if(this.stepToLeft1 == false ){
                     this.pivitArray.pop()
@@ -620,7 +637,7 @@ class HumanObject{
         // run animation if the conditions are met
         if(keyIsPressed == true || this.stepToRight1 == true) {
             if (keyCode == RIGHT_ARROW || this.stepToRight1 == true) { 
-                this.xPos = this.xPos + 1
+                
                 // check if the routine is run for the first time
                 if(this.stepToRight1 == false ){
                     this.pivitArray.pop()
@@ -657,7 +674,7 @@ class HumanObject{
         // run animation if the conditions are met
         if(keyIsPressed == true || this.stepToLeft1 == true) {
             if (keyCode == LEFT_ARROW || this.stepToLeft1 == true) { 
-                this.xPos = this.xPos - 1
+                
                 // check if the routine is run for the first time
                 if(this.stepToLeft1 == false ){
                     this.pivitArray.pop()
@@ -696,7 +713,7 @@ class HumanObject{
         // run animation if the conditions are met
         if(keyIsPressed == true || this.stepToRight1 == true) {
             if (keyCode == RIGHT_ARROW || this.stepToRight1 == true) { 
-                this.xPos = this.xPos + 1
+                
                 // check if the routine is run for the first time
                 if(this.stepToRight1 == false ){
                     this.pivitArray.pop()
@@ -733,7 +750,7 @@ class HumanObject{
         
         if(keyIsPressed == true || this.stepToLeft2 == true) {      
             if (keyCode == LEFT_ARROW || this.stepToLeft2 == true) {    
-                this.xPos = this.xPos - 1
+
                 // check if the routine is run for the first time
                 if(this.stepToLeft2 == false ){
                     this.pivitArray.pop()
@@ -770,7 +787,7 @@ class HumanObject{
         
         if(keyIsPressed == true || this.stepToRight2 == true) {      
             if (keyCode == RIGHT_ARROW || this.stepToRight2 == true) {    
-                this.xPos = this.xPos + 1
+
                 // check if the routine is run for the first time
                 if(this.stepToRight2 == false ){
                     this.pivitArray.pop()
@@ -1707,9 +1724,7 @@ class HumanObject{
         fill(this.neckRed * this.shade, this.neckGrn * this.shade, this.neckBlu * this.shade);
         ellipse(this.objectArray[0][2], this.objectArray[1][1], this.neckSize , this.neckSize);             // chest
         fill(this.torsoRed  * this.shade, this.torsoGrn  * this.shade, this.torsoBlu  * this.shade );
-
         ellipse(this.chestXPos, this.chestYPos, this.chestSize , this.chestSize);                                     // chest
-        ellipse(this.chestXPos,this.chestYPos, this.chestSize , this.chestSize);                                     // chest
         fill(this.faceRed * this.shade, this.faceGrn * this.shade, this.faceBlu * this.shade);
         ellipse(this.objectArray[0][0], this.objectArray[1][0], this.headSize , this.headSize * 1.2 );      // head   
         
@@ -1770,6 +1785,8 @@ class HumanObject{
         // 14 - this.head,
         // 15 - this.shoulderWidth,
         // 16 - this.hipWidth,
+
+
 
 
 }

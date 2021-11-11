@@ -1,8 +1,7 @@
 
-function playgame(){
+function playGame(){
+   
+drawMap()// Draw Map
 
-gameState == "playgame"   // Set gamestate  to play game
-
-mapScreen()               // Draw Map
 
 }

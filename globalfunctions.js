@@ -3,7 +3,11 @@ function runSetupFunctions(){
     // new class objects
     colourBannerBottom          =   new ColourBanner(880, -10); 
     colourBannerTop             =   new ColourBanner(10,120);
+    hero                        =   new HumanObject(420, 1980, 3)
+    // Map Setup
+    setupMap();
 }
+
 
 
 // ----------FUNCTION TO CREATE A FADE IN EFFECT ---------------------------//
