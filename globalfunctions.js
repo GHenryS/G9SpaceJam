@@ -6,7 +6,7 @@ function runSetupFunctions(){
     hero                        =   new HumanObject(420, 2080, 2)
     // Map Setup
     setupMap();
-    hero.moveXrate = 20
+    hero.moveXrate += 5
 }
 
 
