@@ -191,7 +191,7 @@ let distX2 = 2500;  // The camera will draw the sprites up to 1600 px to the rig
 let distY1 = -2000;  // The camera will draw the sprites up to 1200 px to the above of the hero
 let distY2 = 2000;  // The camera will draw the sprites up to 1600 px to the below of the hero
 
-addStars(500 , -2000 , -2000 , 5000 , 5000)
+addStars(50000 , -2000 , -2000 , 5000 , 5000)
 //addStars(5000 , hero.position.x + distX2 , hero.position.y + distY2 , hero.position.x + distX1 , hero.position.y + distY1 );
 
 // This code is just for exploring the map , just uncomment it 
