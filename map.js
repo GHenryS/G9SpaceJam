@@ -201,7 +201,7 @@ camera.zoom = 0.8;                   // Use this to set the zoomcamera.position.
 camera.position.x = hero.xPos  
 camera.position.y = hero.yPos - height *0.27
 
-
+/*
 if(keyIsDown('65')){   // a key  ---- hero  left
     hero.xPos -= 5
 }else if(keyIsDown('68')){   // d key ------hero  right
@@ -211,7 +211,7 @@ if(keyIsDown('65')){   // a key  ---- hero  left
 }else if(keyIsDown('83')){   //s key  ------ hero down
     hero.yPos += 5
 }
-
+*/
 
 // These if statements check whether each of the spite groups are within the desired draw distance then draw them if they are
 
@@ -385,8 +385,10 @@ if(hero.xPos < elevatorCarriage2.position.x + 200 && hero.xPos > elevatorCarriag
 
 if(keyDown(74) && elevatorCarriage1.position.y < 39 * anchor){ // If on bottom floors, the elevator wont try to go any further
     elevatorCarriage1.setSpeed(5,90);                            // Go Down  "j"
+    hero.elevatorDown(5);
 }else if(keyDown(85) && elevatorCarriage1.position.y > 17 * anchor){  // If on top floors, the elevator wont try to go any further
     elevatorCarriage1.setSpeed(5,270);                           // Go Up    "u"
+    hero.elevatorUp(5);
 }else if(elevatorCarriage1.position.y == 21.5*anchor){  // Stop at 4th floors
     elevatorCarriage1.setSpeed(0,90);
 }else if(elevatorCarriage1.position.y == 27.5*anchor){  // Stop at 3rd floors
