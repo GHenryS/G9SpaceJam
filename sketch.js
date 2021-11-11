@@ -47,7 +47,7 @@ function preload(){
 // ------------------------ FUNCTION SETUP -------------------------------//
 function setup(){
   // all functions required as part of the setup is called using the runSetupFunction
-  runSetupFunctions()     // see navigation.js
+  runSetupFunctions()     // see globalfunctions.js   
   
 }
 // ------------------------ FUNCTION DRAW -------------------------------//
@@ -57,5 +57,5 @@ function draw() {
   // setGameState is the first function to run
   // the setGameState controles which page to show and which code to run for that page
 
-  setGameState(); 
+  setGameState();         // see navigation.js
 }
