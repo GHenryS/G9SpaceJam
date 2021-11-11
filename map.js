@@ -52,7 +52,7 @@ for(let i = 0 ; i < mapLayoutTxt.length ; i++){    // takes strings from txt fil
             if(maparray[j][i] == '3'){
                 lockedDoor = createSprite(spriteWidth / 2 + i * spriteWidth , spriteHeight / 2 + j * spriteHeight);
                 lockedDoor.addImage(lockDoorImage);
-                lockDoorImage.resize(spriteWidth , spriteHeight);
+                lockDoorImage.resize(spriteWidth , 5 * spriteHeight);
                 lockedDoor.setDefaultCollider();  
                 allLockedDoor.add(lockedDoor); 
                 
@@ -82,20 +82,20 @@ for(let i = 0 ; i < mapLayoutTxt.length ; i++){    // takes strings from txt fil
             if(maparray[j][i] == '5'){
                 selfOpeningDoor = createSprite(spriteWidth / 2 + i * spriteWidth , spriteHeight / 2 + j * spriteHeight);
                 selfOpeningDoor.addImage(selfOpeningDoorImage);
-                selfOpeningDoorImage.resize(spriteWidth , spriteHeight);
+                selfOpeningDoorImage.resize(spriteWidth , 5 *  spriteHeight);
                 selfOpeningDoor.setDefaultCollider();  
                 allSelfOpeningingDoor.add(selfOpeningDoor);
                 
                 door = createSprite(spriteWidth / 2 + i * spriteWidth , spriteHeight /2 +j * spriteHeight);
                 door.addImage(doorImage);
-                doorImage.resize(0.8 * spriteWidth , 5* spriteHeight);
+                doorImage.resize(0.8 * spriteWidth , 5 * spriteHeight);
                 door.setDefaultCollider();
                 allDoor.add(door);
             }
             if(maparray[j][i] == '6'){
                 lockedElevatorDoor = createSprite(spriteWidth / 2 + i * spriteWidth , spriteHeight / 2 + j * spriteHeight);
                 lockedElevatorDoor.addImage(lockedLiftDoorImage);
-                lockedLiftDoorImage.resize(spriteWidth , spriteHeight);
+                lockedLiftDoorImage.resize(spriteWidth , 5 *  spriteHeight);
                 lockedElevatorDoor.setDefaultCollider(); // 
                 allLockedLiftDoor.add(lockedElevatorDoor);         
             }
@@ -109,25 +109,25 @@ for(let i = 0 ; i < mapLayoutTxt.length ; i++){    // takes strings from txt fil
             if(maparray[j][i] == '8'){
                 texture1 = createSprite(spriteWidth / 2 + i * spriteWidth , spriteHeight / 2 + j * spriteHeight);
                 texture1.addImage(texture1Image);
-                texture1Image.resize(spriteWidth , spriteHeight);
+                texture1Image.resize(11 * spriteWidth , 5 * spriteHeight);
                 allTexture1.add(texture1);         
             }
             if(maparray[j][i] == '9'){
                 texture2 = createSprite(spriteWidth / 2 + i * spriteWidth , spriteHeight / 2 + j * spriteHeight);
                 texture2.addImage(texture2Image);
-                texture2Image.resize(spriteWidth , spriteHeight);
+                texture2Image.resize(11 * spriteWidth , 5 * spriteHeight);
                 allTexture2.add(texture2);         
             }
             if(maparray[j][i] == '10'){
                 texture3 = createSprite(spriteWidth / 2 + i * spriteWidth , spriteHeight / 2 + j * spriteHeight);
                 texture3.addImage(texture10Image);
-                texture10Image.resize(spriteWidth , spriteHeight);
+                texture10Image.resize(23 * spriteWidth , 5*  spriteHeight);
                 allTexture3.add(texture3);         
             }
             if(maparray[j][i] == '11'){
                 texture4 = createSprite(spriteWidth / 2 + i * spriteWidth , spriteHeight / 2 + j * spriteHeight);
                 texture4.addImage(texture4Image);
-                texture4Image.resize(spriteWidth , spriteHeight);
+                texture4Image.resize(13 * spriteWidth , 5* spriteHeight);
                 allTexture4.add(texture4);         
             }
             if(maparray[j][i] == '12'){
@@ -139,25 +139,25 @@ for(let i = 0 ; i < mapLayoutTxt.length ; i++){    // takes strings from txt fil
             if(maparray[j][i] == '13'){
                 texture6 = createSprite(spriteWidth / 2 + i * spriteWidth , spriteHeight / 2 + j * spriteHeight);
                 texture6.addImage(texture6Image);
-                texture6Image.resize(spriteWidth , spriteHeight); 
+                texture6Image.resize(11 * spriteWidth , 5 * spriteHeight); 
                 allTexture6.add(texture6);         
             }
             if(maparray[j][i] == '14'){
                 texture7 = createSprite(spriteWidth / 2 + i * spriteWidth , spriteHeight /2 +j * spriteHeight);
                 texture7.addImage(texture7Image);
-                texture7Image.resize(spriteWidth , spriteHeight);  
+                texture7Image.resize(15 * spriteWidth , 5 * spriteHeight);  
                 allTexture7.add(texture7);         
             }
             if(maparray[j][i] == '15'){
                 texture8 = createSprite(spriteWidth / 2 + i * spriteWidth , spriteHeight / 2 + j * spriteHeight);
                 texture8.addImage(texture8Image);
-                texture8Image.resize(spriteWidth , spriteHeight);
+                texture8Image.resize(25 * spriteWidth , 5 * spriteHeight);
                 allTexture8.add(texture8);         
             }
             if(maparray[j][i] == '16'){
                 texture9 = createSprite(spriteWidth / 2 + i * spriteWidth , spriteHeight / 2 + j * spriteHeight);
                 texture9.addImage(texture9Image);
-                texture9Image.resize(spriteWidth , spriteHeight); 
+                texture9Image.resize(19 * spriteWidth , 3 * spriteHeight); 
                 allTexture9.add(texture9);       
             }
             if(maparray[j][i] == '17'){
