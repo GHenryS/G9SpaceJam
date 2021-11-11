@@ -184,12 +184,14 @@ heroImage.resize(120 , 360)
 
 function drawMap(){
 background(0,0,0)
-addStars(50 , 0 , 0 , width , height)
+
 
 let distX1 = -2500;  // The camera will draw the sprites up to 1600 px to the left of the hero
 let distX2 = 2500;  // The camera will draw the sprites up to 1600 px to the right of the hero
 let distY1 = -2000;  // The camera will draw the sprites up to 1200 px to the above of the hero
 let distY2 = 2000;  // The camera will draw the sprites up to 1600 px to the below of the hero
+
+addStars(500 , hero.position.x + distX1 , hero.position.y + distY1 , hero.position.x + distX2 , hero.position.y + distY2 );
 
 // This code is just for exploring the map , just uncomment it 
 
