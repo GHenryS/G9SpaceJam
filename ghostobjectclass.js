@@ -4,7 +4,7 @@ let ghostSprite;
 let ghosts = [];
 
 function preload(){
-    ghostImage = loadSpriteSheet('/sprites/ghost.png', 172, 197, 1);
+    ghostImage = loadSpriteSheet('/sprites/ghostimage.png', 172, 197, 1);
     ghostAnimation = loadAnimation(ghostImage);
 }
 
