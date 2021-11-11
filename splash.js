@@ -99,7 +99,7 @@ function completeSplash(){
     xPos                    =   window.innerWidth / 2;
     yPos                    =   window.innerWidth  * canRatio / 2;
     opaqueChange            =   255/fadeOutSetting;
-    rectMode(CENTER,CENTER);
+    rectMode(CENTER);
     // create a fadeout effect to softern the transition from splash to mainmenu
     if(splashCount < fadeOutSetting){
         stroke(0,0,0);
