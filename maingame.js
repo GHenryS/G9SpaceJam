@@ -1,8 +1,10 @@
 
 function playgame(){
 
-gameState == "playgame"   // Set gamestate  to play game
+setGameState("playgame")  // Set GameState
 
-mapScreen()               // Draw Map
+runSetupFunctions(setupMap())   // Setup Map
+
+drawMap()// Draw Map
 
 }

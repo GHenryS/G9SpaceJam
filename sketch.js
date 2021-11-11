@@ -24,6 +24,12 @@ let setOpacity          = 150;
 let setSaturation       = 150;
 let scale;
 
+
+// Map Global Variables
+let elevatorCarriage1;
+let elevatorCarriage2;
+
+
 // ------------------------ GLOBAL ARRAYS -------------------------------//
 // declare arrays which will be used over multiple functions
 // arrays which are specific to a function should be declared in the function 
