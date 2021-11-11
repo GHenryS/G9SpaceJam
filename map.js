@@ -208,12 +208,19 @@ if(keyIsDown('65')){   // a key  ---- hero  left
     hero.setSpeed(0,0)
 }
 
-camera.zoom = 0.5;                   // Use this to set the zoomcamera.position.x = hero.position.x; // This line and the next line set the camera to hero position
+camera.zoom = 0.8;                   // Use this to set the zoomcamera.position.x = hero.position.x; // This line and the next line set the camera to hero position
 camera.position.x = hero.position.x;
 camera.position.y = hero.position.y - width * 0.0379; 
 
 // These if statements check whether each of the spite groups are within the desired draw distance then draw them if they are
 
+for(i = 0 ; i < allSelfOpeningingDoor.length ; i++){
+    if(allSelfOpeningingDoor[i].position.x > camera.position.x + distX1 && allSelfOpeningingDoor[i].position.x < camera.position.x + distX2){
+        if(allSelfOpeningingDoor[i].position.y > camera.position.y + distY1 && allSelfOpeningingDoor[i].position.y < camera.position.y + distY2){
+            drawSprite(allSelfOpeningingDoor[i]);
+        }
+    }
+}
 for(i = 0 ; i < allLockedDoor.length ; i++){
     if(allLockedDoor[i].position.x > camera.position.x + distX1 && allLockedDoor[i].position.x < camera.position.x + distX2){
         if(allLockedDoor[i].position.y > camera.position.y + distY1 && allLockedDoor[i].position.y < camera.position.y + distY2){
@@ -254,13 +261,6 @@ for(i = 0 ; i < allElevator.length ; i++){
     if(allElevator[i].position.x > camera.position.x + distX1 && allElevator[i].position.x < camera.position.x + distX2){
         if(allElevator[i].position.y > camera.position.y + distY1 && allElevator[i].position.y < camera.position.y + distY2){
             drawSprite(allElevator[i]);
-        }
-    }
-}
-for(i = 0 ; i < allSelfOpeningingDoor.length ; i++){
-    if(allSelfOpeningingDoor[i].position.x > camera.position.x + distX1 && allSelfOpeningingDoor[i].position.x < camera.position.x + distX2){
-        if(allSelfOpeningingDoor[i].position.y > camera.position.y + distY1 && allSelfOpeningingDoor[i].position.y < camera.position.y + distY2){
-            drawSprite(allSelfOpeningingDoor[i]);
         }
     }
 }
