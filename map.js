@@ -36,8 +36,8 @@ for(let i = 0 ; i < mapLayoutTxt.length ; i++){    // takes strings from txt fil
             //that against the recorded string in that cell, then does this with the all other nested sprites
             if(maparray[j][i] == '1'){              
                 floors = createSprite(spriteWidth / 2 + i * spriteWidth ,spriteHeight / 2 + j * spriteHeight);
-                floors.addImage(floorsImage);
-                floorsImage.resize(spriteWidth , spriteHeight);  // resizes image according to sprite sizes
+                floors.addImage(floorImage);
+                floorImage.resize(spriteWidth , spriteHeight);  // resizes image according to sprite sizes
                 floors.setDefaultCollider();  // sets collider at the defualt size
                 allFloor.add(floors);        // puts all floors sprites in 1 group for ease in collision detection
             }
