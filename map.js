@@ -199,7 +199,7 @@ camera.zoom = 0.8;                   // Use this to set the zoomcamera.position.
 
 
 camera.position.x = hero.xPos  
-camera.position.y = hero.yPos 
+camera.position.y = hero.yPos + height *0.27
 
 
 if(keyIsDown('65')){   // a key  ---- hero  left
@@ -357,7 +357,7 @@ drawSprite(elevatorCarriage2);
 hero.draw()
 
 //This code moves the door up as the hero approaches it, it doesnt move it back down yet
-/*
+
 for(i=0 ; i < allDoor.length ; i++){
     if(hero.xPos < allDoor[i].position.x + 100 && hero.xPos > allDoor[i].position.x - 100 && hero.yPos < allDoor[i].position.y + 200 && hero.yPos > allDoor[i].position.y - 200){
     allDoor[i].setSpeed(5,270);
@@ -367,7 +367,7 @@ for(i=0 ; i < allDoor.length ; i++){
         allDoor[i].setSpeed(5,90);
     }
 }
-*/
+
 if(hero.xPos < elevatorCarriage1.position.x + 200 && hero.xPos > elevatorCarriage1.position.x - 200 ){  //These were going to be buttons but I ran out of time
     textSize(30);
     stroke('yellow');
