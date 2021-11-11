@@ -66,7 +66,7 @@ function preLoadImages(){
   doorImage = loadImage('images/door.png')
   doorLImage = loadImage('images/door.png')
 
-  heroImage = loadImage('images/hero.png');              // Temporary hero
+  //heroImage = loadImage('images/hero.png');              // Temporary hero
 }
 
 // ------------------ FUNCTION TO PRELOAD SOUNDS    ---------------------- //

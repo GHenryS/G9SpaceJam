@@ -208,7 +208,7 @@ if(keyIsDown('65')){   // a key  ---- hero  left
 
 camera.zoom = 0.8;                   // Use this to set the zoomcamera.position.x = hero.xPos; // This line and the next line set the camera to hero position
 camera.position.x = hero.xPos;
-camera.position.y = hero.yPos - width * 0.0379 -1300; 
+camera.position.y = hero.yPos - width * 0.0379 ; 
 
 // These if statements check whether each of the spite groups are within the desired draw distance then draw them if they are
 
