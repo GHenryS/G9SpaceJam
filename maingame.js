@@ -1,10 +1,10 @@
 
 function playGame(){
-    setGameState("playgame")  // Set GameState
+   
 
 runSetupFunctions(setupMap())   // Setup Map
 
-
+setGameState("playgame")  // Set GameState
 
 
 drawMap()// Draw Map
