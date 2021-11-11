@@ -455,12 +455,29 @@ class HumanObject{
         fill(255,203,164);
         ellipse(this.objectArray[0][0], this.objectArray[1][0], 30, 38);  
         
+
+        this.linkedVariables();
         }       
     }
 
     //////////////////////////// THE NEXR SECTION HANDLES WALKING TO LEFT ///////////////////////////////
     //-------------------------- METHOD TO TURN FROM FRONT POSITION TO LEFT ---------------------------//
     
+    linkedVariables(){
+        this.leftHandX      =   this.objectArray[0][5];   
+        this.leftHandY      =   this.objectArray[1][5];
+
+        this.rightHandX     =   this.objectArray[0][8];
+        this.rightHandY     =   this.objectArray[1][8];
+
+        this.leftFootX      =   this.objectArray[0][14];
+        this.leftFootY      =   this.objectArray[1][14];
+
+        this.rightFootX     =   this.objectArray[0][18];
+        this.rightFootY     =   this.objectArray[1][18];
+
+    }
+
     faceLeftFromFront(){
 
         // run animation if the conditions are met 
