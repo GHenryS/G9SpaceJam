@@ -31,8 +31,8 @@ allTexture9 = new Group;
 allTexture10 = new Group;
 allDoor = new Group;
 
-for(let i = 0 ; i < maplayouttxt.length ; i++){    // takes strings from txt file and puts them into maparray array 
-    maparray[i] = splitTokens(maplayouttxt[i] , '\t');
+for(let i = 0 ; i < mapLayoutTxt.length ; i++){    // takes strings from txt file and puts them into maparray array 
+    maparray[i] = splitTokens(mapLayoutTxt[i] , '\t');
     }
     for(let j = 0 ; j < maparray.length ; j++){         // Uses the row and column index of the arrays to designate x and y pos. Then checks
         for(let i = 0 ; i < maparray[0].length ; i++){  //that against the recorded string in that cell, then does this with the all other nested sprites
