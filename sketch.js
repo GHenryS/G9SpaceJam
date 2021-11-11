@@ -48,7 +48,7 @@ function preload(){
 function setup(){
   // all functions required as part of the setup is called using the runSetupFunction
   runSetupFunctions()     // see navigation.js
-  setupMap()
+
 }
 
 // ------------------------ FUNCTION DRAW -------------------------------//

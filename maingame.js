@@ -2,7 +2,7 @@
 function playGame(){
    
 
-//runSetupFunctions(setupMap())   // Setup Map
+runSetupFunctions(setupMap())   // Setup Map
 
 
 
