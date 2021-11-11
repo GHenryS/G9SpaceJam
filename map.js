@@ -1,15 +1,6 @@
 //--------------------GLOBAL VARIABLES FOR MAP SCREEN-----------------------//
 
-let hero  // This is Bob, I have been using him to look around the map
 
-let elevatorCarriage1,elevatorCarriage2 //I need these as global variables
-
-// ------------------ MAIN FUNCTION FOR MAP SCREEN ---------------------- //
-
-function mapScreen(){
-setupMap();
-drawMap();
-}
 
 // ------------------ FUNCTION TO SETUP MAP SCREEN ---------------------- //
 function setupMap(){
@@ -184,10 +175,7 @@ let startX = (spriteWidth / 2 + 3 * spriteWidth);  // Hero Start Point
 let startY = (spriteHeight /2 + 16 * spriteHeight);
 
 anchor = spriteHeight;
-
-hero = createSprite(startX , startY); // This is Bob
-hero.addImage(heroImage);           // Bob helps me look around the map
-heroImage.resize(120 , 360);        // Delete Bob when the main character is ready
+hero  =   new HumanObject(startX, startY, 3*spriteHeight)
 }
 
 // ------------------ FUNCTION TO DRAW MAP SCREEN ---------------------- //
@@ -200,20 +188,6 @@ let distX2 = 2500;  // The camera will draw the sprites up to 1600 px to the rig
 let distY1 = -2000;  // The camera will draw the sprites up to 1200 px to the above of the hero
 let distY2 = 2000;  // The camera will draw the sprites up to 1600 px to the below of the hero
 
-// This code is just for exploring the map , just uncomment it 
-/*
-if(keyIsDown('65')){   // a key  ---- hero  left
-    hero.setSpeed(50,180)
-}else if(keyIsDown('68')){   // d key ------hero  right
-    hero.setSpeed(50,0)
-}else if(keyIsDown('87')){  // w key  ------hero up
-    hero.setSpeed(50,270)       
-}else if(keyIsDown('83')){   //s key  ------ hero down
-    hero.setSpeed(50,90)
-}else{
-    hero.setSpeed(0,0)
-}
-*/
 camera.zoom = 0.5;                   // Use this to set the zoom
 camera.position.x = hero.position.x; // This line and the next line set the camera to hero position
 camera.position.y = hero.position.y - width * 0.0379; 
@@ -358,7 +332,7 @@ for(i=0 ; i<allTexture10.length ; i++){
 drawSprite(elevatorCarriage1);
 drawSprite(elevatorCarriage2);
 
-drawSprite(hero); //This is Bob
+hero.draw()
 
 //This code moves the door up as the hero approaches it, it doesnt move it back down yet
 for(i=0 ; i < allDoor.length ; i++){
