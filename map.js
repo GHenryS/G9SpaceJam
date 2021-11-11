@@ -35,11 +35,11 @@ for(let i = 0 ; i < mapLayoutTxt.length ; i++){    // takes strings from txt fil
         for(let i = 0 ; i < maparray[0].length ; i++){  //that against the recorded string in that cell, then does this with the all other nested sprites
             //that against the recorded string in that cell, then does this with the all other nested sprites
             if(maparray[j][i] == '1'){              
-                floor = createSprite(spriteWidth / 2 + i * spriteWidth ,spriteHeight / 2 + j * spriteHeight);
-                floor.addImage(floorImage);
-                floorImage.resize(spriteWidth , spriteHeight);  // resizes image according to sprite sizes
-                floor.setDefaultCollider();  // sets collider at the defualt size
-                allFloor.add(floor);        // puts all floor sprites in 1 group for ease in collision detection
+                floors = createSprite(spriteWidth / 2 + i * spriteWidth ,spriteHeight / 2 + j * spriteHeight);
+                floors.addImage(floorsImage);
+                floorsImage.resize(spriteWidth , spriteHeight);  // resizes image according to sprite sizes
+                floors.setDefaultCollider();  // sets collider at the defualt size
+                allFloor.add(floors);        // puts all floors sprites in 1 group for ease in collision detection
             }
             if(maparray[j][i] == '2'){
                 wall = createSprite(spriteWidth / 2 + i * spriteWidth , spriteHeight / 2 + j * spriteHeight);
@@ -378,28 +378,28 @@ if(hero.position.x < elevatorCarriage2.position.x + 200 && hero.position.x > ele
     text("Down = k button", elevatorCarriage2.position.x-120 , elevatorCarriage2.position.y - 230);
 }
 
-if(keyDown(74) && elevatorCarriage1.position.y < 39 * anchor){ // If on bottom floor, the elevator wont try to go any further
+if(keyDown(74) && elevatorCarriage1.position.y < 39 * anchor){ // If on bottom floors, the elevator wont try to go any further
     elevatorCarriage1.setSpeed(5,90);                            // Go Down  "j"
-}else if(keyDown(85) && elevatorCarriage1.position.y > 17 * anchor){  // If on top floor, the elevator wont try to go any further
+}else if(keyDown(85) && elevatorCarriage1.position.y > 17 * anchor){  // If on top floors, the elevator wont try to go any further
     elevatorCarriage1.setSpeed(5,270);                           // Go Up    "u"
-}else if(elevatorCarriage1.position.y == 21.5*anchor){  // Stop at 4th floor
+}else if(elevatorCarriage1.position.y == 21.5*anchor){  // Stop at 4th floors
     elevatorCarriage1.setSpeed(0,90);
-}else if(elevatorCarriage1.position.y == 27.5*anchor){  // Stop at 3rd floor
+}else if(elevatorCarriage1.position.y == 27.5*anchor){  // Stop at 3rd floors
     elevatorCarriage1.setSpeed(0,90);
-}else if(elevatorCarriage1.position.y == 33.5*anchor){  // Stop at 2nd floor
+}else if(elevatorCarriage1.position.y == 33.5*anchor){  // Stop at 2nd floors
     elevatorCarriage1.setSpeed(0,90);
-}else if(elevatorCarriage1.collide(allFloor)){                   // Stops at Bottom and Top Floor
+}else if(elevatorCarriage1.collide(allFloor)){                   // Stops at Bottom and Top floors
     elevatorCarriage1.setSpeed(0,0);
 }
-if(keyDown(75) && elevatorCarriage2.position.y < 33 * anchor){ // If on bottom floor, the elevator wont try to go any further    
+if(keyDown(75) && elevatorCarriage2.position.y < 33 * anchor){ // If on bottom floors, the elevator wont try to go any further    
     elevatorCarriage2.setSpeed(5,90);                            // Go Down  "i"
-}else if(keyDown(73)&& elevatorCarriage2.position.y > 17 * anchor){  // If on top floor, the elevator wont try to go any further
+}else if(keyDown(73)&& elevatorCarriage2.position.y > 17 * anchor){  // If on top floors, the elevator wont try to go any further
     elevatorCarriage2.setSpeed(5,270);                           // Go Up  "k"
-}else if(elevatorCarriage2.position.y == 21.5*anchor){  // Stop at 4th floor
+}else if(elevatorCarriage2.position.y == 21.5*anchor){  // Stop at 4th floors
     elevatorCarriage2.setSpeed(0,90);
-}else if(elevatorCarriage2.position.y == 27.5*anchor){  // Stop at 3rd floor
+}else if(elevatorCarriage2.position.y == 27.5*anchor){  // Stop at 3rd floors
     elevatorCarriage2.setSpeed(0,90);
-}else if(elevatorCarriage2.collide(allFloor)){                   // Stops at Bottom and Top Floor
+}else if(elevatorCarriage2.collide(allFloor)){                   // Stops at Bottom and Top floors
     elevatorCarriage2.setSpeed(0,0);
 }
 }
