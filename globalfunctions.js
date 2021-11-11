@@ -3,6 +3,10 @@ function runSetupFunctions(){
     // new class objects
     colourBannerBottom          =   new ColourBanner(880, -10); 
     colourBannerTop             =   new ColourBanner(10,120);
+    
+    // Map Setup
+    setupMap();
+}
 }
 
 
