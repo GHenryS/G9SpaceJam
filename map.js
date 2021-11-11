@@ -172,12 +172,12 @@ let startX = (spriteWidth / 2 + 3 * spriteWidth);  // Hero Start Point
 let startY = (spriteHeight /2 + 16 * spriteHeight);
 
 anchor = spriteHeight;
-
+/*
 hero = createSprite(startX,startY)
 hero.addImage(heroImage)
 heroImage.resize(120 , 360)
+*/
 
-//hero  =   new HumanObject(startX, startY, 3*spriteHeight)
 }
 
 // ------------------ FUNCTION TO DRAW MAP SCREEN ---------------------- //
@@ -195,7 +195,7 @@ addStars(50000 , innerWidth * 0.01 , innerHeight *0.01 , innerWidth , innerWidth
 //addStars(5000 , hero.position.x + distX2 , hero.position.y + distY2 , hero.position.x + distX1 , hero.position.y + distY1 );
 
 // This code is just for exploring the map , just uncomment it 
-
+/*
 if(keyIsDown('65')){   // a key  ---- hero  left
     hero.setSpeed(50,180)
 }else if(keyIsDown('68')){   // d key ------hero  right
@@ -207,7 +207,7 @@ if(keyIsDown('65')){   // a key  ---- hero  left
 }else{
     hero.setSpeed(0,0)
 }
-
+*/
 camera.zoom = 0.8;                   // Use this to set the zoomcamera.position.x = hero.position.x; // This line and the next line set the camera to hero position
 camera.position.x = hero.position.x;
 camera.position.y = hero.position.y - width * 0.0379; 
