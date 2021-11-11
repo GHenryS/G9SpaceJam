@@ -191,8 +191,8 @@ let distX2 = 2500;  // The camera will draw the sprites up to 1600 px to the rig
 let distY1 = -2000;  // The camera will draw the sprites up to 1200 px to the above of the hero
 let distY2 = 2000;  // The camera will draw the sprites up to 1600 px to the below of the hero
 
-addStars(50000 , innerWidth * 0.01 , innerHeight *0.01 , innerWidth , innerWidth)
-//addStars(5000 , hero.position.x + distX2 , hero.position.y + distY2 , hero.position.x + distX1 , hero.position.y + distY1 );
+//addStars(50000 , innerWidth * 0.01 , innerHeight *0.01 , innerWidth , innerWidth)
+//addStars(5000 , hero.xPos + distX2 , hero.yPos + distY2 , hero.xPos + distX1 , hero.yPos + distY1 );
 
 // This code is just for exploring the map , just uncomment it 
 /*
@@ -208,9 +208,9 @@ if(keyIsDown('65')){   // a key  ---- hero  left
     hero.setSpeed(0,0)
 }
 */
-camera.zoom = 0.8;                   // Use this to set the zoomcamera.position.x = hero.position.x; // This line and the next line set the camera to hero position
-camera.position.x = hero.position.x;
-camera.position.y = hero.position.y - width * 0.0379; 
+camera.zoom = 0.8;                   // Use this to set the zoomcamera.position.x = hero.xPos; // This line and the next line set the camera to hero position
+camera.position.x = hero.xPos;
+camera.position.y = hero.yPos - width * 0.0379 -1300; 
 
 // These if statements check whether each of the spite groups are within the desired draw distance then draw them if they are
 
@@ -352,29 +352,29 @@ for(i=0 ; i<allTexture10.length ; i++){
 drawSprite(elevatorCarriage1);
 drawSprite(elevatorCarriage2);
 
-drawSprite(hero)
-
-//hero.draw()
+//drawSprite(hero)
+hero.draw()
 
 //This code moves the door up as the hero approaches it, it doesnt move it back down yet
+/*
 for(i=0 ; i < allDoor.length ; i++){
-    if(hero.position.x < allDoor[i].position.x + 100 && hero.position.x > allDoor[i].position.x - 100 && hero.position.y < allDoor[i].position.y + 200 && hero.position.y > allDoor[i].position.y - 200){
+    if(hero.xPos < allDoor[i].position.x + 100 && hero.xPos > allDoor[i].position.x - 100 && hero.yPos < allDoor[i].position.y + 200 && hero.yPos > allDoor[i].position.y - 200){
     allDoor[i].setSpeed(5,270);
-    }else if(allDoor[i].position.y < (hero.position.y - 5 * anchor)){
+    }else if(allDoor[i].position.y < (hero.yPos - 5 * anchor)){
         allDoor[i].setSpeed(0,270); 
-    }else if(allDoor[i].position.y > (hero.position.y)  && hero.position.x > allDoor[i].position.x + 100 && hero.position.x < allDoor[i].position.x - 100){
+    }else if(allDoor[i].position.y > (hero.yPos)  && hero.xPos > allDoor[i].position.x + 100 && hero.xPos < allDoor[i].position.x - 100){
         allDoor[i].setSpeed(5,90);
     }
 }
-
-if(hero.position.x < elevatorCarriage1.position.x + 200 && hero.position.x > elevatorCarriage1.position.x - 200 ){  //These were going to be buttons but I ran out of time
+*/
+if(hero.xPos < elevatorCarriage1.position.x + 200 && hero.xPos > elevatorCarriage1.position.x - 200 ){  //These were going to be buttons but I ran out of time
     textSize(30);
     stroke('yellow');
     fill('yellow');
     text("Up = u button" , elevatorCarriage1.position.x-anchor , elevatorCarriage1.position.y - 260);
     text("Down = j button", elevatorCarriage1.position.x-anchor , elevatorCarriage1.position.y - 230);
 }
-if(hero.position.x < elevatorCarriage2.position.x + 200 && hero.position.x > elevatorCarriage2.position.x - 200 ){  //These were going to be buttons but I ran out of time
+if(hero.xPos < elevatorCarriage2.position.x + 200 && hero.xPos > elevatorCarriage2.position.x - 200 ){  //These were going to be buttons but I ran out of time
     textSize(30);
     stroke('yellow');
     fill('yellow');
