@@ -198,12 +198,12 @@ let distY2 = 2000;  // The camera will draw the sprites up to 1600 px to the bel
 camera.zoom = 0.8;                   // Use this to set the zoomcamera.position.x = hero.xPos; // This line and the next line set the camera to hero position
 
 
-hero.xPos = camera.position.x 
-hero.yPos = camera.position.y  
+camera.position.x = hero.xPos  
+camera.position.y = hero.yPos 
 
 
 if(keyIsDown('65')){   // a key  ---- hero  left
-    camera.position.x -= 5
+    hero.xPos -= 5
 }else if(keyIsDown('68')){   // d key ------hero  right
     hero.xPos += 5
 }else if(keyIsDown('87')){  // w key  ------hero up
