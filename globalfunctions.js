@@ -3,7 +3,7 @@ function runSetupFunctions(){
     // new class objects
     colourBannerBottom          =   new ColourBanner(880, -10); 
     colourBannerTop             =   new ColourBanner(10,120);
-    hero                        =   new HumanObject(420, 2100, 2)
+    hero                        =   new HumanObject(420, 2080, 2)
     // Map Setup
     setupMap();
 }
