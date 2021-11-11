@@ -1709,7 +1709,7 @@ class HumanObject{
         fill(this.torsoRed  * this.shade, this.torsoGrn  * this.shade, this.torsoBlu  * this.shade );
 
         ellipse(this.chestXPos, this.chestYPos, this.chestSize , this.chestSize);                                     // chest
-        ellipse(chestXPos, chestYPos, this.chestSize , this.chestSize);                                     // chest
+        ellipse(this.chestXPos,this.chestYPos, this.chestSize , this.chestSize);                                     // chest
         fill(this.faceRed * this.shade, this.faceGrn * this.shade, this.faceBlu * this.shade);
         ellipse(this.objectArray[0][0], this.objectArray[1][0], this.headSize , this.headSize * 1.2 );      // head   
         

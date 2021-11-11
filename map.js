@@ -198,10 +198,12 @@ let distY2 = 2000;  // The camera will draw the sprites up to 1600 px to the bel
 camera.zoom = 0.8;                   // Use this to set the zoomcamera.position.x = hero.xPos; // This line and the next line set the camera to hero position
 
 
+hero.xPos = camera.position.x 
+hero.yPos = camera.position.y  
 
 
 if(keyIsDown('65')){   // a key  ---- hero  left
-    hero.xPos -= 5
+    camera.position.x -= 5
 }else if(keyIsDown('68')){   // d key ------hero  right
     hero.xPos += 5
 }else if(keyIsDown('87')){  // w key  ------hero up
@@ -210,8 +212,6 @@ if(keyIsDown('65')){   // a key  ---- hero  left
     hero.yPos += 5
 }
 
-camera.position.x = hero.xPos;
-camera.position.y = hero.yPos - width * 0.0379 ; 
 
 // These if statements check whether each of the spite groups are within the desired draw distance then draw them if they are
 
