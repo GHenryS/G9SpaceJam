@@ -15,7 +15,7 @@ class HumanObject{
         this.stationary                 =   "yes"       // "no" or "yes"
         this.turn                       =   0;
         this.moveXrate                  =   1;
-        this.change                     =   0.03;       // determines the rate of animation
+        this.change                     =   0.1;       // determines the rate of animation
         this.step                       =   1;          // DO NOT CHANGE THIS VALUE - counter to control animatioon
 
         // SETTING STANDARD CONTROL KEYS

@@ -73,12 +73,12 @@ for(let i = 0 ; i < mapLayoutTxt.length ; i++){    // takes strings from txt fil
                 elevatorCarriage1.addImage(elevatorCarriageImage)
                 elevatorCarriageImage.resize(2 * spriteWidth , 5 * spriteHeight)
                 elevatorCarriage1.setCollider("rectangle", 0, 2.45 * spriteHeight, 2 * spriteWidth, 0.1 * spriteHeight)
-                elevatorCarriage1.debug = true
 
                 elevatorCarriage2 = createSprite(55 * spriteWidth , spriteHeight /2 + 15 * spriteHeight)
                 elevatorCarriage2.addImage(elevatorCarriageImage)
                 elevatorCarriageImage.resize(2 * spriteWidth , 5 * spriteHeight)
-                //elevatorCarriage2.setCollider(spriteWidth / 2 + i * spriteWidth , spriteHeight /2 +j * spriteHeight)
+                elevatorCarriage2.setCollider("rectangle", 0, 2.45 * spriteHeight, 2 * spriteWidth, 0.1 * spriteHeight)
+                elevatorCarriage2.debug = true
             }
             if(maparray[j][i] == '5'){
                 selfOpeningDoor = createSprite(spriteWidth / 2 + i * spriteWidth , spriteHeight / 2 + j * spriteHeight);
@@ -172,7 +172,9 @@ for(let i = 0 ; i < mapLayoutTxt.length ; i++){    // takes strings from txt fil
 
 anchor = spriteHeight;
 
-
+heroLeftFoot = createSprite(hero.leftFootX , hero.leftFootY)
+heroLeftFoot.setCollider("rectangle", 0, 0, 0.2 * spriteWidth, 0.1 * spriteHeight)
+heroLeftFoot.debug = true
 }
 
 // ------------------ FUNCTION TO DRAW MAP SCREEN ---------------------- //
@@ -180,16 +182,14 @@ anchor = spriteHeight;
 function drawMap(){
 background(0,0,0)
 
+console.log(hero.leftFootX)
+console.log(hero.leftFootY)
 
 let distX1 = -2500;  // The camera will draw the sprites up to 1600 px to the left of the hero
 let distX2 = 2500;  // The camera will draw the sprites up to 1600 px to the right of the hero
 let distY1 = -2000;  // The camera will draw the sprites up to 1200 px to the above of the hero
 let distY2 = 2000;  // The camera will draw the sprites up to 1600 px to the below of the hero
 
-//addStars(50000 , innerWidth * 0.01 , innerHeight *0.01 , innerWidth , innerWidth)
-//addStars(5000 , hero.xPos + distX2 , hero.yPos + distY2 , hero.xPos + distX1 , hero.yPos + distY1 );
-
-// This code is just for exploring the map , just uncomment it 
 camera.zoom = 0.8;                   // Use this to set the zoomcamera.position.x = hero.xPos; // This line and the next line set the camera to hero position
 
 
@@ -337,6 +337,7 @@ for(i=0 ; i<allTexture10.length ; i++){
 drawSprite(elevatorCarriage1);
 drawSprite(elevatorCarriage2);
 
+drawSprite(heroLeftFoot)
 hero.draw()
 
 
@@ -392,7 +393,5 @@ if(keyDown(75) && elevatorCarriage2.position.y < 33 * anchor){ // If on bottom f
     }else if(elevatorCarriage2.position.y < 15.68 * anchor){                   // Stops at Bottom and Top floors
         elevatorCarriage2.setSpeed(0,0);
 }
-//allFloor.collide(hero.leftFootY)
 
-//hero.leftFoot.debug = true
 }
