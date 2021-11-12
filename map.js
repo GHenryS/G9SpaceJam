@@ -201,11 +201,11 @@ let distY2 = 2000;  // The camera will draw the sprites up to 1600 px to the bel
 
 camera.zoom = 0.8;                   // Use this to set the zoomcamera.position.x = hero.xPos; // This line and the next line set the camera to hero position
 
-camera.position.x = bob.position.x  
-camera.position.y = bob.position.y - height *0.27
+//camera.position.x = bob.position.x  
+//camera.position.y = bob.position.y - height *0.27
 
-//camera.position.x = hero.xPos  
-//camera.position.y = hero.yPos - height *0.27
+camera.position.x = hero.xPos  
+camera.position.y = hero.yPos - height *0.27
 
 
 // These if statements check whether each of the spite groups are within the desired draw distance then draw them if they are
@@ -348,8 +348,8 @@ for(i=0 ; i<allTexture10.length ; i++){
 drawSprite(elevatorCarriage1);
 drawSprite(elevatorCarriage2);
 
+/*
 drawSprite(bob)
-
 if(keyDown(87)){ // w = up
 bob.setSpeed(20,270)
 }else if(keyDown(83)){ // s = down
@@ -361,16 +361,21 @@ bob.setSpeed(20,0)
 }else{
 bob.setSpeed(0,0)
 }
+*/
 
-
-//hero.draw()
+hero.draw()
 
 //drawSprite(heroLeftFoot)
 //drawSprite(heroRightFoot)
 
+if(keyDown(38)){ // up arrow = up
+    hero.elevatorUp(20)
+}else if(keyDown(40)){ // down arrow = down
+    hero.elevatorDown(20)
+}
 
 
-/*
+
 for(i = 0 ; i < allDoor.length ; i++){
     if(hero.xPos <= allDoor[i].position.x + 0.75 * anchor && hero.xPos >= allDoor[i].position.x - 0.75 * anchor && hero.yPos <= allDoor[i].position.y + 2.5 * anchor && hero.yPos >= allDoor[i].position.y - 2.5 *anchor){
         allDoor[i].remove()
@@ -395,8 +400,8 @@ if(hero.xPos < elevatorCarriage2.position.x + 200 && hero.xPos > elevatorCarriag
     text("Up = i button" , elevatorCarriage2.position.x-120 , elevatorCarriage2.position.y - 260);
     text("Down = k button", elevatorCarriage2.position.x-120 , elevatorCarriage2.position.y - 230);
 }
-*/
 
+/*
 for(i = 0 ; i < allDoor.length ; i++){
     if(bob.position.x <= allDoor[i].position.x + 0.75 * anchor && bob.position.x >= allDoor[i].position.x - 0.75 * anchor && bob.position.y <= allDoor[i].position.y + 2.5 * anchor && bob.position.y >= allDoor[i].position.y - 2.5 *anchor){
         allDoor[i].remove()
@@ -417,19 +422,21 @@ if(bob.position.x < elevatorCarriage2.position.x + 200 && bob.position.x > eleva
     text("Up = i button" , elevatorCarriage2.position.x-120 , elevatorCarriage2.position.y - 260);
     text("Down = k button", elevatorCarriage2.position.x-120 , elevatorCarriage2.position.y - 230);
 }
-
+*/
 if(keyIsDown(74) && elevatorCarriage1.position.y < 39 * anchor){ // If on bottom floors, the elevator wont try to go any further
     elevatorCarriage1.setSpeed(5,90);                            // Go Down  "j"
     }else if(keyIsDown(85) && elevatorCarriage1.position.y > 17 * anchor){  // If on top floors, the elevator wont try to go any further
-        elevatorCarriage1.setSpeed(5,270);                           // Go Up    "u"
-    }else if(elevatorCarriage1.position.y == 21.5*anchor){  // Stop at 4th floors
+        elevatorCarriage1.setSpeed(5,270);                           // Go Up    "u"    
+    }else if(elevatorCarriage1.position.y === 21.5*anchor){  // Stop at 4th floors
         elevatorCarriage1.setSpeed(0,90);
-    }else if(elevatorCarriage1.position.y == 27.5*anchor){  // Stop at 3rd floors
+    }else if(elevatorCarriage1.position.y === 27.5*anchor){  // Stop at 3rd floors
         elevatorCarriage1.setSpeed(0,90);
-    }else if(elevatorCarriage1.position.y == 33.5*anchor){  // Stop at 2nd floors
+    }else if(elevatorCarriage1.position.y === 33.5*anchor){  // Stop at 2nd floors
         elevatorCarriage1.setSpeed(0,90);
     }else if(elevatorCarriage1.collide(allFloor)){                   // Stops at Bottom and Top floors
         elevatorCarriage1.setSpeed(0,0);
+}else if(keyDown(32)){
+    elevatorCarriage1.setSpeed(0,0)
 }
 console.log(elevatorCarriage1.position.y)
 
