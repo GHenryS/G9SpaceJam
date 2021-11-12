@@ -392,4 +392,7 @@ if(keyDown(75) && elevatorCarriage2.position.y < 33 * anchor){ // If on bottom f
     }else if(elevatorCarriage2.position.y < 15.68 * anchor){                   // Stops at Bottom and Top floors
         elevatorCarriage2.setSpeed(0,0);
 }
+//allFloor.collide(hero.leftFootY)
+
+//hero.leftFoot.debug = true
 }
