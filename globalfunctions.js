@@ -99,8 +99,8 @@ function addStars(stars, leftBoundary, topBoundary, rightBoundary, bottomBoundar
     // add stars
     if(starArray.length < starNumber){
         tempArray               =   [];
-        xPos                    =   random(fromLeft * window.screen.width, fromRight * window.screen.width);
-        yPos                    =   random(fromTop * window.screen.width * canRatio, window.screen.width * canRatio * 0.8);
+        xPos                    =   random(fromLeft * window.innerWidth, fromRight * window.innerWidth);
+        yPos                    =   random(fromTop * window.innerWidth * canRatio, window.innerWidth * canRatio * 0.8);
         starSize                =   random(10 * scale, 15 * scale);
         starLive                =   random(200, 500);
         tempArray[0]            =   starLive;
