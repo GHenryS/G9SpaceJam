@@ -67,7 +67,7 @@ function preLoadImages(){
   doorLImage = loadImage('images/door.png')
   bobImage = loadImage('images/bob.png')
   ventImage = loadImage('images/airduct_grate_02b.png')
-  controlPanelImage = loadImage('imagre/audioknobs-all.png')
+  controlPanelImage = loadImage('images/control.png')
 
   //heroImage = loadImage('images/hero.png');              // Temporary hero
 }
