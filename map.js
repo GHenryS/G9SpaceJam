@@ -402,7 +402,7 @@ if(hero.xPos < elevatorCarriage2.position.x + 200 && hero.xPos > elevatorCarriag
     text("Up = i button" , elevatorCarriage2.position.x-120 , elevatorCarriage2.position.y - 260);
     text("Down = k button", elevatorCarriage2.position.x-120 , elevatorCarriage2.position.y - 230);
     textSize(20)
-    text(" Brakes = SpaceBar", elevatorCarriage2.position.x-anchor , elevatorCarriage2.position.y + 230);
+    text(" Brakes = SpaceBar", elevatorCarriage2.position.x-anchor * 0.8 , elevatorCarriage2.position.y + 295);
 }
 
 /*
@@ -453,11 +453,11 @@ if(keyDown(75) && elevatorCarriage2.position.y < 33 * anchor){ // If on bottom f
     elevatorCarriage2.setSpeed(5,90);                            // Go Down  "i"
     }else if(keyDown(73)&& elevatorCarriage2.position.y > 17 * anchor){  // If on top floors, the elevator wont try to go any further
         elevatorCarriage2.setSpeed(5,270);                           // Go Up  "k"
-    }else if(elevatorCarriage2.position.y = 21.5 * anchor){  // Stop at 4th floors
+    }else if(elevatorCarriage2.position.y == 21.5 * anchor){  // Stop at 4th floors
         elevatorCarriage2.setSpeed(0,90);
-    }else if(elevatorCarriage2.position.y = 27.5 * anchor){  // Stop at 3rd floors
+    }else if(elevatorCarriage2.position.y == 27.5 * anchor){  // Stop at 3rd floors
         elevatorCarriage2.setSpeed(0,90);
-    }else if(elevatorCarriage2.position.y < 15.68 * anchor){                   // Stops at Bottom and Top floors
+    }else if(elevatorCarriage2.collide(allFloor)){                   // Stops at Bottom and Top floors
         elevatorCarriage2.setSpeed(0,0);
 }
 
