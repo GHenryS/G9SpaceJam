@@ -29,6 +29,7 @@ let scale;
 let elevatorCarriage1;
 let elevatorCarriage2;
 let hero;
+let bob;
 
 // ------------------------ GLOBAL ARRAYS -------------------------------//
 // declare arrays which will be used over multiple functions

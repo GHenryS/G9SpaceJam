@@ -1,5 +1,6 @@
 
 // ------------------ FUNCTION TO SETUP MAP SCREEN ---------------------- //
+
 function setupMap(){
 
 const spriteHeight = 120;
@@ -179,6 +180,10 @@ heroLeftFoot.debug = true
 heroRightFoot = createSprite(hero.rightFootX , hero.rightFootY)
 heroRightFoot.setCollider("rectangle", 0, 0, 0.2 * spriteWidth, 0.1 * spriteHeight)
 heroRightFoot.debug = true
+
+bob = createSprite(5 * spriteWidth , 17 * spriteHeight)
+bob.addImage(bobImage)
+
 }
 
 // ------------------ FUNCTION TO DRAW MAP SCREEN ---------------------- //
@@ -186,8 +191,7 @@ heroRightFoot.debug = true
 function drawMap(){
 background(0,0,0)
 
-console.log(hero.leftFootX)
-console.log(hero.leftFootY)
+let doorState = "closed"
 
 let distX1 = -2500;  // The camera will draw the sprites up to 1600 px to the left of the hero
 let distX2 = 2500;  // The camera will draw the sprites up to 1600 px to the right of the hero
@@ -197,9 +201,24 @@ let distY2 = 2000;  // The camera will draw the sprites up to 1600 px to the bel
 camera.zoom = 0.8;                   // Use this to set the zoomcamera.position.x = hero.xPos; // This line and the next line set the camera to hero position
 
 
-camera.position.x = hero.xPos  
-camera.position.y = hero.yPos - height *0.27
+//camera.position.x = hero.xPos  
+//camera.position.y = hero.yPos - height *0.27
 
+camera.position.x = bob.position.x  
+camera.position.y = bob.position.y - anchor
+
+if(keyDown(65)){     // a key = left
+    bob.position.x -= 5
+}
+if(keyDown(68)){     // d key = right
+    bob.position.x += 5
+}
+if(keyDown(87)){     // w key = up
+    bob.position.y -= 5
+}
+if(keyDown(83)){     // s key = down
+    bob.position.y += 5
+}
 
 // These if statements check whether each of the spite groups are within the desired draw distance then draw them if they are
 
@@ -341,19 +360,22 @@ for(i=0 ; i<allTexture10.length ; i++){
 drawSprite(elevatorCarriage1);
 drawSprite(elevatorCarriage2);
 
+drawSprite(bob)
+//hero.draw()
+
 drawSprite(heroLeftFoot)
 drawSprite(heroRightFoot)
-hero.draw()
 
-
-if(hero.xPos <= allDoor[0].position.x + 200 && hero.xPos >= allDoor[0].position.x -200){
-    allDoor[0].setSpeed(10,270)
-    if(allDoor[0].position.y <= 11 * anchor){
-        allDoor[0].setSpeed(0,270)
+/*
+for(i = 0 ; i < allDoor.length ; i++){
+    if(hero.xPos <= allDoor[i].position.x + 0.75 * anchor && hero.xPos >= allDoor[i].position.x - 0.75 * anchor && hero.yPos <= allDoor[i].position.y + 2.5 * anchor && hero.yPos >= allDoor[i].position.y - 2.5 *anchor){
+        allDoor[i].remove()
     }
 }
+*/
 
-
+//console.log(hero.leftFootX)
+//console.log(hero.leftFootY)
 
 if(hero.xPos < elevatorCarriage1.position.x + 200 && hero.xPos > elevatorCarriage1.position.x - 200 ){  //These were going to be buttons but I ran out of time
     textSize(30);
@@ -374,10 +396,8 @@ if(hero.xPos < elevatorCarriage2.position.x + 200 && hero.xPos > elevatorCarriag
 
 if(keyDown(74) && elevatorCarriage1.position.y < 39 * anchor){ // If on bottom floors, the elevator wont try to go any further
     elevatorCarriage1.setSpeed(5,90);                            // Go Down  "j"
-    hero.elevatorDown(5)
     }else if(keyDown(85) && elevatorCarriage1.position.y > 17 * anchor){  // If on top floors, the elevator wont try to go any further
         elevatorCarriage1.setSpeed(5,270);                           // Go Up    "u"
-        hero.elevatorUp(5);
     }else if(elevatorCarriage1.position.y == 21.5*anchor){  // Stop at 4th floors
         elevatorCarriage1.setSpeed(0,90);
     }else if(elevatorCarriage1.position.y == 27.5*anchor){  // Stop at 3rd floors
