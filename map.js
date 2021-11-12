@@ -172,7 +172,7 @@ for(let i = 0 ; i < mapLayoutTxt.length ; i++){    // takes strings from txt fil
     }
 
 anchor = spriteHeight;
-
+/*
 heroLeftFoot = createSprite(hero.leftFootX , hero.leftFootY)
 heroLeftFoot.setCollider("rectangle", 0, 0, 0.2 * spriteWidth, 0.1 * spriteHeight)
 heroLeftFoot.debug = true
@@ -180,9 +180,10 @@ heroLeftFoot.debug = true
 heroRightFoot = createSprite(hero.rightFootX , hero.rightFootY)
 heroRightFoot.setCollider("rectangle", 0, 0, 0.2 * spriteWidth, 0.1 * spriteHeight)
 heroRightFoot.debug = true
-
+*/
 bob = createSprite(5 * spriteWidth , 17 * spriteHeight)
 bob.addImage(bobImage)
+bobImage.resize(spriteWidth , 2 *spriteHeight)
 
 }
 
@@ -200,25 +201,12 @@ let distY2 = 2000;  // The camera will draw the sprites up to 1600 px to the bel
 
 camera.zoom = 0.8;                   // Use this to set the zoomcamera.position.x = hero.xPos; // This line and the next line set the camera to hero position
 
+camera.position.x = bob.position.x  
+camera.position.y = bob.position.y - height *0.27
 
 //camera.position.x = hero.xPos  
 //camera.position.y = hero.yPos - height *0.27
 
-camera.position.x = bob.position.x  
-camera.position.y = bob.position.y - anchor
-
-if(keyDown(65)){     // a key = left
-    bob.position.x -= 5
-}
-if(keyDown(68)){     // d key = right
-    bob.position.x += 5
-}
-if(keyDown(87)){     // w key = up
-    bob.position.y -= 5
-}
-if(keyDown(83)){     // s key = down
-    bob.position.y += 5
-}
 
 // These if statements check whether each of the spite groups are within the desired draw distance then draw them if they are
 
@@ -361,10 +349,26 @@ drawSprite(elevatorCarriage1);
 drawSprite(elevatorCarriage2);
 
 drawSprite(bob)
+
+if(keyDown(87)){ // w = up
+bob.setSpeed(20,270)
+}else if(keyDown(83)){ // s = down
+bob.setSpeed(20,90)
+}else if(keyDown(65)){ // w = left
+bob.setSpeed(20,180)
+}else if(keyDown(68)){ // w = right
+bob.setSpeed(20,0)
+}else{
+bob.setSpeed(0,0)
+}
+
+
 //hero.draw()
 
-drawSprite(heroLeftFoot)
-drawSprite(heroRightFoot)
+//drawSprite(heroLeftFoot)
+//drawSprite(heroRightFoot)
+
+
 
 /*
 for(i = 0 ; i < allDoor.length ; i++){
@@ -372,7 +376,7 @@ for(i = 0 ; i < allDoor.length ; i++){
         allDoor[i].remove()
     }
 }
-*/
+
 
 //console.log(hero.leftFootX)
 //console.log(hero.leftFootY)
@@ -391,8 +395,28 @@ if(hero.xPos < elevatorCarriage2.position.x + 200 && hero.xPos > elevatorCarriag
     text("Up = i button" , elevatorCarriage2.position.x-120 , elevatorCarriage2.position.y - 260);
     text("Down = k button", elevatorCarriage2.position.x-120 , elevatorCarriage2.position.y - 230);
 }
+*/
 
+for(i = 0 ; i < allDoor.length ; i++){
+    if(bob.position.x <= allDoor[i].position.x + 0.75 * anchor && bob.position.x >= allDoor[i].position.x - 0.75 * anchor && bob.position.y <= allDoor[i].position.y + 2.5 * anchor && bob.position.y >= allDoor[i].position.y - 2.5 *anchor){
+        allDoor[i].remove()
+    }
+}
 
+if(bob.position.x < elevatorCarriage1.position.x + 200 && bob.position.x > elevatorCarriage1.position.x - 200 ){  //These were going to be buttons but I ran out of time
+    textSize(30);
+    stroke('yellow');
+    fill('yellow');
+    text("Up = u button" , elevatorCarriage1.position.x-anchor , elevatorCarriage1.position.y - 260);
+    text("Down = j button", elevatorCarriage1.position.x-anchor , elevatorCarriage1.position.y - 230);
+}
+if(bob.position.x < elevatorCarriage2.position.x + 200 && bob.position.x > elevatorCarriage2.position.x - 200 ){  //These were going to be buttons but I ran out of time
+    textSize(30);
+    stroke('yellow');
+    fill('yellow');
+    text("Up = i button" , elevatorCarriage2.position.x-120 , elevatorCarriage2.position.y - 260);
+    text("Down = k button", elevatorCarriage2.position.x-120 , elevatorCarriage2.position.y - 230);
+}
 
 if(keyDown(74) && elevatorCarriage1.position.y < 39 * anchor){ // If on bottom floors, the elevator wont try to go any further
     elevatorCarriage1.setSpeed(5,90);                            // Go Down  "j"

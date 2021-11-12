@@ -65,7 +65,7 @@ function preLoadImages(){
   elevatorCarriageImage = loadImage('images/elevatorCarriage.png')
   doorImage = loadImage('images/door.png')
   doorLImage = loadImage('images/door.png')
-  bobImage = load('images/bob.png')
+  bobImage = loadImage('images/bob.png')
 
   //heroImage = loadImage('images/hero.png');              // Temporary hero
 }
