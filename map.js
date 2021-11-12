@@ -74,7 +74,7 @@ for(let i = 0 ; i < mapLayoutTxt.length ; i++){    // takes strings from txt fil
                 elevatorCarriageImage.resize(2 * spriteWidth , 5 * spriteHeight)
                 elevatorCarriage1.setCollider("rectangle", 0, 2.45 * spriteHeight, 2 * spriteWidth, 0.1 * spriteHeight)
 
-                elevatorCarriage2 = createSprite(55 * spriteWidth , spriteHeight /2 + 15 * spriteHeight)
+                elevatorCarriage2 = createSprite(55 * spriteWidth , spriteHeight /2 + 15.15 * spriteHeight)
                 elevatorCarriage2.addImage(elevatorCarriageImage)
                 elevatorCarriageImage.resize(2 * spriteWidth , 5 * spriteHeight)
                 elevatorCarriage2.setCollider("rectangle", 0, 2.45 * spriteHeight, 2 * spriteWidth, 0.1 * spriteHeight)
@@ -342,6 +342,7 @@ drawSprite(elevatorCarriage1);
 drawSprite(elevatorCarriage2);
 
 drawSprite(heroLeftFoot)
+drawSprite(heroRightFoot)
 hero.draw()
 
 
