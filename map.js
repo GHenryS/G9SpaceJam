@@ -392,6 +392,8 @@ if(hero.xPos < elevatorCarriage1.position.x + 200 && hero.xPos > elevatorCarriag
     fill('yellow');
     text("Up = u button" , elevatorCarriage1.position.x-anchor , elevatorCarriage1.position.y - 260);
     text("Down = j button", elevatorCarriage1.position.x-anchor , elevatorCarriage1.position.y - 230);
+    textSize(20)
+    text(" Brakes = SpaceBar", elevatorCarriage1.position.x - anchor * 0.8 , elevatorCarriage1.position.y + 295);
 }
 if(hero.xPos < elevatorCarriage2.position.x + 200 && hero.xPos > elevatorCarriage2.position.x - 200 ){  //These were going to be buttons but I ran out of time
     textSize(30);
@@ -399,6 +401,8 @@ if(hero.xPos < elevatorCarriage2.position.x + 200 && hero.xPos > elevatorCarriag
     fill('yellow');
     text("Up = i button" , elevatorCarriage2.position.x-120 , elevatorCarriage2.position.y - 260);
     text("Down = k button", elevatorCarriage2.position.x-120 , elevatorCarriage2.position.y - 230);
+    textSize(20)
+    text(" Brakes = SpaceBar", elevatorCarriage2.position.x-anchor , elevatorCarriage2.position.y + 230);
 }
 
 /*
@@ -423,23 +427,28 @@ if(bob.position.x < elevatorCarriage2.position.x + 200 && bob.position.x > eleva
     text("Down = k button", elevatorCarriage2.position.x-120 , elevatorCarriage2.position.y - 230);
 }
 */
-if(keyIsDown(74) && elevatorCarriage1.position.y < 39 * anchor){ // If on bottom floors, the elevator wont try to go any further
-    elevatorCarriage1.setSpeed(5,90);                            // Go Down  "j"
-    }else if(keyIsDown(85) && elevatorCarriage1.position.y > 17 * anchor){  // If on top floors, the elevator wont try to go any further
-        elevatorCarriage1.setSpeed(5,270);                           // Go Up    "u"    
-    }else if(elevatorCarriage1.position.y === 21.5*anchor){  // Stop at 4th floors
+if(keyDown(74)){ // If on bottom floors, the elevator wont try to go any further
+    elevatorCarriage1.setSpeed(5,90);    // Go Down  "j"
+    }else if(elevatorCarriage1.position.y > 39 * anchor + anchor / 2){   // If on top floors, the elevator wont try to go any further
         elevatorCarriage1.setSpeed(0,90);
-    }else if(elevatorCarriage1.position.y === 27.5*anchor){  // Stop at 3rd floors
+    }else if(elevatorCarriage1.position.y < 15 * anchor + anchor / 2){   // If on top floors, the elevator wont try to go any further
         elevatorCarriage1.setSpeed(0,90);
-    }else if(elevatorCarriage1.position.y === 33.5*anchor){  // Stop at 2nd floors
+    }else if(keyDown(85)){                  // Go Up    "u" 
+        elevatorCarriage1.setSpeed(5,270);                              
+    }else if(elevatorCarriage1.position.y == 21.5*anchor){  // Stop at 4th floors+
+        console.log("STOP!")
         elevatorCarriage1.setSpeed(0,90);
-    }else if(elevatorCarriage1.collide(allFloor)){                   // Stops at Bottom and Top floors
+    }else if(elevatorCarriage1.position.y == 27.5*anchor){  // Stop at 3rd floors
+        elevatorCarriage1.setSpeed(0,90);
+    }else if(elevatorCarriage1.position.y == 33.5*anchor){  // Stop at 2nd floors
+        elevatorCarriage1.setSpeed(0,90);
+    }else if(elevatorCarriage1.collide(allFloor)){       // If on bottom floors, the elevator wont try to go any further
         elevatorCarriage1.setSpeed(0,0);
-}else if(keyDown(32)){
-    elevatorCarriage1.setSpeed(0,0)
+    }else if(keyDown(32)){                              // Emergency Elevator Stop
+        elevatorCarriage1.setSpeed(0,0)
 }
 console.log(elevatorCarriage1.position.y)
-
+console.log(21.5 * anchor)
 if(keyDown(75) && elevatorCarriage2.position.y < 33 * anchor){ // If on bottom floors, the elevator wont try to go any further    
     elevatorCarriage2.setSpeed(5,90);                            // Go Down  "i"
     }else if(keyDown(73)&& elevatorCarriage2.position.y > 17 * anchor){  // If on top floors, the elevator wont try to go any further
