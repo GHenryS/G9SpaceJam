@@ -168,6 +168,11 @@ for(let i = 0 ; i < mapLayoutTxt.length ; i++){    // takes strings from txt fil
                 texture3Image.resize(17 * spriteWidth , 5 * spriteHeight);
                 allTexture10.add(texture10);       
             }
+            if(maparray[j][i] == '18'){
+                vent = createSprite(spriteWidth / 2 + i * spriteWidth , spriteHeight /2 +j * spriteHeight);
+                vent.addImage(texture3Image);
+                ventImage.resize( spriteWidth , spriteHeight);
+            }
         }
     }
 
@@ -344,7 +349,7 @@ for(i=0 ; i<allTexture10.length ; i++){
         }
     }
 }
-
+drawSprite(vent)
 drawSprite(elevatorCarriage1);
 drawSprite(elevatorCarriage2);
 

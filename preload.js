@@ -66,6 +66,7 @@ function preLoadImages(){
   doorImage = loadImage('images/door.png')
   doorLImage = loadImage('images/door.png')
   bobImage = loadImage('images/bob.png')
+  ventImage = loadImage('omages/airduct_grate_02b.png')
 
   //heroImage = loadImage('images/hero.png');              // Temporary hero
 }
