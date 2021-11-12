@@ -170,7 +170,7 @@ for(let i = 0 ; i < mapLayoutTxt.length ; i++){    // takes strings from txt fil
             }
             if(maparray[j][i] == '18'){
                 vent = createSprite(spriteWidth / 2 + i * spriteWidth , spriteHeight /2 +j * spriteHeight);
-                vent.addImage(texture3Image);
+                vent.addImage(ventImage);
                 ventImage.resize( spriteWidth , spriteHeight);
             }
         }
@@ -196,8 +196,6 @@ bobImage.resize(spriteWidth , 2 *spriteHeight)
 
 function drawMap(){
 background(0,0,0)
-
-let doorState = "closed"
 
 let distX1 = -2500;  // The camera will draw the sprites up to 1600 px to the left of the hero
 let distX2 = 2500;  // The camera will draw the sprites up to 1600 px to the right of the hero
