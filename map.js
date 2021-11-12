@@ -175,7 +175,7 @@ for(let i = 0 ; i < mapLayoutTxt.length ; i++){    // takes strings from txt fil
                 ventImage.resize( spriteWidth , spriteHeight);
             }
             if(maparray[j][i] == '19'){
-                controlPanel = createSprite(spriteWidth / 2 + i * spriteWidth , spriteHeight /2 +j * spriteHeight);
+                controlPanel = createSprite( i * spriteWidth , j * spriteHeight);
                 controlPanel.addImage(controlPanelImage);
                 controlPanelImage.resize( 4 * spriteWidth , 2 * spriteHeight);
                 allControlPanel.add(controlPanel); 
