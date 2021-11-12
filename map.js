@@ -175,6 +175,10 @@ anchor = spriteHeight;
 heroLeftFoot = createSprite(hero.leftFootX , hero.leftFootY)
 heroLeftFoot.setCollider("rectangle", 0, 0, 0.2 * spriteWidth, 0.1 * spriteHeight)
 heroLeftFoot.debug = true
+
+heroRightFoot = createSprite(hero.rightFootX , hero.rightFootY)
+heroRightFoot.setCollider("rectangle", 0, 0, 0.2 * spriteWidth, 0.1 * spriteHeight)
+heroRightFoot.debug = true
 }
 
 // ------------------ FUNCTION TO DRAW MAP SCREEN ---------------------- //
