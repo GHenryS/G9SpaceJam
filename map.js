@@ -28,6 +28,7 @@ allTexture8 = new Group;
 allTexture9 = new Group;
 allTexture10 = new Group;
 allDoor = new Group;
+allControlPanel = new Group;
 
 for(let i = 0 ; i < mapLayoutTxt.length ; i++){    // takes strings from txt file and puts them into maparray array 
     maparray[i] = splitTokens(mapLayoutTxt[i] , '\t');
@@ -58,10 +59,10 @@ for(let i = 0 ; i < mapLayoutTxt.length ; i++){    // takes strings from txt fil
                 allLockedDoor.add(lockedDoor); 
                 
                 doorL = createSprite(spriteWidth / 2 + i * spriteWidth , spriteHeight /2 +j * spriteHeight);
-                doorL.addImage(doorLImage)
-                doorLImage.resize(spriteWidth * 0.8 , 5 * spriteHeight)
-                doorL.setDefaultCollider()
-                allDoor.add(doorL)
+                doorL.addImage(doorLImage);
+                doorLImage.resize(spriteWidth * 0.8 , 5 * spriteHeight);
+                doorL.setDefaultCollider();
+                allDoor.add(doorL);
             }            
             if(maparray[j][i] == '4'){
                 elevator = createSprite(spriteWidth / 2 + i * spriteWidth , spriteHeight / 2 + j * spriteHeight);
@@ -172,6 +173,12 @@ for(let i = 0 ; i < mapLayoutTxt.length ; i++){    // takes strings from txt fil
                 vent = createSprite(spriteWidth / 2 + i * spriteWidth , spriteHeight /2 +j * spriteHeight);
                 vent.addImage(ventImage);
                 ventImage.resize( spriteWidth , spriteHeight);
+            }
+            if(maparray[j][i] == '19'){
+                controlPanel = createSprite(spriteWidth / 2 + i * spriteWidth , spriteHeight /2 +j * spriteHeight);
+                controlPanel.addImage(controlPanelImage);
+                controlPanelImage.resize( 4 * spriteWidth , 2 * spriteHeight);
+                allControlPanel.add(controlPanel); 
             }
         }
     }
@@ -344,6 +351,13 @@ for(i=0 ; i<allTexture10.length ; i++){
     if(allTexture10[i].position.x > camera.position.x + distX1 && allTexture10[i].position.x < camera.position.x + distX2){
         if(allTexture10[i].position.y > camera.position.y + distY1 && allTexture10[i].position.y < camera.position.y + distY2){
             drawSprite(allTexture10[i]);
+        }
+    }
+}
+for(i=0 ; i<allControlPanel.length ; i++){
+    if(allControlPanel[i].position.x > camera.position.x + distX1 && allControlPanel[i].position.x < camera.position.x + distX2){
+        if(allControlPanel[i].position.y > camera.position.y + distY1 && allControlPanel[i].position.y < camera.position.y + distY2){
+            drawSprite(allControlPanel[i]);
         }
     }
 }
