@@ -8,13 +8,13 @@ function setGameState(){
         mainMenu();                 //  switch to splash page
     }
     if( gameState == "settings"){
-        gameSettings();                 //  switch to leaderboard page
+        //gameSettings();                 //  switch to leaderboard page
     }    
     if( gameState == "leaderboard"){
-        leaderBoard();              //  switch to leaderboard page
+        //leaderBoard();              //  switch to leaderboard page
     }  
     if( gameState == "information"){
-        information();              //  switch to information page
+        //information();              //  switch to information page
     }  
     if( gameState == "resetgame"){
         // resetGame();             //  switch to resetGame page
