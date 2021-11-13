@@ -30,6 +30,7 @@ allTexture10 = new Group;
 allDoor = new Group;
 allControlPanel = new Group;
 allPrisonBed = new Group;
+allPrisonDesk = new Group;
 
 for(let i = 0 ; i < mapLayoutTxt.length ; i++){    // takes strings from txt file and puts them into maparray array 
     maparray[i] = splitTokens(mapLayoutTxt[i] , '\t');
@@ -182,10 +183,16 @@ for(let i = 0 ; i < mapLayoutTxt.length ; i++){    // takes strings from txt fil
                 allControlPanel.add(controlPanel); 
             }
             if(maparray[j][i] == '20'){
-                prisonBed = createSprite( i * spriteWidth , j * spriteHeight);
+                prisonBed = createSprite( i * spriteWidth , j * spriteHeight + spriteHeight);
                 prisonBed.addImage(prisonBedImage);
-                prisonBedImage.resize( 3 * spriteWidth , 2 * spriteHeight);
+                prisonBedImage.resize( 4 * spriteWidth , 2 * spriteHeight);
                 allPrisonBed.add(prisonBed); 
+            }
+            if(maparray[j][i] == '21'){
+                prisondesk = createSprite( i * spriteWidth , j * spriteHeight + spriteHeight);
+                prisondesk.addImage(prisonDeskImage);
+                prisonDeskImage.resize( 4 * spriteWidth , 2 * spriteHeight);
+                allPrisonDesk.add(prisondesk); 
             }
         }
     }
@@ -372,6 +379,13 @@ for(i=0 ; i<allPrisonBed.length ; i++){
     if(allPrisonBed[i].position.x > camera.position.x + distX1 && allPrisonBed[i].position.x < camera.position.x + distX2){
         if(allPrisonBed[i].position.y > camera.position.y + distY1 && allPrisonBed[i].position.y < camera.position.y + distY2){
             drawSprite(allPrisonBed[i]);
+        }
+    }
+}
+for(i=0 ; i<allPrisonDesk.length ; i++){
+    if(allPrisonDesk[i].position.x > camera.position.x + distX1 && allPrisonDesk[i].position.x < camera.position.x + distX2){
+        if(allPrisonDesk[i].position.y > camera.position.y + distY1 && allPrisonDesk[i].position.y < camera.position.y + distY2){
+            drawSprite(allPrisonDesk[i]);
         }
     }
 }
