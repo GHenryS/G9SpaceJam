@@ -138,10 +138,12 @@ function addStars(stars, leftBoundary, topBoundary, rightBoundary, bottomBoundar
     if(starArray[0][0] < 0){
         starArray.shift();
     }
+    /*
     // move stars
     for(i = 0; i < starArray.length; i++){
         starArray[i][2] = starArray[i][2] + 0.05;
     }
+    */
     // draw stars   
     for(i = 0; i < starArray.length; i++){
     image(star, starArray[i][1] * scale, starArray[i][2] * scale, starArray[i][3] * scale, starArray[i][3] * scale);

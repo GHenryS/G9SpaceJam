@@ -18,15 +18,16 @@ function mainMenu(){
     let infoButtonY             =   0.55;
     let resetButtonY            =   0.65;
     let playGameButtonY         =   0.75;
-    
+
+    // add stars to the background
+    addStars(95, 0, 0 , 1, 1);
     // draw the top banner
     colourBannerTop.drawBanner();
     // make the top banner colours float
     colourBannerTop.floatColours();
     // add header text
     pageHeader("MAIN MENU", 580, 90);
-    // add stars to the background
-    addStars(70, 0.05, 0.2 , 0.95, 1);
+    
     // draw the bottom banner
     colourBannerBottom.drawBanner();
     // make the bottom banner colours float

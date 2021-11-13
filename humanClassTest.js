@@ -5,8 +5,8 @@ let mainCharacter;              // declare variable to represent the main
 
 function setup(){
 
-    createCanvas(300,300);
-    mainCharacter               =   new HumanObject(150, 150, 2.5); // create the mainCharacter using the HumanObject class
+    createCanvas(1000,300);
+    mainCharacter               =   new HumanObject(250, 200, 1.5); // create the mainCharacter using the HumanObject class
 }
 
 function draw(){
