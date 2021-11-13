@@ -83,7 +83,9 @@ function () {
     this.stopToRight1 = false;
     this.stopToRight2 = false;
     this.turnFrontFromLeft = false;
-    this.turnFrontFromRight = false; // THE NEXT SECTION ASSIGNS DIMENTIONS TO THE BODY PARTS
+    this.turnFrontFromRight = false;
+    this.kickToLeft = false;
+    this.kickToRight = false; // THE NEXT SECTION ASSIGNS DIMENTIONS TO THE BODY PARTS
     // and adds the dimentions to the dimention array
 
     this.rightToeFootDist = 4 * this.size;
@@ -98,11 +100,11 @@ function () {
     this.rightUpperArmDist = 15 * this.size;
     this.leftLowerArmDist = 20 * this.size;
     this.leftUpperArmDist = 15 * this.size;
-    this.spineToShoulder = 27 * this.size;
-    this.neck = 7 * this.size;
-    this.head = 9 * this.size;
-    this.hipWidth = 9 * this.size;
-    this.shoulderWidth = 26 * this.size; // load the variable into an array so that they can be used outside if the constructor       
+    this.spineToShoulder = 30 * this.size;
+    this.neck = 11 * this.size;
+    this.head = 10 * this.size;
+    this.hipWidth = 11 * this.size;
+    this.shoulderWidth = 28 * this.size; // load the variable into an array so that they can be used outside if the constructor       
 
     var tempArray = [];
     tempArray = [this.rightToeFootDist, this.rightFootFootDist, this.rightLowerLegDist, this.rightUpperLegDist, this.leftToeFootDist, this.leftFootFootDist, this.leftLowerLegDist, this.leftUpperLegDist, this.rightLowerArmDist, this.rightUpperArmDist, this.leftLowerArmDist, this.leftUpperArmDist, this.spineToShoulder, this.neck, this.head, this.shoulderWidth, this.hipWidth];
@@ -275,6 +277,8 @@ function () {
     // 4 FACING RIGHT
     // 5 RIGHT - LEFT FOOT FORWARD
     // 6 RIGHT - RIGHT FOOT FORWARD
+    // 7 KICK - TO LEFT
+    // 7 KICK - TO RIGHT
 
     var C3 = round(1.5 * PI, 4);
     var C2 = round(PI, 2);
@@ -294,6 +298,10 @@ function () {
 
     this.aniInputArray.push([C3, 4.73, 4.82, 1.14, 0.84, 2.3, 1.74, 2.3, 2.45, 1.14, 0.14, 0.6, 1.24, 1.14, 0.14]); // 6
 
+    this.aniInputArray.push([C3, 4.73, 5.0, 0.9, 1.8, 1.6, 2.3, 4.3, 3.8, 4.2, 4.4, 1.5, 1.0, 2.5, 3.0]); // 7
+
+    this.aniInputArray.push([C3, 4.73, 5.0, 0.9, 1.8, 1.6, 2.3, 1.6, 2.2, 0.9, 0.1, 5.0, 5.6, 4.9, 4.8]); // 8
+
     this.pivitArray = this.aniInputArray[0]; //............ ANIMATION ................//
 
     this.moveLinkArray = [[1, 0], // 0 - turn from front to left  
@@ -309,24 +317,10 @@ function () {
     [4, 5], // 10 - stop RIGHT - from RIGHT leg being forward
     [4, 6], // 11 - stop RIGHT - from LEFT leg being forward
     [0, 1], // 12 - turn from facing LEFT to FRONT
-    [0, 4] // 13 - turn from facing RIGHT to FRONT
-    ];
-    /*
-            // construct the aniArray - first run
-            for(let i = 0; i < this.moveLinkArray.length; i++){
-                let arrayLine = this.aniInputArray[0];
-                let tempArray       =   [];
-                let piv             =   this.moveLinkArray[i][1];
-                let val             =   this.aniInputArray[piv];
-                this.aniStartArray.push(val)
-                for( let u = 0; u < arrayLine.length; u++){
-                    tempArray[u] = (this.aniInputArray[this.moveLinkArray[i][0]][u] - this.aniInputArray[this.moveLinkArray[i][1]][u]);
-                }
-                this.aniArray.push(tempArray)          
-            } 
-            this.pivitArray.push(this.aniInputArray[0])
-    */
-    // THIS SECTIONS SETSUP THE INITIAL ROTATION DATA IN THE PIVIT-ARRAY
+    [0, 4], // 13 - turn from facing RIGHT to FRONT
+    [7, 0], // 14 - kick LEFT from facing LEFT
+    [8, 4] // 15 - kick RIGHT from facing RIGHT
+    ]; // THIS SECTIONS SETSUP THE INITIAL ROTATION DATA IN THE PIVIT-ARRAY
     // add pivitpoints to the pivitArray 
     //this.pivitArray.push(this.aniInputArray[0]);
     // add a second line to the pivitArray (this is only a place holder to prevent the first line from being deleted
@@ -380,20 +374,38 @@ function () {
       if (this.objectState == "front") {
         if (keyIsDown(this.leftKey)) {
           this.objectState = "faceleft";
+          this.playdir = "left";
         }
 
         if (keyIsDown(this.rightKey)) {
           this.objectState = "faceright";
+          this.playdir = "right";
+        }
+      }
+
+      console.log(this.playdir);
+
+      if (keyIsPressed == true) {
+        if (keyCode == this.kickKey && this.playdir == "left") {
+          this.kickLeft();
+        }
+      }
+
+      if (keyIsPressed == true) {
+        if (keyCode == this.kickKey && this.playdir == "right") {
+          this.kickRight();
         }
       } // going right........................
 
 
       if (this.objectState == "faceright") {
         if (keyIsDown(this.rightKey)) {
+          this.playdir = "right";
           this.firstStepToRight();
         }
 
         if (keyIsDown(this.leftKey)) {
+          this.playdir = "left";
           this.turnToFrontFromRight();
         }
       } // first step - left foot forward
@@ -421,22 +433,14 @@ function () {
 
       if (this.objectState == "stopright2") {
         this.stopFaceRight2();
-      } // turn to front from right
-
-
-      if (this.objectState == "frontfromright") {
-        this.turnToFrontFromRight();
       } // going left............................
 
 
-      console.log(this.turnLeftInMotion);
-
       if (this.objectState == "faceleft") {
-        // if the turn to left animation is complete and right key is pressed turn to front
         if (keyIsDown(this.rightKey)) {
+          this.playdir = "left";
           this.turnToFrontFromLeft();
-        } // if the turn to left animation is complete and left key is pressed take first step to left
-
+        }
 
         if (keyIsDown(this.leftKey)) {
           this.firstStepToleft();
@@ -458,7 +462,11 @@ function () {
 
       if (this.objectState == "stopleft1") {
         this.stopFaceLeft1();
-      } // right foot forward
+      }
+
+      if (this.objectState == "stopleft2") {
+        this.stopFaceLeft2();
+      } // action
 
 
       if (this.objectState == "stopleft2") {
@@ -877,6 +885,46 @@ function () {
         this.objectState = "faceright";
         this.stopToRight2 = false;
       }
+    }
+  }, {
+    key: "kickLeft",
+    value: function kickLeft() {
+      this.step = this.step - this.change; // check if the routine is run for the first time
+
+      if (this.kickToLeft == false) {
+        this.step = 1;
+        this.kickToLeft = true;
+      } // set this method to true to make it auto run until the end of the routine 
+
+
+      this.updatePivitArray(7, 0);
+      this.callForAnimation();
+      this.callForAnimation();
+
+      if (this.step < 0) {
+        this.objectState = "faceleft";
+        this.kickToLeft = false;
+      }
+    }
+  }, {
+    key: "kickRight",
+    value: function kickRight() {
+      this.step = this.step - this.change; // check if the routine is run for the first time
+
+      if (this.kickToRight == false) {
+        this.step = 1;
+        this.kickToRight = true;
+      } // set this method to true to make it auto run until the end of the routine 
+
+
+      this.updatePivitArray(8, 4);
+      this.callForAnimation();
+      this.callForAnimation();
+
+      if (this.step < 0) {
+        this.objectState = "faceright";
+        this.kickToRight = false;
+      }
     } ////////////////////////////////////// SUB METHODS ///////////////////////////////////////////////////////
 
   }, {
@@ -1063,14 +1111,14 @@ function () {
       this.toeSize = 2 * this.size;
       this.footSize = 3 * this.size;
       this.ankleSize = 5 * this.size;
-      this.kneeSize = 7.5 * this.size;
-      this.hipSize = 9 * this.size;
-      this.shoulderSize = 7.5 * this.size;
-      this.chestSize = 12.5 * this.size;
-      this.neckSize = 5 * this.size;
-      this.elbowSize = 5 * this.size;
-      this.wristSize = 3.5 * this.size;
-      this.headSize = 15 * this.size; // ellipse colours
+      this.kneeSize = 10 * this.size;
+      this.hipSize = 12 * this.size;
+      this.shoulderSize = 10 * this.size;
+      this.chestSize = 18 * this.size;
+      this.neckSize = 7 * this.size;
+      this.elbowSize = 7 * this.size;
+      this.wristSize = 4 * this.size;
+      this.headSize = 18 * this.size; // ellipse colours
 
       this.toeRed = 255;
       this.toeGrn = 203;
@@ -1532,7 +1580,7 @@ function () {
       var QX4;
       var QY4;
       this.chestXPos = this.objectArray[0][9] + this.dimensionArray[0][12] * cos(this.pivitArray[2]);
-      this.chestYPos = this.objectArray[1][9] + (this.dimensionArray[0][12] - 10 * this.size) * sin(this.pivitArray[2]); // lower torso
+      this.chestYPos = this.objectArray[1][9] + (this.dimensionArray[0][12] - 0 * this.size) * sin(this.pivitArray[2]); // lower torso
 
       QX1 = this.chestXPos + this.chestSize / 2;
       QY1 = this.chestYPos, QX2 = this.objectArray[0][10] + this.hipSize / 2;
@@ -1601,6 +1649,22 @@ function () {
 
       fill(this.faceRed * this.shade, this.faceGrn * this.shade, this.faceBlu * this.shade);
       ellipse(this.objectArray[0][0], this.objectArray[1][0], this.headSize, this.headSize * 1.2); // head   
+
+      strokeWeight(4 * this.size);
+      stroke(0, 0, 255);
+      line(this.objectArray[0][0] - 11 * this.size, this.objectArray[1][0] - 5 * this.size, this.objectArray[0][0] + 11 * this.size, this.objectArray[1][0] - 5 * this.size);
+      QX1 = this.objectArray[0][0] - 9 * this.size;
+      QY1 = this.objectArray[1][0] - 5 * this.size;
+      QX2 = this.objectArray[0][0] - 7 * this.size;
+      QY2 = this.objectArray[1][0] - 15 * this.size;
+      QX3 = this.objectArray[0][0] + 7 * this.size;
+      QY3 = this.objectArray[1][0] - 15 * this.size;
+      QX4 = this.objectArray[0][0] + 9 * this.size;
+      QY4 = this.objectArray[1][0] - 5 * this.size;
+      stroke(0, 0, 255);
+      fill(0.100, 255);
+      strokeWeight(0.5 * this.size);
+      quad(QX1, QY1, QX2, QY2, QX3, QY3, QX4, QY4);
     }
   }, {
     key: "moveObjectToRight",
