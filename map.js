@@ -207,7 +207,7 @@ heroRightFoot = createSprite(hero.rightFootX , hero.rightFootY)
 heroRightFoot.setCollider("rectangle", 0, 0, 0.2 * spriteWidth, 0.1 * spriteHeight)
 heroRightFoot.debug = true
 */
-
+noSmooth()
 }
 
 // ------------------ FUNCTION TO DRAW MAP SCREEN ---------------------- //
@@ -398,14 +398,14 @@ if(elevatorCarriage2.position.x > camera.position.x + distX1 && elevatorCarriage
         drawSprite(elevatorCarriage2);
     }
 }
-noSmooth()
+
 
 console.log(robots)
 console.log(ghosts)
 
 drawSprites()    //Draws Evans Sprites
 
-//drawSprite(ghostSprite)
+drawSprite(ghostSprite)
 //drawSprite(robotSprite)
 
 hero.draw()
