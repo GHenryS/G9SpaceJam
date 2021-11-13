@@ -29,6 +29,7 @@ allTexture9 = new Group;
 allTexture10 = new Group;
 allDoor = new Group;
 allControlPanel = new Group;
+allPrisonBed = new Group;
 
 for(let i = 0 ; i < mapLayoutTxt.length ; i++){    // takes strings from txt file and puts them into maparray array 
     maparray[i] = splitTokens(mapLayoutTxt[i] , '\t');
@@ -179,6 +180,12 @@ for(let i = 0 ; i < mapLayoutTxt.length ; i++){    // takes strings from txt fil
                 controlPanel.addImage(controlPanelImage);
                 controlPanelImage.resize( 4 * spriteWidth , 2 * spriteHeight);
                 allControlPanel.add(controlPanel); 
+            }
+            if(maparray[j][i] == '20'){
+                prisonBed = createSprite( i * spriteWidth , j * spriteHeight);
+                prisonBed.addImage(prisonBedImage);
+                prisonBedImage.resize( 3 * spriteWidth , 2 * spriteHeight);
+                allPrisonBed.add(prisonBed); 
             }
         }
     }
@@ -358,6 +365,13 @@ for(i=0 ; i<allControlPanel.length ; i++){
     if(allControlPanel[i].position.x > camera.position.x + distX1 && allControlPanel[i].position.x < camera.position.x + distX2){
         if(allControlPanel[i].position.y > camera.position.y + distY1 && allControlPanel[i].position.y < camera.position.y + distY2){
             drawSprite(allControlPanel[i]);
+        }
+    }
+}
+for(i=0 ; i<allPrisonBed.length ; i++){
+    if(allPrisonBed[i].position.x > camera.position.x + distX1 && allPrisonBed[i].position.x < camera.position.x + distX2){
+        if(allPrisonBed[i].position.y > camera.position.y + distY1 && allPrisonBed[i].position.y < camera.position.y + distY2){
+            drawSprite(allPrisonBed[i]);
         }
     }
 }

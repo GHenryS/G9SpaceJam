@@ -69,6 +69,7 @@ function preLoadImages(){
   bobImage = loadImage('images/bob.png')
   ventImage = loadImage('images/airduct_grate_02b.png')
   controlPanelImage = loadImage('images/control.png')
+  prisonBedImage = loadImage('images/prisonbed.png')
   //heroImage = loadImage('images/hero.png');              // Temporary hero
  
 
