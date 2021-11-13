@@ -391,7 +391,11 @@ drawSprite(elevatorCarriage2);
 //console.log(hero)
 
 drawSprite(ghostSprite)
+
+console.log(ghostSprite)
+
 console.log(ghost1)
+
 hero.draw()
 
 if(keyDown(38)){ // up arrow = up
@@ -399,8 +403,6 @@ if(keyDown(38)){ // up arrow = up
 }else if(keyDown(40)){ // down arrow = down
     hero.elevatorDown(20)
 }
-
-
 
 for(i = 0 ; i < allDoor.length ; i++){
     if(hero.xPos <= allDoor[i].position.x + 0.75 * anchor && hero.xPos >= allDoor[i].position.x - 0.75 * anchor && hero.yPos <= allDoor[i].position.y + 2.5 * anchor && hero.yPos >= allDoor[i].position.y - 2.5 *anchor){
@@ -427,28 +429,6 @@ if(hero.xPos < elevatorCarriage2.position.x + 200 && hero.xPos > elevatorCarriag
     text(" Brakes = SpaceBar", elevatorCarriage2.position.x-anchor * 0.8 , elevatorCarriage2.position.y + 295);
 }
 
-/*
-for(i = 0 ; i < allDoor.length ; i++){
-    if(bob.position.x <= allDoor[i].position.x + 0.75 * anchor && bob.position.x >= allDoor[i].position.x - 0.75 * anchor && bob.position.y <= allDoor[i].position.y + 2.5 * anchor && bob.position.y >= allDoor[i].position.y - 2.5 *anchor){
-        allDoor[i].remove()
-    }
-}
-
-if(bob.position.x < elevatorCarriage1.position.x + 200 && bob.position.x > elevatorCarriage1.position.x - 200 ){  //These were going to be buttons but I ran out of time
-    textSize(30);
-    stroke('yellow');
-    fill('yellow');
-    text("Up = u button" , elevatorCarriage1.position.x-anchor , elevatorCarriage1.position.y - 260);
-    text("Down = j button", elevatorCarriage1.position.x-anchor , elevatorCarriage1.position.y - 230);
-}
-if(bob.position.x < elevatorCarriage2.position.x + 200 && bob.position.x > elevatorCarriage2.position.x - 200 ){  //These were going to be buttons but I ran out of time
-    textSize(30);
-    stroke('yellow');
-    fill('yellow');
-    text("Up = i button" , elevatorCarriage2.position.x-120 , elevatorCarriage2.position.y - 260);
-    text("Down = k button", elevatorCarriage2.position.x-120 , elevatorCarriage2.position.y - 230);
-}
-*/
 if(keyDown(74)){ // If on bottom floors, the elevator wont try to go any further
     elevatorCarriage1.setSpeed(5,90);    // Go Down  "j"
     }else if(elevatorCarriage1.position.y > 39 * anchor + anchor / 2){   // If on top floors, the elevator wont try to go any further
