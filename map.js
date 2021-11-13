@@ -398,7 +398,7 @@ if(elevatorCarriage2.position.x > camera.position.x + distX1 && elevatorCarriage
         drawSprite(elevatorCarriage2);
     }
 }
-
+noSmooth()
 
 console.log(robots)
 console.log(ghosts)
