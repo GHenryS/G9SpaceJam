@@ -29,6 +29,19 @@ let scale;
 let elevatorCarriage1;
 let elevatorCarriage2;
 let hero;
+let bob;
+
+// Ghost Global Variable
+let ghostAnimation;
+let ghostImage;
+let ghostSprite;
+let ghosts = [];
+
+// Robot Global Variables
+let robotAnimation;
+let robotImage;
+let robotSprite;
+let robots = [];
 
 // ------------------------ GLOBAL ARRAYS -------------------------------//
 // declare arrays which will be used over multiple functions
@@ -47,7 +60,7 @@ function preload(){
 // ------------------------ FUNCTION SETUP -------------------------------//
 function setup(){
   // all functions required as part of the setup is called using the runSetupFunction
-  runSetupFunctions()     // see globalfunctions.js   
+  runSetupFunctions()       // see globalfunctions.js   
   
 }
 // ------------------------ FUNCTION DRAW -------------------------------//
@@ -57,5 +70,5 @@ function draw() {
   // setGameState is the first function to run
   // the setGameState controles which page to show and which code to run for that page
 
-  setGameState();         // see navigation.js
+  setGameState();           // see navigation.js
 }

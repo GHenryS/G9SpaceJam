@@ -5,11 +5,13 @@ function preLoadAllImages(){
   
   // run all the function which require items to be preloaded
   preLoadButtons();
-  
   preLoadImages();
   // preLoadSound();
   preLoadFonts();
   preLoadStrings();
+  preLoadAllSpriteSheets();
+  preLoadAllAnimations();
+ 
 }
 
 // ------------------ FUNCTION TO PRELOAD GAME BUTTONS ---------------------- //
@@ -55,7 +57,7 @@ function preLoadImages(){
   texture1Image = loadImage('images/texture1.png');       //  Solitary Cell Back wall 
   texture2Image = loadImage('images/texture2.png');       //  Guard Post Back Wal
   texture3Image = loadImage('images/texture3.png');       //  Large Group Cell (bottom) Back Wall 
-  texture4Image = loadImage('images/texture4.png');       //  Main Prison Hall Back Wall 
+  texture4Image = loadImage('images/texture6.png');       //  Main Prison Hall Back Wall 
   texture5Image = loadImage('images/texture5.png');       //  Maintenance Room Back Wall
   texture6Image = loadImage('images/texture6.png');       //  Guard Break Room Back Wall
   texture7Image = loadImage('images/texture7.png');       //  Haunted Hallway Back Wall
@@ -65,8 +67,14 @@ function preLoadImages(){
   elevatorCarriageImage = loadImage('images/elevatorCarriage.png')
   doorImage = loadImage('images/door.png')
   doorLImage = loadImage('images/door.png')
-
+  bobImage = loadImage('images/bob.png')
+  ventImage = loadImage('images/airduct_grate_02b.png')
+  controlPanelImage = loadImage('images/control.png')
+  prisonBedImage = loadImage('images/prisonbed.png')
+  prisonDeskImage = loadImage('images/prisondesk.png')
   //heroImage = loadImage('images/hero.png');              // Temporary hero
+ 
+
 }
 
 // ------------------ FUNCTION TO PRELOAD SOUNDS    ---------------------- //
@@ -84,5 +92,16 @@ function preLoadFonts(){
 // ------------------ FUNCTION TO PRELOAD STRINGS FOR MAP    ---------------- //
 function preLoadStrings(){
   mapLayoutTxt = loadStrings('gameMap.txt');
+
+}
+// ------------------ FUNCTION TO PRELOAD ANIMATIONS    ---------------- //
+function preLoadAllAnimations(){
+  robotAnimation = loadAnimation(robotImage);
+  ghostAnimation = loadAnimation(ghostImage);
+}
+// ------------------ FUNCTION TO PRELOAD SPRITESHEETS    ---------------- //
+function preLoadAllSpriteSheets(){
+  robotImage = loadSpriteSheet('sprites/robot.png',78,71,10);
+  ghostImage = loadSpriteSheet('sprites/ghostimage.png', 172, 197, 1);
 
 }

@@ -6,56 +6,62 @@ class HumanObject{
         ///////////////// THE NEXT SECTION DECLARES AND SETS THE STARTING VARIABLES ////////////////////////
 
         // for this object the xPos and yPos would be at the bottom - centre of the character 
-        this.xPos                       =   xPos;
-        this.yPos                       =   yPos;
+        this.xPos                       =   xPos;       // set the initial Y position for the object
+        this.yPos                       =   yPos;       // set the initial Y position for the object
         this.size                       =   size;       // scale the character
 
         // if stationary is "yes" the character will stay in one postion on the screen - it is assumed the screen will move //
         // if stationary is "no" the character will accross the screen - it ias assumed the screen will be stationary
         this.stationary                 =   "yes"       // "no" or "yes"
         this.turn                       =   0;
-        this.speed                      =   1;
-        this.change                     =   0.03;       // determines the rateof animation
-        this.step                       =   1;
+        this.moveXrate                  =   1;
+        this.change                     =   0.1;       // determines the rate of animation
+        this.step                       =   1;          // DO NOT CHANGE THIS VALUE - counter to control animatioon
 
+        // SETTING STANDARD CONTROL KEYS
+        // can be changed from outside by asigning new values
+        this.leftKey                    =   37;
+        this.rightKey                   =   39;
+        this.upKey                      =   38;
+        this.downKey                    =   40;
+        this.punchKey                   =   68;
+        this.kickKey                    =   83;
+        this.shootKey                   =   65;
+
+        // SETTING THE INITIAL OBJECT STATE (LOOKING TO THE FRONT)
+        // can can be changed from outside by asigning new values
         // available object state "start", "turnleft", "walkleft", "stopleft"," turnright", "walkright", "stopright", "jumpup","jumpleft", "jumpright","climbUp", "climbdown"//  
         this.objectState                =   "front";
     
-                   
-        ///////////////// THE NEXT SECTION SETS THE INITIAL STATE OF ANIMATIONS //////////////////////////////
-
-
         ///////////////// THE NEXT SECTION DECLARES THE FUNCTIONS ARRAY /////////////////////////////////////        
 
         this.aniInputArray              =   new Array();    // Array to add the target angles to move limbs to
         this.moveLinkArray              =   new Array();    // Array to show to link current angles to target angles 
-
         this.objectArray                =   new Array();    // Main Array to store the objects X and Y co-ords
-        this.linkArray                  =   new Array();    // Array to link rotation points to each other
+        this.linkArray                  =   new Array();    // Array to link control points to each other
         this.dimensionArray             =   new Array();    // Array which contains the distances between linked points
         this.pivitArray                 =   new Array();    // Array containing the rotation steps used during animation
-        this.aniArray                   =   new Array();
+        this.aniArray                   =   new Array();    // Array used to ensure that animations have reached the exactm animation end points
 
+        // SEETING THE INITIAL INTERNAL STATES FOR EACH ANIMATION
         // this required to ensure that a movement is complete even if no buttom is pressed
         
         this.turnLeftInMotion           =   false;
         this.turnRightInMotion          =   false;
-
         this.stepToLeft1                =   false;
         this.stepToLeft2                =   false;
         this.stopToLeft1                =   false;
         this.stopToLeft2                =   false;
-
         this.stepToRight1               =   false;
         this.stepToRight2               =   false;
         this.stopToRight1               =   false;
         this.stopToRight2               =   false;
-
         this.turnFrontFromLeft          =   false;
         this.turnFrontFromRight         =   false;
           
 
-        ///////////////// THE NEXT SECTION ASSIGNS DIMENTIONS TO THE BODY PARTS //////////////////////////////
+        // THE NEXT SECTION ASSIGNS DIMENTIONS TO THE BODY PARTS
+        // and adds the dimentions to the dimention array
 
         this.rightToeFootDist            =   4 * this.size;
         this.rightFootFootDist           =   5 * this.size;
@@ -72,7 +78,7 @@ class HumanObject{
         this.spineToShoulder             =   27 * this.size;
         this.neck                        =   7 * this.size;
         this.head                        =   9 * this.size;  
-        this.hipWidth                    =   10 * this.size;
+        this.hipWidth                    =   9 * this.size;
         this.shoulderWidth               =   26 * this.size;
 
          // load the variable into an array so that they can be used outside if the constructor       
@@ -83,52 +89,7 @@ class HumanObject{
             this.leftLowerArmDist, this.leftUpperArmDist, this.spineToShoulder, this.neck, this.head, this.shoulderWidth, this.hipWidth];
         this.dimensionArray.push(tempArray);
 
-        // create and load the pivitpoint array with the start angle (radians)
-        tempArray           =   [];
 
-        tempArray[0]            =   3/4 * 2*PI   // this.neck to this.head
-        tempArray[1]            =   3/4 * 2*PI   // shoulder to this.neck
-        tempArray[2]            =   3/4 * 2*PI   // hip to shoulder
-        //...........................................................//
-        tempArray[3]            =   PI/2         // left shoulder to left elbow
-        tempArray[4]            =   PI/2         // left elbow to left wrist
-        //...........................................................//
-        tempArray[5]            =   PI/2         // right shoulder to right elbow
-        tempArray[6]            =   PI/2         // right elbow to right wrist
-        //...........................................................//
-        tempArray[7]            =   PI/2         // left ship to left knee
-        tempArray[8]            =   PI/2         // left knee to left ankle
-        tempArray[9]            =   PI/2         // left ankle to left foot
-        tempArray[10]           =   PI/2         // left foot to left toe
-        //...........................................................//
-        tempArray[11]           =   PI/2         // left ship to left knee
-        tempArray[12]           =   PI/2         // left knee to left ankle
-        tempArray[13]           =   PI/2         // left ankle to left foot
-        tempArray[14]           =   PI/2         // left foot to left toe
-        
-        // the start position is the same as the loking to front angles
-        this.aniInputArray.push(tempArray)
-        // add pivitpoints to the pivitArray 
-        this.pivitArray.push(tempArray);
-        // add a second line to the pivitArray (this is only a place holder to prevent the first line from being deleted
-        this.pivitArray.push(tempArray);
-        
-        // pivit Array //
-        // 0 - neck to head
-        // 1 - shoulder to this.neck
-        // 2 - hip to shoulder/this.neck
-        // 3 - left shoulder to left elbow
-        // 4 - left elbow to left wrist
-        // 5 - right shoulder to right elbow
-        // 6 - right elbow to right wrist
-        // 7 - left hip to left knee
-        // 8 - left knee to left ankle
-        // 9 - left ankle to left foot
-        // 10 - left foot to left toe
-        // 11 - right hip to right knee
-        // 12 - right knee to right ankle
-        // 13 - right ankle to right foot
-        // 14 - right foot to right toe
 
         ///////////////// THE NEXT SECTION DEFINES THE CO-ORDINATES OF THE PIVIT POINTS //////////////////////////////
         // spine, this.neck and this.head
@@ -168,7 +129,7 @@ class HumanObject{
         let leftToeY                    =   leftToeFootY;           // -2 allows for fresh underneath the toe
 
         // left arm
-        let rightShoulderX              =   xPos - this.shoulderWidth / 2; 
+        let rightShoulderX              =   spineShoulderX  - this.shoulderWidth / 2; 
         let rightShoulderY              =   spineShoulderY;
         let rightElbowX                 =   rightShoulderX;
         let rightElbowY                 =   rightShoulderY + this.rightUpperArmDist;
@@ -176,7 +137,7 @@ class HumanObject{
         let rightWristY                 =   rightElbowY + this.rightLowerArmDist;
 
         // right arm
-        let leftShoulderX               =   xPos + this.shoulderWidth / 2; 
+        let leftShoulderX               =   spineShoulderX  + this.shoulderWidth / 2; 
         let leftShoulderY               =   spineShoulderY;
         let leftElbowX                  =   leftShoulderX;
         let leftElbowY                  =   leftShoulderY + this.leftUpperArmDist;
@@ -295,14 +256,14 @@ class HumanObject{
         let C1          =   0.5 * PI; 
 
         //                        0     1     2     3     4     5     6     7     8     9    10    11    12    13     14
-        //                      [C3  , C3  , C3  , C1  , C1  , C1  , C1  , C1  , C1  , C1  , C1  , C1  , C1  , C1  , C1  ]   // 0
+        this.aniInputArray.push([C3  , C3  , C3  , C1  , C1  , C1  , C1  , C1  , C1  , C1  , C1  , C1  , C1  , C1  , C1  ]);   // 0
         this.aniInputArray.push([C3  , 4.7 , 4.6 , 1.3 , 2.2 , 1.3 , 2.2 , 1.8 , 1.5 , C2  , C2  , 1.8 , 1.5 , C2  , C2  ]); // 1
         this.aniInputArray.push([C3  , 4.7 , 4.6 , 1.0 , 1.4 , 2.2 , 2.3 , 2.3 , 1.9 , 2.5 , 3.0 , 1.0 , 0.9 , 1.6 , 2.0 ]); // 2
         this.aniInputArray.push([C3  , 4.7 , 4.6 , 2.0 , 2.3 , 1.0 , 1.4 , 1.0 , 0.9 , 2.0 , 3.0 , 2.3 , 1.9 , 2.5 , 3.0 ]); // 3
         this.aniInputArray.push([C3  , 4.73, 4.80, 1.84, 0.94, 1.84, 0.94, 1.34, 1.64 ,0.0 , 0.0 , 1.34, 1.64, 0.3 , 0.0 ]); // 4
         this.aniInputArray.push([C3  , 4.73, 4.82, 2.3 , 1.74, 1.14, 0.84, 0.6 , 1.24 ,1.14, 0.14, 2.3 , 2.45, 1.14, 0.14]); // 5
         this.aniInputArray.push([C3  , 4.73, 4.82, 1.14, 0.84, 2.3 , 1.74, 2.3 , 2.45 ,1.14, 0.14, 0.6 , 1.24, 1.14, 0.14]); // 6
-        
+
         //............ ANIMATION ................//
 
         this.moveLinkArray   =   [
@@ -324,7 +285,7 @@ class HumanObject{
             [0, 4], // 13 - turn from facing RIGHT to FRONT
         ]
 
-        // construct the this.aniArray - first run
+        // construct the aniArray - first run
         for(let i = 0; i < this.moveLinkArray.length; i++){
             let arrayLine = this.aniInputArray[0];
             let tempArray       =   []
@@ -333,24 +294,43 @@ class HumanObject{
             }
             this.aniArray.push(tempArray)          
         } 
+
+        // THIS SECTIONS SETSUP THE INITIAL ROTATION DATA IN THE PIVIT-ARRAY
+        // add pivitpoints to the pivitArray 
+        this.pivitArray.push(this.aniInputArray[0]);
+        // add a second line to the pivitArray (this is only a place holder to prevent the first line from being deleted
+        this.pivitArray.push(this.aniInputArray[0]);
+
+        // PIVIT-ARRAY  //
+        // pivitArray[0] - contains the angles used to draw the object
+        // pivitArray[1] - contains the calculates increments to adjust the pivitArray[0] elements by each time the move method mis called
+        // 0 - neck to head
+        // 1 - shoulder to this.neck
+        // 2 - hip to shoulder/this.neck
+        // 3 - left shoulder to left elbow
+        // 4 - left elbow to left wrist
+        // 5 - right shoulder to right elbow
+        // 6 - right elbow to right wrist
+        // 7 - left hip to left knee
+        // 8 - left knee to left ankle
+        // 9 - left ankle to left foot
+        // 10 - left foot to left toe
+        // 11 - right hip to right knee
+        // 12 - right knee to right ankle
+        // 13 - right ankle to right foot
+        // 14 - right foot to right toe
+
     }
-    constructAniArray(){
-        // construct the this.aniArray
-        for(let i = 0; i < this.moveLinkArray.length; i++){
-            let arrayLine = this.aniInputArray[0];
-            let tempArray       =   []
-            for( let u = 0; u < arrayLine.length; u++){
-                tempArray[u] = (this.aniInputArray[this.moveLinkArray[i][0]][u] - this.aniInputArray[this.moveLinkArray[i][1]][u]) * this.change 
-            }
-            this.aniArray.push(tempArray)                         
-        } 
-    }        
-    
-    //++++++++++++++++++++ END OF THE CONSTRUCTOR +++++++++++++++++++//
+    //++++++++++++++++++++ END OF THE CONSTRUCTOR ++++++++++======================+++++++++//
+
+    ////////////////////// OBJECTS METHODS TO FOLLOW ////////////////////////////////////////
 
     
 
     //++++++++++++++++++++ START OF CLASS METHODS +++++++++++++++++++//
+    // this may be usefull when not using P5.play
+    // not currently being used
+    // functionality haqve not been incorporated into th code
 
     switchStationaryMode(){
         // switch characters to be stationary or screen or to move around the screen
@@ -360,7 +340,11 @@ class HumanObject{
             this.stationary = "yes";
         }
     }
-    //-------------------------- METHOD TO MANAGE MOVEMENT ----------------------------------//
+
+    //------------------THIS METHOD MANAGES THE OBJECTS STATES ----------------------------//
+    // only methods are called which would naturally follow the current object state
+    // this minimises the amount of code which nees to be run  (improves respons time)
+    // it also minimise the risk of code conflict
     move(){
         // keyStates are used to run or stop animations
 
@@ -411,14 +395,23 @@ class HumanObject{
         }     
     }
 
+    ///////////////////////////////////////////////////////////////////////////////////////////////////
+    ///////// THE METHOD CALLED FROM OUTSIDE OF THE CLASS TO MAKE IT ALL HAPPEN ///////////////////////
+    ///////////////////////////////////////////////////////////////////////////////////////////////////
 
-    //-------------------------- METHOD TO DRAW OBJECT -----------------------------------------//
     draw(){
-        this.move();
-        this.addBody();  
+        this.move();            // run the calculations to update animations
+        this.makeAvailable();   // makes data available to be used outside of the class
+        this.addBody();         //
+        
     }
 
-    //////////////////////////// THE NEXR SECTION HANDLES WALKING TO LEFT ///////////////////////////////
+    makeAvailable(){
+        this.xPos = this.objectArray[0][9]; 
+        this.yPos = this.objectArray[1][9];  
+    }
+
+    //////////////////////////// THE NEXT SECTION HANDLES WALKING TO LEFT ///////////////////////////////
     //-------------------------- METHOD TO TURN FROM FRONT POSITION TO LEFT ---------------------------//
     
     faceLeftFromFront(){
@@ -431,14 +424,16 @@ class HumanObject{
                 if(this.turnRightInMotion  == false ){
                     this.pivitArray.pop()
                     this.pivitArray.push(this.aniArray[0])
+                    // set this method to true to make it auto run until the end of the routine
+                    this.turnRightInMotion = true;
                 }
                 this.dir                    =   1
-                // set this method to true to make it auto run until the end of the routine
-                this.turnRightInMotion = true;
-
+                
                 this.callForAnimation(); 
                 if(this.step < 0 ){
                     this.turnRightInMotion  =   false; 
+
+
                     this.step               =   1;  
                     this.objectState        =   "faceleft";
                     this.dir                =   0;
@@ -457,6 +452,7 @@ class HumanObject{
                 this.step                   =   this.step - this.change;                                   
             }    
         }
+        //if(keyIsPressed == true  && keyCode == )
     }
     
     //-------------------------- METHOD TO TURN FROM FRONT POSITION TO RIGHT ---------------------------//
@@ -582,7 +578,7 @@ class HumanObject{
         // run animation if the conditions are met
         if(keyIsPressed == true || this.stepToLeft1 == true) {
             if (keyCode == LEFT_ARROW || this.stepToLeft1 == true) { 
-                this.xPos = this.xPos - 1
+                this.moveObjectToLeft();
                 // check if the routine is run for the first time
                 if(this.stepToLeft1 == false ){
                     this.pivitArray.pop()
@@ -620,7 +616,7 @@ class HumanObject{
         // run animation if the conditions are met
         if(keyIsPressed == true || this.stepToRight1 == true) {
             if (keyCode == RIGHT_ARROW || this.stepToRight1 == true) { 
-                this.xPos = this.xPos + 1
+                this.moveObjectToRight();
                 // check if the routine is run for the first time
                 if(this.stepToRight1 == false ){
                     this.pivitArray.pop()
@@ -657,7 +653,7 @@ class HumanObject{
         // run animation if the conditions are met
         if(keyIsPressed == true || this.stepToLeft1 == true) {
             if (keyCode == LEFT_ARROW || this.stepToLeft1 == true) { 
-                this.xPos = this.xPos - 1
+                this.moveObjectToLeft();
                 // check if the routine is run for the first time
                 if(this.stepToLeft1 == false ){
                     this.pivitArray.pop()
@@ -696,7 +692,7 @@ class HumanObject{
         // run animation if the conditions are met
         if(keyIsPressed == true || this.stepToRight1 == true) {
             if (keyCode == RIGHT_ARROW || this.stepToRight1 == true) { 
-                this.xPos = this.xPos + 1
+                this.moveObjectToRight();
                 // check if the routine is run for the first time
                 if(this.stepToRight1 == false ){
                     this.pivitArray.pop()
@@ -733,7 +729,7 @@ class HumanObject{
         
         if(keyIsPressed == true || this.stepToLeft2 == true) {      
             if (keyCode == LEFT_ARROW || this.stepToLeft2 == true) {    
-                this.xPos = this.xPos - 1
+                this.moveObjectToLeft();
                 // check if the routine is run for the first time
                 if(this.stepToLeft2 == false ){
                     this.pivitArray.pop()
@@ -770,7 +766,7 @@ class HumanObject{
         
         if(keyIsPressed == true || this.stepToRight2 == true) {      
             if (keyCode == RIGHT_ARROW || this.stepToRight2 == true) {    
-                this.xPos = this.xPos + 1
+                this.moveObjectToRight();
                 // check if the routine is run for the first time
                 if(this.stepToRight2 == false ){
                     this.pivitArray.pop()
@@ -1131,17 +1127,17 @@ class HumanObject{
 
     addBody(){
         // circle diameter
-        this.toeSize                =   4;
-        this.footSize               =   6;
-        this.ankleSize              =   10;
-        this.kneeSize               =   14;
-        this.hipSize                =   20;
-        this.shoulderSize           =   15;
-        this.chestSize              =   25;
-        this.neckSize               =   10;
-        this.elbowSize              =   10;
-        this.wristSize              =   7;
-        this.headSize               =   30;
+        this.toeSize                =   2 * this.size;
+        this.footSize               =   3 * this.size;
+        this.ankleSize              =   5 * this.size;
+        this.kneeSize               =   7.5 * this.size;
+        this.hipSize                =   9 * this.size;
+        this.shoulderSize           =   7.5 * this.size;
+        this.chestSize              =   12.5 * this.size;
+        this.neckSize               =   5 * this.size;
+        this.elbowSize              =   5 * this.size;
+        this.wristSize              =   3.5 * this.size;
+        this.headSize               =   15 * this.size;
 
         // ellipse colours
         this.toeRed                 =   255;
@@ -1229,20 +1225,31 @@ class HumanObject{
         this.qNeckGrn               =   203;
         this.qNeckBlu               =   164;
 
+        this.pelvisRed               =   255;   // used to set the pelvis quad colours
+        this.pelvisGrn               =   50;
+        this.pelvisBlu               =   50;
+
+
+
+        // THE FOLLOWING DRAWS THE OBJECT BASED ON ITS ORITATION
+        // shading is added to the colours to make them darker or lighter depending the components depth
+        
+        // facing right
         if(this.objectState == "front" || this.objectState == "faceright" || this.objectState == "walkright1" 
         || this.objectState == "walkright2" || this.objectState == "stopright1" || this.objectState == "stopright2"
         || this.objectState == "rightstop1" || this.objectState == "rightstop2"){
-        // facing right
-        this.shade                  =   0.6;
-        this.drawObjectRightSide();
-        this.shade                  =   0.8;
-        this.drawObjectCentre();  
-        this.shade                  =   1.0;
-        this.drawObjectLeftSide();
+            
+            this.shade                  =   0.6;
+            this.drawObjectRightSide();
+            this.shade                  =   0.8;
+            this.drawObjectCentre();  
+            this.shade                  =   1.0;
+            this.drawObjectLeftSide();
         }
 
+        // facing front
         if(this.objectState == "front"){
-        // facing right
+        
         this.shade                  =   1.0;
         this.drawObjectCentre();          
         this.shade                  =   1.0;
@@ -1251,11 +1258,11 @@ class HumanObject{
         this.drawObjectLeftSide();
         }
 
-
+        // facing left
         if(this.objectState == "faceleft" || this.objectState == "walkleft1" || this.objectState == "walkleft2" 
         || this.objectState == "stopleft1" || this.objectState == "stopleft2" || this.objectState == "leftstop1" 
         || this.objectState == "leftstop2" ){
-        // facing left
+        
         this.shade                  =   0.6;
         this.drawObjectLeftSide();
         this.shade                  =   0.8;
@@ -1267,8 +1274,8 @@ class HumanObject{
 
     drawObjectRightSide(){
         noStroke();
-        ///// DRAW THE RIGHT SIDE LIMBS
-        //circles
+        //DRAW THE RIGHT SIDE LIMBS
+        // draws ellipses
         fill(this.shoulderRed * this.shade, this.shoulderGrn * this.shade, this.shoulderBlu * this.shade);
         ellipse(this.objectArray[0][6], this.objectArray[1][6], this.shoulderSize, this.shoulderSize);      // shouder
         fill(this.elbowRed * this.shade, this.elbowGrn * this.shade, this.selbowBlu * this.shade);
@@ -1286,8 +1293,8 @@ class HumanObject{
         fill(this.toeRed * this.shade, this.toeGrn * this.shade, this.toeBlu * this.shade );
         ellipse(this.objectArray[0][19], this.objectArray[1][19], this.toeSize , this.toeSize);             // toe
 
-        //quads
-        // point 1
+        // draws quads
+        // declare the quad specific variables
         let QX1;
         let QY1;
         let QX2;
@@ -1303,13 +1310,14 @@ class HumanObject{
         let size2;
         let pivit;
 
+
         // right upper leg
         joint1  =   15;
         joint2  =   16;
         size1   =   this.hipSize;
         size2   =   this.kneeSize;
         pivit   =   11;
-
+        // calculate the quad's corner positions
         QX1     =   this.objectArray[0][joint1] + size1/2 * cos(this.pivitArray[0][pivit] + PI/2)
         QY1     =   this.objectArray[1][joint1] + size1/2 * sin(this.pivitArray[0][pivit] + PI/2)
         QX2     =   this.objectArray[0][joint1] + size1/2 * cos(this.pivitArray[0][pivit] - PI/2)
@@ -1318,7 +1326,7 @@ class HumanObject{
         QY3     =   this.objectArray[1][joint2] + size2/2 * sin(this.pivitArray[0][pivit] - PI/2)       
         QX4     =   this.objectArray[0][joint2] + size2/2 * cos(this.pivitArray[0][pivit] + PI/2)
         QY4     =   this.objectArray[1][joint2] + size2/2 * sin(this.pivitArray[0][pivit] + PI/2)  
-
+        // draw the quad
         noStroke();
         fill(this.upperLegRed  * this.shade, this.upperLegGrn  * this.shade, this.upperLegBlu  * this.shade );
         quad(QX1,QY1,QX2,QY2,QX3,QY3,QX4,QY4);
@@ -1332,7 +1340,7 @@ class HumanObject{
         size1   =   this.kneeSize;
         size2   =   this.ankleSize;
         pivit   =   12;
-
+        // calculate the quad's corner positions
         QX1     =   this.objectArray[0][joint1] + size1/2 * cos(this.pivitArray[0][pivit] + PI/2)
         QY1     =   this.objectArray[1][joint1] + size1/2 * sin(this.pivitArray[0][pivit] + PI/2)
         QX2     =   this.objectArray[0][joint1] + size1/2 * cos(this.pivitArray[0][pivit] - PI/2)
@@ -1341,7 +1349,7 @@ class HumanObject{
         QY3     =   this.objectArray[1][joint2] + size2/2 * sin(this.pivitArray[0][pivit] - PI/2)       
         QX4     =   this.objectArray[0][joint2] + size2/2 * cos(this.pivitArray[0][pivit] + PI/2)
         QY4     =   this.objectArray[1][joint2] + size2/2 * sin(this.pivitArray[0][pivit] + PI/2)  
-
+        // draw the quad
         noStroke();
         fill(this.lowerLegRed  * this.shade, this.lowerLegGrn  * this.shade, this.lowerLegBlu  * this.shade );
         quad(QX1,QY1,QX2,QY2,QX3,QY3,QX4,QY4);
@@ -1355,7 +1363,7 @@ class HumanObject{
         size1   =   this.ankleSize;
         size2   =   this.footSize;
         pivit   =   13;
-
+        // calculate the quad's corner positions
         QX1     =   this.objectArray[0][joint1] + size1/2 * cos(this.pivitArray[0][pivit] + PI/2)
         QY1     =   this.objectArray[1][joint1] + size1/2 * sin(this.pivitArray[0][pivit] + PI/2)
         QX2     =   this.objectArray[0][joint1] + size1/2 * cos(this.pivitArray[0][pivit] - PI/2)
@@ -1364,7 +1372,7 @@ class HumanObject{
         QY3     =   this.objectArray[1][joint2] + size2/2 * sin(this.pivitArray[0][pivit] - PI/2)       
         QX4     =   this.objectArray[0][joint2] + size2/2 * cos(this.pivitArray[0][pivit] + PI/2)
         QY4     =   this.objectArray[1][joint2] + size2/2 * sin(this.pivitArray[0][pivit] + PI/2)  
-
+        // draw the quad
         noStroke();
         fill(this.backFootRed  * this.shade, this.backFootGrn  * this.shade, this.backFootBlu  * this.shade );
         quad(QX1,QY1,QX2,QY2,QX3,QY3,QX4,QY4);
@@ -1378,7 +1386,7 @@ class HumanObject{
          size1   =   this.footSize;
          size2   =   this.toeSize;
          pivit   =   14;
- 
+         // calculate the quad's corner positions
          QX1     =   this.objectArray[0][joint1] + size1/2 * cos(this.pivitArray[0][pivit] + PI/2)
          QY1     =   this.objectArray[1][joint1] + size1/2 * sin(this.pivitArray[0][pivit] + PI/2)
          QX2     =   this.objectArray[0][joint1] + size1/2 * cos(this.pivitArray[0][pivit] - PI/2)
@@ -1387,7 +1395,7 @@ class HumanObject{
          QY3     =   this.objectArray[1][joint2] + size2/2 * sin(this.pivitArray[0][pivit] - PI/2)       
          QX4     =   this.objectArray[0][joint2] + size2/2 * cos(this.pivitArray[0][pivit] + PI/2)
          QY4     =   this.objectArray[1][joint2] + size2/2 * sin(this.pivitArray[0][pivit] + PI/2)  
- 
+         // draw the quad
          noStroke();
          fill(this.frontFootRed  * this.shade, this.frontFGrn  * this.shade, this.frontFBlu  * this.shade );
          quad(QX1,QY1,QX2,QY2,QX3,QY3,QX4,QY4);
@@ -1395,51 +1403,51 @@ class HumanObject{
          line(QX1,QY1, QX4,QY4);
          line(QX2,QY2, QX3,QY3);   
          
-          //right upper arm
-          joint1  =   6;
-          joint2  =   7;
-          size1   =   this.shoulderSize;
-          size2   =   this.elbowSize;
-          pivit   =   5;
-  
-          QX1     =   this.objectArray[0][joint1] + size1/2 * cos(this.pivitArray[0][pivit] + PI/2)
-          QY1     =   this.objectArray[1][joint1] + size1/2 * sin(this.pivitArray[0][pivit] + PI/2)
-          QX2     =   this.objectArray[0][joint1] + size1/2 * cos(this.pivitArray[0][pivit] - PI/2)
-          QY2     =   this.objectArray[1][joint1] + size1/2 * sin(this.pivitArray[0][pivit] - PI/2)
-          QX3     =   this.objectArray[0][joint2] + size2/2 * cos(this.pivitArray[0][pivit] - PI/2)
-          QY3     =   this.objectArray[1][joint2] + size2/2 * sin(this.pivitArray[0][pivit] - PI/2)       
-          QX4     =   this.objectArray[0][joint2] + size2/2 * cos(this.pivitArray[0][pivit] + PI/2)
-          QY4     =   this.objectArray[1][joint2] + size2/2 * sin(this.pivitArray[0][pivit] + PI/2)  
-  
-          noStroke();
-          fill(this.upperArmRed  * this.shade, this.upperArmGrn  * this.shade, this.upperArmBlu  * this.shade );
-          quad(QX1,QY1,QX2,QY2,QX3,QY3,QX4,QY4);
-          stroke(100,100,100);
-          line(QX1,QY1, QX4,QY4);
-          line(QX2,QY2, QX3,QY3);
+        //right upper arm
+        joint1  =   6;
+        joint2  =   7;
+        size1   =   this.shoulderSize;
+        size2   =   this.elbowSize;
+        pivit   =   5;
+        // calculate the quad's corner positions
+        QX1     =   this.objectArray[0][joint1] + size1/2 * cos(this.pivitArray[0][pivit] + PI/2)
+        QY1     =   this.objectArray[1][joint1] + size1/2 * sin(this.pivitArray[0][pivit] + PI/2)
+        QX2     =   this.objectArray[0][joint1] + size1/2 * cos(this.pivitArray[0][pivit] - PI/2)
+        QY2     =   this.objectArray[1][joint1] + size1/2 * sin(this.pivitArray[0][pivit] - PI/2)
+        QX3     =   this.objectArray[0][joint2] + size2/2 * cos(this.pivitArray[0][pivit] - PI/2)
+        QY3     =   this.objectArray[1][joint2] + size2/2 * sin(this.pivitArray[0][pivit] - PI/2)       
+        QX4     =   this.objectArray[0][joint2] + size2/2 * cos(this.pivitArray[0][pivit] + PI/2)
+        QY4     =   this.objectArray[1][joint2] + size2/2 * sin(this.pivitArray[0][pivit] + PI/2)  
+        // draw the quad
+        noStroke();
+        fill(this.upperArmRed  * this.shade, this.upperArmGrn  * this.shade, this.upperArmBlu  * this.shade );
+        quad(QX1,QY1,QX2,QY2,QX3,QY3,QX4,QY4);
+        stroke(100,100,100);
+        line(QX1,QY1, QX4,QY4);
+        line(QX2,QY2, QX3,QY3);
 
-          //right lower arm
-          joint1  =   7;
-          joint2  =   8;
-          size1   =   this.elbowSize;
-          size2   =   this.wristSize;
-          pivit   =   5;
-  
-          QX1     =   this.objectArray[0][joint1] + size1/2 * cos(this.pivitArray[0][pivit] + PI/2)
-          QY1     =   this.objectArray[1][joint1] + size1/2 * sin(this.pivitArray[0][pivit] + PI/2)
-          QX2     =   this.objectArray[0][joint1] + size1/2 * cos(this.pivitArray[0][pivit] - PI/2)
-          QY2     =   this.objectArray[1][joint1] + size1/2 * sin(this.pivitArray[0][pivit] - PI/2)
-          QX3     =   this.objectArray[0][joint2] + size2/2 * cos(this.pivitArray[0][pivit] - PI/2)
-          QY3     =   this.objectArray[1][joint2] + size2/2 * sin(this.pivitArray[0][pivit] - PI/2)       
-          QX4     =   this.objectArray[0][joint2] + size2/2 * cos(this.pivitArray[0][pivit] + PI/2)
-          QY4     =   this.objectArray[1][joint2] + size2/2 * sin(this.pivitArray[0][pivit] + PI/2)  
-  
-          noStroke();
-          fill(this.upperArmRed  * this.shade, this.upperArmGrn  * this.shade, this.upperArmBlu  * this.shade );
-          quad(QX1,QY1,QX2,QY2,QX3,QY3,QX4,QY4);
-          stroke(100,100,100);
-          line(QX1,QY1, QX4,QY4);
-          line(QX2,QY2, QX3,QY3);  
+        //right lower arm
+        joint1  =   7;
+        joint2  =   8;
+        size1   =   this.elbowSize;
+        size2   =   this.wristSize;
+        pivit   =   5;
+        // calculate the quad's corner positions
+        QX1     =   this.objectArray[0][joint1] + size1/2 * cos(this.pivitArray[0][pivit] + PI/2)
+        QY1     =   this.objectArray[1][joint1] + size1/2 * sin(this.pivitArray[0][pivit] + PI/2)
+        QX2     =   this.objectArray[0][joint1] + size1/2 * cos(this.pivitArray[0][pivit] - PI/2)
+        QY2     =   this.objectArray[1][joint1] + size1/2 * sin(this.pivitArray[0][pivit] - PI/2)
+        QX3     =   this.objectArray[0][joint2] + size2/2 * cos(this.pivitArray[0][pivit] - PI/2)
+        QY3     =   this.objectArray[1][joint2] + size2/2 * sin(this.pivitArray[0][pivit] - PI/2)       
+        QX4     =   this.objectArray[0][joint2] + size2/2 * cos(this.pivitArray[0][pivit] + PI/2)
+        QY4     =   this.objectArray[1][joint2] + size2/2 * sin(this.pivitArray[0][pivit] + PI/2)  
+        // draw the quad
+        noStroke();
+        fill(this.upperArmRed  * this.shade, this.upperArmGrn  * this.shade, this.upperArmBlu  * this.shade );
+        quad(QX1,QY1,QX2,QY2,QX3,QY3,QX4,QY4);
+        stroke(100,100,100);
+        line(QX1,QY1, QX4,QY4);
+        line(QX2,QY2, QX3,QY3);  
     }
 
     drawObjectLeftSide(){
@@ -1632,25 +1640,11 @@ class HumanObject{
         let QX4;
         let QY4;
 
-        // pelvis
-        QX1     =   this.objectArray[0][10] 
-        QY1     =   this.objectArray[1][10] - this.hipSize/2;
-        QX2     =   this.objectArray[0][10] 
-        QY2     =   this.objectArray[1][10] + this.hipSize/2;
-        QX3     =   this.objectArray[0][15] 
-        QY3     =   this.objectArray[1][15]  + this.hipSize/2;     
-        QX4     =   this.objectArray[0][15] 
-        QY4     =   this.objectArray[1][15] - this.hipSize/2;
-
-        noStroke();
-        fill(this.upperArmRed  * this.shade, this.upperArmGrn  * this.shade, this.upperArmBlu  * this.shade );
-        quad(QX1,QY1,QX2,QY2,QX3,QY3,QX4,QY4);
-        stroke(100,100,100);
-        line(QX2,QY2, QX3,QY3);        
+       
 
         this.chestXPos       =   this.objectArray[0][9] + this.dimensionArray[0][12] * cos(this.pivitArray[0][2])
-        this.chestYPos       =   this.objectArray[0][9] + (this.dimensionArray[0][12] - 10 * this.size) * sin(this.pivitArray[0][2])
-
+        this.chestYPos       =   this.objectArray[1][9] + (this.dimensionArray[0][12] - 10 * this.size) * sin(this.pivitArray[0][2])
+       
         // lower torso
         QX1     =   this.chestXPos + this.chestSize /2;
         QY1     =   this.chestYPos,
@@ -1699,7 +1693,23 @@ class HumanObject{
         quad(QX1,QY1,QX2,QY2,QX3,QY3,QX4,QY4);
         stroke(100,100,100);
         line(QX1,QY1, QX2, QY2);
-        line(QX3,QY3, QX4, QY4);        
+        line(QX3,QY3, QX4, QY4); 
+        
+        // pelvis
+        QX1     =   this.objectArray[0][10] 
+        QY1     =   this.objectArray[1][10] - this.hipSize/2;
+        QX2     =   this.objectArray[0][10] 
+        QY2     =   this.objectArray[1][10] + this.hipSize/2;
+        QX3     =   this.objectArray[0][15] 
+        QY3     =   this.objectArray[1][15] + this.hipSize/2;     
+        QX4     =   this.objectArray[0][15] 
+        QY4     =   this.objectArray[1][15] - this.hipSize/2;
+
+        noStroke();
+        fill(this.pelvisRed  * this.shade, this.pelvisGrn  * this.shade, this.pelvisBlu  * this.shade );
+        quad(QX1,QY1,QX2,QY2,QX3,QY3,QX4,QY4);
+        stroke(100,100,100);
+        line(QX2,QY2, QX3,QY3); 
 
         noStroke();
         fill(this.neckRed * this.shade, this.neckGrn * this.shade, this.neckBlu * this.shade);
@@ -1707,16 +1717,38 @@ class HumanObject{
         fill(this.neckRed * this.shade, this.neckGrn * this.shade, this.neckBlu * this.shade);
         ellipse(this.objectArray[0][2], this.objectArray[1][1], this.neckSize , this.neckSize);             // chest
         fill(this.torsoRed  * this.shade, this.torsoGrn  * this.shade, this.torsoBlu  * this.shade );
-
-        ellipse(this.chestXPos, this.chestYPos, this.chestSize , this.chestSize);                                     // chest
-        ellipse(this.chestXPos,this.chestYPos, this.chestSize , this.chestSize);                                     // chest
+        ellipse(this.chestXPos, this.chestYPos, this.chestSize , this.chestSize);                           // chest
         fill(this.faceRed * this.shade, this.faceGrn * this.shade, this.faceBlu * this.shade);
         ellipse(this.objectArray[0][0], this.objectArray[1][0], this.headSize , this.headSize * 1.2 );      // head   
-        
-        
+     
 
-        
     }
+
+    moveObjectToRight(){
+        for(let i = 0; i < this.objectArray[0].length; i++){
+            this.objectArray[0][i] = this.objectArray[0][i] + this.moveXrate;
+        }
+    }
+    moveObjectToLeft(){
+        for(let i = 0; i < this.objectArray[0].length; i++){
+            this.objectArray[0][i] = this.objectArray[0][i] - this.moveXrate;
+        }
+    }
+    elevatorDown(rate){
+        this.elirate = rate;
+        for( let i = 0 ; i < this.objectArray[1].length; i++){
+            this.objectArray[1][i] = this.objectArray[1][i] + this.elirate;
+        }
+    }
+    elevatorUp(rate){
+        this.elirate = rate;
+        for( let i = 0 ; i < this.objectArray[1].length; i++){
+            this.objectArray[1][i] = this.objectArray[1][i] - this.elirate;
+        }
+    }
+
+
+
 /*
     
         ////////////////////// ARRAYS REFERENCE LISTS ////////////////////////
@@ -1770,6 +1802,8 @@ class HumanObject{
         // 14 - this.head,
         // 15 - this.shoulderWidth,
         // 16 - this.hipWidth,
+
+
 
 
 }
