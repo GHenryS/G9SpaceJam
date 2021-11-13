@@ -207,11 +207,7 @@ heroRightFoot = createSprite(hero.rightFootX , hero.rightFootY)
 heroRightFoot.setCollider("rectangle", 0, 0, 0.2 * spriteWidth, 0.1 * spriteHeight)
 heroRightFoot.debug = true
 */
-/*
-bob = createSprite(5 * spriteWidth , 17 * spriteHeight)
-bob.addImage(bobImage)
-bobImage.resize(spriteWidth , 2 *spriteHeight)
-*/
+
 }
 
 // ------------------ FUNCTION TO DRAW MAP SCREEN ---------------------- //
@@ -225,9 +221,6 @@ let distY1 = -2000;  // The camera will draw the sprites up to 1200 px to the ab
 let distY2 = 2000;  // The camera will draw the sprites up to 1600 px to the below of the hero
 
 camera.zoom = 0.4;                   // Use this to set the zoomcamera.position.x = hero.xPos; // This line and the next line set the camera to hero position
-
-//camera.position.x = bob.position.x  
-//camera.position.y = bob.position.y - height *0.27
 
 camera.position.x = hero.xPos  
 camera.position.y = hero.yPos - height *0.27
@@ -396,27 +389,10 @@ drawSprite(elevatorCarriage2);
 
 //console.log(ghosts)
 //console.log(hero)
-/*
-drawSprite(bob)
-if(keyDown(87)){ // w = up
-bob.setSpeed(20,270)
-}else if(keyDown(83)){ // s = down
-bob.setSpeed(20,90)
-}else if(keyDown(65)){ // w = left
-bob.setSpeed(20,180)
-}else if(keyDown(68)){ // w = right
-bob.setSpeed(20,0)
-}else{
-bob.setSpeed(0,0)
-}
-*/
 
 drawSprite(ghostSprite)
 console.log(ghost1)
 hero.draw()
-
-//drawSprite(heroLeftFoot)
-//drawSprite(heroRightFoot)
 
 if(keyDown(38)){ // up arrow = up
     hero.elevatorUp(20)
