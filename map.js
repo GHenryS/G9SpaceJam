@@ -393,10 +393,10 @@ for(i=0 ; i<allPrisonDesk.length ; i++){
 drawSprite(vent)
 drawSprite(elevatorCarriage1);
 drawSprite(elevatorCarriage2);
-
+/*
 ghosts.forEach(function (g){
     g.move();
-});
+});*/
 drawSprite(ghostSprite)
 /*
 robots.forEach(function (r){
@@ -407,7 +407,7 @@ drawSprite(robotSprite);
 
 console.log(robotSprite)
 */
-console.log(ghostSprite)
+console.log(ghosts)
 console.log(hero)
 /*
 drawSprite(bob)
