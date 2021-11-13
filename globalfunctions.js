@@ -11,6 +11,7 @@ function runSetupFunctions(){
     // Enemey Setup
     ghostSetup()
     robotSetup()
+   
 }
 
 // ----------FUNCTION TO CREATE A FADE IN EFFECT ---------------------------//

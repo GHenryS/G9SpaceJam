@@ -1,8 +1,8 @@
 function robotSetup(){
     for(let i = 0; i < 1; i++){
-        let yPos = random(50,450);
-        let minX =  random(50, 200);
-        let maxX = random(250,450); 
+        let yPos = random(1000,1100);
+        let minX =  random(200, 300);
+        let maxX = random(400,500); 
         let xPos = (minX + 20);
         robots.push(new RobotObject(xPos,yPos,minX,maxX));
     }
