@@ -93,12 +93,12 @@ function preLoadStrings(){
 }
 // ------------------ FUNCTION TO PRELOAD ANIMATIONS    ---------------- //
 function preLoadAllAnimations(){
-  //robotAnimation = loadAnimation(robotImage);
-  //ghostAnimation = loadAnimation(ghostImage);
+  robotAnimation = loadAnimation(robotImage);
+  ghostAnimation = loadAnimation(ghostImage);
 }
 // ------------------ FUNCTION TO PRELOAD SPRITESHEETS    ---------------- //
 function preLoadAllSpriteSheets(){
-  //robotImage = loadSpriteSheet('images/robot.png',78,71,10);
-  //ghostImage = loadSpriteSheet('images/ghostimage.png', 172, 197, 1);
+  robotImage = loadSpriteSheet('sprites/robot.png',78,71,10);
+  ghostImage = loadSpriteSheet('sprites/ghostimage.png', 172, 197, 1);
 
 }
