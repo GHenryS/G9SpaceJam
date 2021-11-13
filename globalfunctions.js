@@ -9,7 +9,7 @@ function runSetupFunctions(){
     hero.moveXrate = 20
 
     // Enemey Setup
-    //ghostSetup()
+    ghostSetup()
     robotSetup()
    
 }
