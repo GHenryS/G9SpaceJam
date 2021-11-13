@@ -528,7 +528,7 @@ function () {
     value: function faceLeftFromFront() {
       // run animation if the conditions are met 
       if (this.turnLeftInMotion == false) {
-        this.dir = -1;
+        this.dir = 1;
         this.step = 1;
         this.turnLeftInMotion = true;
       }
@@ -596,7 +596,7 @@ function () {
     value: function turnToFrontFromRight() {
       // run animation if the conditions are met 
       if (this.turnFrontFromRight == false) {
-        this.dir = 1;
+        this.dir = -1;
         this.step = 1;
         this.turnFrontFromRight = true;
       }

@@ -503,7 +503,7 @@ class HumanObject{
 
         // run animation if the conditions are met 
         if(this.turnLeftInMotion == false){
-            this.dir                    =   -1; 
+            this.dir                    =   1; 
             this.step                   =   1; 
             this.turnLeftInMotion       =   true;         
         }
@@ -562,7 +562,7 @@ class HumanObject{
        
         // run animation if the conditions are met 
         if(this.turnFrontFromRight == false ){
-            this.dir                    =   1;
+            this.dir                    =   -1;
             this.step                   =   1;
             this.turnFrontFromRight     =   true;
         }
@@ -573,8 +573,7 @@ class HumanObject{
         } 
         if(this.step < 0 ){
             this.turnFrontFromRight     =   false; 
-            this.objectState            =   "front"; 
-                    
+            this.objectState            =   "front";              
         }  
         console.log("facing front from right")  
     }
