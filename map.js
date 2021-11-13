@@ -207,10 +207,11 @@ heroRightFoot = createSprite(hero.rightFootX , hero.rightFootY)
 heroRightFoot.setCollider("rectangle", 0, 0, 0.2 * spriteWidth, 0.1 * spriteHeight)
 heroRightFoot.debug = true
 */
+/*
 bob = createSprite(5 * spriteWidth , 17 * spriteHeight)
 bob.addImage(bobImage)
 bobImage.resize(spriteWidth , 2 *spriteHeight)
-
+*/
 }
 
 // ------------------ FUNCTION TO DRAW MAP SCREEN ---------------------- //
@@ -223,7 +224,7 @@ let distX2 = 2500;  // The camera will draw the sprites up to 1600 px to the rig
 let distY1 = -2000;  // The camera will draw the sprites up to 1200 px to the above of the hero
 let distY2 = 2000;  // The camera will draw the sprites up to 1600 px to the below of the hero
 
-camera.zoom = 0.8;                   // Use this to set the zoomcamera.position.x = hero.xPos; // This line and the next line set the camera to hero position
+camera.zoom = 0.4;                   // Use this to set the zoomcamera.position.x = hero.xPos; // This line and the next line set the camera to hero position
 
 //camera.position.x = bob.position.x  
 //camera.position.y = bob.position.y - height *0.27
@@ -393,6 +394,10 @@ drawSprite(vent)
 drawSprite(elevatorCarriage1);
 drawSprite(elevatorCarriage2);
 
+drawSprite(ghostSprite)
+
+console.log(ghosts)
+console.log(hero)
 /*
 drawSprite(bob)
 if(keyDown(87)){ // w = up
@@ -492,8 +497,6 @@ if(keyDown(74)){ // If on bottom floors, the elevator wont try to go any further
     }else if(keyDown(32)){                              // Emergency Elevator Stop
         elevatorCarriage1.setSpeed(0,0)
 }
-console.log(elevatorCarriage1.position.y)
-console.log(21.5 * anchor)
 if(keyDown(75) && elevatorCarriage2.position.y < 33 * anchor){ // If on bottom floors, the elevator wont try to go any further    
     elevatorCarriage2.setSpeed(5,90);                            // Go Down  "i"
     }else if(keyDown(73)&& elevatorCarriage2.position.y > 17 * anchor){  // If on top floors, the elevator wont try to go any further

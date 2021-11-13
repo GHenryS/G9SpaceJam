@@ -1,9 +1,10 @@
 
 function ghostSetup(){
+    
     for(let i = 0; i < 10; i++){
-        let yPos = random(50,450);
-        let minX =  random(50, 200);
-        let maxX = random(250,450); 
+        let yPos = random(4350,4900);
+        let minX =  random(1100,1500);
+        let maxX = random(1500,2080); 
         let xPos = (minX + 20);
         ghosts.push(new GhostObject(xPos,yPos,minX,maxX));
     }
@@ -23,7 +24,7 @@ class GhostObject{
     this.ghostSprite.mirrorX(1);
     this.ghostSprite.velocity.x = -1;
     this.ghostSprite.addAnimation('hover', ghostImage);
-    this.ghostSprite.scale = 0.3;
+    this.ghostSprite.scale = 20;
     this.ghostSprite.debug = true;
     this.ghostSprite.setCollider('circle',0,-10,50)
     }
