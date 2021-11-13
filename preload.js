@@ -5,11 +5,12 @@ function preLoadAllImages(){
   
   // run all the function which require items to be preloaded
   preLoadButtons();
-  
   preLoadImages();
   // preLoadSound();
   preLoadFonts();
   preLoadStrings();
+  preLoadAllAnimations();
+  preLoadAllSpriteSheets();
 }
 
 // ------------------ FUNCTION TO PRELOAD GAME BUTTONS ---------------------- //
@@ -68,8 +69,9 @@ function preLoadImages(){
   bobImage = loadImage('images/bob.png')
   ventImage = loadImage('images/airduct_grate_02b.png')
   controlPanelImage = loadImage('images/control.png')
-
   //heroImage = loadImage('images/hero.png');              // Temporary hero
+ 
+
 }
 
 // ------------------ FUNCTION TO PRELOAD SOUNDS    ---------------------- //
@@ -87,5 +89,16 @@ function preLoadFonts(){
 // ------------------ FUNCTION TO PRELOAD STRINGS FOR MAP    ---------------- //
 function preLoadStrings(){
   mapLayoutTxt = loadStrings('gameMap.txt');
+
+}
+// ------------------ FUNCTION TO PRELOAD ANIMATIONS    ---------------- //
+function preLoadAllAnimations(){
+  //robotAnimation = loadAnimation(robotImage);
+  //ghostAnimation = loadAnimation(ghostImage);
+}
+// ------------------ FUNCTION TO PRELOAD SPRITESHEETS    ---------------- //
+function preLoadAllSpriteSheets(){
+  //robotImage = loadSpriteSheet('images/robot.png',78,71,10);
+  //ghostImage = loadSpriteSheet('images/ghostimage.png', 172, 197, 1);
 
 }

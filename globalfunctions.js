@@ -7,9 +7,11 @@ function runSetupFunctions(){
     // Map Setup
     setupMap();
     hero.moveXrate = 20
+
+    // Enemey Setup
+    ghostSetup()
+    robotSetup()
 }
-
-
 
 // ----------FUNCTION TO CREATE A FADE IN EFFECT ---------------------------//
 

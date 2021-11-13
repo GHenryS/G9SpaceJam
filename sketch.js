@@ -31,6 +31,18 @@ let elevatorCarriage2;
 let hero;
 let bob;
 
+// Ghost Global Variable
+let ghostAnimation;
+let ghostImage;
+let ghostSprite;
+let ghosts = [];
+
+// Robot Global Variables
+let robotAnimation;
+let robotImage;
+let robotSprite;
+let robots = [];
+
 // ------------------------ GLOBAL ARRAYS -------------------------------//
 // declare arrays which will be used over multiple functions
 // arrays which are specific to a function should be declared in the function 
