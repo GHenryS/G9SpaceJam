@@ -43,6 +43,12 @@ let robotImage;
 let robotSprite;
 let robots = [];
 
+// Trooper Gloabl Variables
+let trooperAnimation;
+let trooperImage;
+let trooperSprite;
+let troopers = [];
+
 // ------------------------ GLOBAL ARRAYS -------------------------------//
 // declare arrays which will be used over multiple functions
 // arrays which are specific to a function should be declared in the function 

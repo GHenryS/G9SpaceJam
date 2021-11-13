@@ -98,10 +98,12 @@ function preLoadStrings(){
 function preLoadAllSpriteSheets(){
   robotImage = loadSpriteSheet('sprites/robot.png',78,71,10);
   ghostImage = loadSpriteSheet('sprites/ghostimage.png', 172, 197, 1);
+  trooperImage = loadSpriteSheet('/sprites/trooper.png', 108, 190, 7);
 
 }
 // ------------------ FUNCTION TO PRELOAD ANIMATIONS    ---------------- //
 function preLoadAllAnimations(){
   robotAnimation = loadAnimation(robotImage);
   ghostAnimation = loadAnimation(ghostImage);
+  trooperAnimation = loadAnimation(trooperImage);
 }

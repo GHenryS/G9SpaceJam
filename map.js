@@ -33,6 +33,7 @@ allPrisonBed = new Group;
 allPrisonDesk = new Group;
 allGhostSprite = new Group;
 allRobotSprite = new Group;
+allTrooperSprite = new Group;
 
 for(let i = 0 ; i < mapLayoutTxt.length ; i++){    // takes strings from txt file and puts them into maparray array 
     maparray[i] = splitTokens(mapLayoutTxt[i] , '\t');
@@ -213,6 +214,15 @@ for(let i = 0 ; i < mapLayoutTxt.length ; i++){    // takes strings from txt fil
                 robotSprite.scale = 2;
                 robotSprite.setCollider('circle',0,-20,30);
                 allRobotSprite.add(robotSprite)
+            }
+            if(maparray[j][i] == '24'){
+                trooperSprite = createSprite(i * spriteWidth , j * spriteHeight + spriteHeight );
+                trooperSprite.mirrorX(1);
+                trooperSprite.velocity.x = 1;
+                trooperSprite.addAnimation('hover', trooperAnimation);
+                trooperSprite.scale = 1.5;
+                trooperSprite.setCollider('circle',0,-20,30);
+                allTrooperSprite.add(trooperSprite)
             }
         }
     }
@@ -426,7 +436,9 @@ for(i=0 ; i<allGhostSprite.length ; i++){
 for(i=0 ; i<allRobotSprite.length ; i++){
     drawSprite(allRobotSprite[i]);    
 }
-
+for(i=0 ; i<allTrooperSprite.length ; i++){
+    drawSprite(allTrooperSprite[i]);    
+}
 //drawSprites()    //Draws Evans Sprites
 
 hero.draw()
