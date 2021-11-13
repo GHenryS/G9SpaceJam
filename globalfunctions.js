@@ -11,6 +11,8 @@ function runSetupFunctions(){
     // Enemey Setup
     ghostSetup()
     robotSetup()
+    ghost1                      = new GhostObject(1800, 4500 , 1500 , 2000 )
+
 }
 
 // ----------FUNCTION TO CREATE A FADE IN EFFECT ---------------------------//

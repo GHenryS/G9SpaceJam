@@ -393,22 +393,9 @@ for(i=0 ; i<allPrisonDesk.length ; i++){
 drawSprite(vent)
 drawSprite(elevatorCarriage1);
 drawSprite(elevatorCarriage2);
-/*
-ghosts.forEach(function (g){
-    g.move();
-});*/
-drawSprite(ghostSprite)
-/*
-robots.forEach(function (r){
-    r.move();
-});
 
-drawSprite(robotSprite);
-
-console.log(robotSprite)
-*/
-console.log(ghosts)
-console.log(hero)
+//console.log(ghosts)
+//console.log(hero)
 /*
 drawSprite(bob)
 if(keyDown(87)){ // w = up
@@ -424,6 +411,8 @@ bob.setSpeed(0,0)
 }
 */
 
+drawSprite(ghostSprite)
+console.log(ghost1)
 hero.draw()
 
 //drawSprite(heroLeftFoot)
@@ -442,10 +431,6 @@ for(i = 0 ; i < allDoor.length ; i++){
         allDoor[i].remove()
     }
 }
-
-
-//console.log(hero.leftFootX)
-//console.log(hero.leftFootY)
 
 if(hero.xPos < elevatorCarriage1.position.x + 200 && hero.xPos > elevatorCarriage1.position.x - 200 ){  //These were going to be buttons but I ran out of time
     textSize(30);
