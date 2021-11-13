@@ -344,7 +344,7 @@ for(i = 0 ; i < allTexture6.length ; i++){
 for(i = 0 ; i < allTexture7.length ; i++){
     if(allTexture7[i].position.x > camera.position.x + distX1 && allTexture7[i].position.x < camera.position.x + distX2){
         if(allTexture7[i].position.y > camera.position.y + distY1 && allTexture7[i].position.y < camera.position.y + distY2){
-            drawSprite(allTexture7[i]);
+            //drawSprite(allTexture7[i]);
         }
     }
 }
@@ -394,9 +394,20 @@ drawSprite(vent)
 drawSprite(elevatorCarriage1);
 drawSprite(elevatorCarriage2);
 
+ghosts.forEach(function (g){
+    g.move();
+});
 drawSprite(ghostSprite)
+/*
+robots.forEach(function (r){
+    r.move();
+});
 
-console.log(ghosts)
+drawSprite(robotSprite);
+
+console.log(robotSprite)
+*/
+console.log(ghostSprite)
 console.log(hero)
 /*
 drawSprite(bob)
