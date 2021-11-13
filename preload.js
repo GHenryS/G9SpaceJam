@@ -9,8 +9,9 @@ function preLoadAllImages(){
   // preLoadSound();
   preLoadFonts();
   preLoadStrings();
-  preLoadAllAnimations();
   preLoadAllSpriteSheets();
+  preLoadAllAnimations();
+ 
 }
 
 // ------------------ FUNCTION TO PRELOAD GAME BUTTONS ---------------------- //
