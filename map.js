@@ -31,13 +31,15 @@ allDoor = new Group;
 allControlPanel = new Group;
 allPrisonBed = new Group;
 allPrisonDesk = new Group;
+allGhostSprite = new Group;
+allRobotSprite = new Group;
 
 for(let i = 0 ; i < mapLayoutTxt.length ; i++){    // takes strings from txt file and puts them into maparray array 
     maparray[i] = splitTokens(mapLayoutTxt[i] , '\t');
     }
     for(let j = 0 ; j < maparray.length ; j++){         // Uses the row and column index of the arrays to designate x and y pos. Then checks
-        for(let i = 0 ; i < maparray[0].length ; i++){  //that against the recorded string in that cell, then does this with the all other nested sprites
-            //that against the recorded string in that cell, then does this with the all other nested sprites
+        for(let i = 0 ; i < maparray[0].length ; i++){  //that against the recorded string in that cell, then does with the all other nested sprites
+            //that against the recorded string in that cell, then does with the all other nested sprites
             if(maparray[j][i] == '1'){              
                 floors = createSprite(spriteWidth / 2 + i * spriteWidth ,spriteHeight / 2 + j * spriteHeight);
                 floors.addImage(floorImage);
@@ -194,6 +196,24 @@ for(let i = 0 ; i < mapLayoutTxt.length ; i++){    // takes strings from txt fil
                 prisonDeskImage.resize( 4 * spriteWidth , 2 * spriteHeight);
                 allPrisonDesk.add(prisondesk); 
             }
+            if(maparray[j][i] == '22'){
+                ghostSprite = createSprite(i * spriteWidth , j * spriteHeight + spriteHeight);
+                ghostSprite.mirrorX(1);
+                ghostSprite.velocity.x = -1;
+                ghostSprite.addAnimation('hover', ghostImage);
+                ghostSprite.scale = 1;
+                ghostSprite.setCollider('circle',0,-10,50)
+                allGhostSprite.add(ghostSprite)
+            }
+            if(maparray[j][i] == '23'){
+                robotSprite = createSprite(i * spriteWidth , j * spriteHeight + spriteHeight);
+                robotSprite.mirrorX(1);
+                robotSprite.velocity.x = 1;
+                robotSprite.addAnimation('hover', robotAnimation);
+                robotSprite.scale = 2;
+                robotSprite.setCollider('circle',0,-20,30);
+                allRobotSprite.add(robotSprite)
+            }
         }
     }
 
@@ -220,7 +240,7 @@ let distX2 = 2300;  // The camera will draw the sprites up to 1600 px to the rig
 let distY1 = -1500;  // The camera will draw the sprites up to 1200 px to the above of the hero
 let distY2 = 1500;  // The camera will draw the sprites up to 1600 px to the below of the hero
 
-camera.zoom = 0.8;                   // Use this to set the zoomcamera.position.x = hero.xPos; // This line and the next line set the camera to hero position
+camera.zoom = 0.8;                   // Use to set the zoomcamera.position.x = hero.xPos; // line and the next line set the camera to hero position
 
 frameRate(60)
 
@@ -400,8 +420,14 @@ if(elevatorCarriage2.position.x > camera.position.x + distX1 && elevatorCarriage
         drawSprite(elevatorCarriage2);
     }
 }
+for(i=0 ; i<allGhostSprite.length ; i++){
+    drawSprite(allGhostSprite[i]);    
+}
+for(i=0 ; i<allRobotSprite.length ; i++){
+    drawSprite(allRobotSprite[i]);    
+}
 
-drawSprites()    //Draws Evans Sprites
+//drawSprites()    //Draws Evans Sprites
 
 hero.draw()
 
