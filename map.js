@@ -222,6 +222,8 @@ let distY2 = 1500;  // The camera will draw the sprites up to 1600 px to the bel
 
 camera.zoom = 0.8;                   // Use this to set the zoomcamera.position.x = hero.xPos; // This line and the next line set the camera to hero position
 
+frameRate(60)
+
 camera.position.x = hero.xPos  
 camera.position.y = hero.yPos - height *0.27
 
@@ -405,7 +407,7 @@ console.log(ghosts)
 
 drawSprites()    //Draws Evans Sprites
 
-drawSprite(ghostSprite)
+//drawSprite(ghostSprite)
 //drawSprite(robotSprite)
 
 hero.draw()
