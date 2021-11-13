@@ -206,7 +206,7 @@ for(let i = 0 ; i < mapLayoutTxt.length ; i++){    // takes strings from txt fil
                 allGhostSprite.add(ghostSprite)
             }
             if(maparray[j][i] == '23'){
-                robotSprite = createSprite(i * spriteWidth , j * spriteHeight + spriteHeight);
+                robotSprite = createSprite(i * spriteWidth , j * spriteHeight + spriteHeight / 2);
                 robotSprite.mirrorX(1);
                 robotSprite.velocity.x = 1;
                 robotSprite.addAnimation('hover', robotAnimation);
