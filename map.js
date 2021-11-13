@@ -387,14 +387,9 @@ drawSprite(vent)
 drawSprite(elevatorCarriage1);
 drawSprite(elevatorCarriage2);
 
-//console.log(ghosts)
+console.log(ghosts)
 //console.log(hero)
 
-drawSprite(ghostSprite)
-
-console.log(ghostSprite)
-
-console.log(ghost1)
 
 hero.draw()
 
