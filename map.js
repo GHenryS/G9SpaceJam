@@ -228,15 +228,7 @@ for(let i = 0 ; i < mapLayoutTxt.length ; i++){    // takes strings from txt fil
     }
 
 anchor = spriteHeight;
-/*
-heroLeftFoot = createSprite(hero.leftFootX , hero.leftFootY)
-heroLeftFoot.setCollider("rectangle", 0, 0, 0.2 * spriteWidth, 0.1 * spriteHeight)
-heroLeftFoot.debug = true
 
-heroRightFoot = createSprite(hero.rightFootX , hero.rightFootY)
-heroRightFoot.setCollider("rectangle", 0, 0, 0.2 * spriteWidth, 0.1 * spriteHeight)
-heroRightFoot.debug = true
-*/
 noSmooth()
 }
 
@@ -431,15 +423,26 @@ if(elevatorCarriage2.position.x > camera.position.x + distX1 && elevatorCarriage
     }
 }
 for(i=0 ; i<allGhostSprite.length ; i++){
-    drawSprite(allGhostSprite[i]);    
+    if(allGhostSprite[i].position.x > camera.position.x + distX1 && allGhostSprite[i].position.x < camera.position.x + distX2){
+        if(allGhostSprite[i].position.y > camera.position.y + distY1 && allGhostSprite[i].position.y < camera.position.y + distY2){
+            drawSprite(allGhostSprite[i]);
+        }
+    }    
 }
 for(i=0 ; i<allRobotSprite.length ; i++){
-    drawSprite(allRobotSprite[i]);    
+    if(allRobotSprite[i].position.x > camera.position.x + distX1 && allRobotSprite[i].position.x < camera.position.x + distX2){
+        if(allRobotSprite[i].position.y > camera.position.y + distY1 && allRobotSprite[i].position.y < camera.position.y + distY2){
+            drawSprite(allRobotSprite[i]);
+        }
+    }    
 }
 for(i=0 ; i<allTrooperSprite.length ; i++){
-    drawSprite(allTrooperSprite[i]);    
+    if(allTrooperSprite[i].position.x > camera.position.x + distX1 && allTrooperSprite[i].position.x < camera.position.x + distX2){
+        if(allTrooperSprite[i].position.y > camera.position.y + distY1 && allTrooperSprite[i].position.y < camera.position.y + distY2){
+            drawSprite(allTrooperSprite[i]);
+        }
+    }    
 }
-//drawSprites()    //Draws Evans Sprites
 
 hero.draw()
 
