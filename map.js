@@ -406,7 +406,7 @@ if(elevatorCarriage2.position.x > camera.position.x + distX1 && elevatorCarriage
 //drawSprites()
 
 hero.draw()
-
+console.log(allFloor)
 if(keyDown(38)){ // up arrow = up
     hero.elevatorUp(20)
 }else if(keyDown(40)){ // down arrow = down

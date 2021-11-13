@@ -1,8 +1,8 @@
 function robotSetup(){
     for(let i = 0; i < 1; i++){
-        let yPos = random(1000,1100);
-        let minX =  random(200, 300);
-        let maxX = random(400,500); 
+        let yPos = 3530
+        let minX =  3380;
+        let maxX = 3400; 
         let xPos = (minX + 20);
         robots.push(new RobotObject(xPos,yPos,minX,maxX));
     }
@@ -21,9 +21,9 @@ class RobotObject{
     
     this.robotSprite = createSprite(xPos,yPos);
     this.robotSprite.mirrorX(1);
-    this.robotSprite.velocity.x = -1;
+    this.robotSprite.velocity.x = 1;
     this.robotSprite.addAnimation('hover', robotAnimation);
-    this.robotSprite.scale = 1;
+    this.robotSprite.scale = 2;
     this.robotSprite.debug = true;
     this.robotSprite.setCollider('circle',0,-20,30);
     }
