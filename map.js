@@ -215,12 +215,12 @@ heroRightFoot.debug = true
 function drawMap(){
 background(0,0,0)
 
-let distX1 = -2500;  // The camera will draw the sprites up to 1600 px to the left of the hero
-let distX2 = 2500;  // The camera will draw the sprites up to 1600 px to the right of the hero
-let distY1 = -2000;  // The camera will draw the sprites up to 1200 px to the above of the hero
-let distY2 = 2000;  // The camera will draw the sprites up to 1600 px to the below of the hero
+let distX1 = -2300;  // The camera will draw the sprites up to 1600 px to the left of the hero
+let distX2 = 2300;  // The camera will draw the sprites up to 1600 px to the right of the hero
+let distY1 = -1500;  // The camera will draw the sprites up to 1200 px to the above of the hero
+let distY2 = 1500;  // The camera will draw the sprites up to 1600 px to the below of the hero
 
-camera.zoom = 0.4;                   // Use this to set the zoomcamera.position.x = hero.xPos; // This line and the next line set the camera to hero position
+camera.zoom = 0.8;                   // Use this to set the zoomcamera.position.x = hero.xPos; // This line and the next line set the camera to hero position
 
 camera.position.x = hero.xPos  
 camera.position.y = hero.yPos - height *0.27
@@ -383,13 +383,27 @@ for(i=0 ; i<allPrisonDesk.length ; i++){
         }
     }
 }
-drawSprite(vent)
-drawSprite(elevatorCarriage1);
-drawSprite(elevatorCarriage2);
+if(vent.position.x > camera.position.x + distX1 && vent.position.x < camera.position.x + distX2){
+    if(vent.position.y > camera.position.y + distY1 && vent.position.y < camera.position.y + distY2){
+        drawSprite(vent)
+    }
+}
+if(elevatorCarriage1.position.x > camera.position.x + distX1 && elevatorCarriage1.position.x < camera.position.x + distX2){
+    if(elevatorCarriage1.position.y > camera.position.y + distY1 && elevatorCarriage1.position.y < camera.position.y + distY2){
+        drawSprite(elevatorCarriage1);
+    }
+}
+if(elevatorCarriage2.position.x > camera.position.x + distX1 && elevatorCarriage2.position.x < camera.position.x + distX2){
+    if(elevatorCarriage2.position.y > camera.position.y + distY1 && elevatorCarriage2.position.y < camera.position.y + distY2){
+        drawSprite(elevatorCarriage2);
+    }
+}
 
-console.log(ghosts)
-//console.log(hero)
 
+
+
+
+//drawSprites()
 
 hero.draw()
 
