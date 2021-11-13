@@ -362,33 +362,25 @@ class HumanObject{
         console.log(this.objectState)
         // front
         if(this.objectState == "front" ){
-            if(keyIsPressed == true && keyCode == this.leftKey && this.turnLeftInMotion == false){
-                this.faceLeftFromFront(); 
+            if(keyIsDown(this.leftKey)){
+                this.objectState = "faceleft"
             }
-            if(keyIsPressed == true && keyCode == this.rightKey && this.turnRightInMotion == false){
-                this.faceRightFromFront(); 
+            if(keyIsDown(this.rightKey)){
+                this.objectState = "faceright"
             }
-            if(this.turnLeftInMotion == true){
-                this.faceLeftFromFront(); 
-            }
-            if(this.turnRightInMotion == true){
-                this.faceRightFromFront(); 
-            }
+
         }   
         // going right........................
         if(this.objectState == "faceright"){ 
 
-            if(this.stepToRightFirst == true){
-                this.firstStepToRight();
-            }
             if(keyIsDown(this.rightKey)){  
                 this.firstStepToRight();
             }
             if(keyIsDown(this.leftKey)){
                 this.turnToFrontFromRight();
-            }
-                
+            }      
         }
+        
     
         // first step - left foot forward
         if(this.objectState == "firstright"){
@@ -418,20 +410,18 @@ class HumanObject{
 
 
         // going left............................
-
+    console.log(this.turnLeftInMotion)
         if(this.objectState == "faceleft"){ 
-            if( this.stepToLeftFirst == true){
-                this.firstStepToleft();
-            }
-            if(keyIsDown(this.leftKey)){  
-                this.firstStepToleft();
-            }
+            // if the turn to left animation is complete and right key is pressed turn to front
             if(keyIsDown(this.rightKey)){
                 this.turnToFrontFromLeft();
             }
-                 
+            // if the turn to left animation is complete and left key is pressed take first step to left
+            if(keyIsDown(this.leftKey) ){
+                this.firstStepToleft(); 
+            }                 
         }
-
+        
         // first step - left foot forwrd
         if(this.objectState == "firstleft"){
             this.firstStepToleft();
@@ -524,10 +514,10 @@ class HumanObject{
         }
         if(this.step < 0 ){    
             this.turnRightInMotion      =   false; 
-            this.objectState            =   "faceleft";                                    
+            this.objectState            =   "faceleft"; 
+                                 
         }                            
     }    
-
     
     //-------------------------- METHOD TO TURN FROM FRONT POSITION TO RIGHT ---------------------------//
     faceRightFromFront(){  
@@ -545,16 +535,14 @@ class HumanObject{
         if(this.step < 0 ){
             this.turnRightInMotion      =   false; 
             this.objectState            =   "faceright";
-
-        }  
-        console.log("facing right from front")      
+        }       
     }
 
     //-------------------------- METHOD TO TURN FROM FRONT POSITION TO RIGHT ---------------------------//
     turnToFrontFromLeft(){
         // run animation if the conditions are met 
         if(this.turnFrontFromLeft  == false ){  
-            this.dir                    =   1;
+            this.dir                    =   -1;
             this.step                   =   1;
             this.turnFrontFromLeft      =   true;
         }
@@ -565,7 +553,7 @@ class HumanObject{
         }  
         if(this.step < 0 ){
             this.turnFrontFromLeft      =   false; 
-            this.objectState            =   "front";            
+            this.objectState            =   "front";                   
         } 
         console.log("facing front from left") 
     }
@@ -574,7 +562,7 @@ class HumanObject{
        
         // run animation if the conditions are met 
         if(this.turnFrontFromRight == false ){
-            this.dir                    =   0;
+            this.dir                    =   1;
             this.step                   =   1;
             this.turnFrontFromRight     =   true;
         }
