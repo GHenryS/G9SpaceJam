@@ -401,14 +401,7 @@ if(elevatorCarriage2.position.x > camera.position.x + distX1 && elevatorCarriage
     }
 }
 
-
-console.log(robots)
-console.log(ghosts)
-
 drawSprites()    //Draws Evans Sprites
-
-//drawSprite(ghostSprite)
-//drawSprite(robotSprite)
 
 hero.draw()
 
