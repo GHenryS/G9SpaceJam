@@ -65,8 +65,8 @@ function preLoadImages(){
   texture9Image = loadImage('images/texture8.png');       // Cockpit back wall
   texture10Image = loadImage('images/texture10.png');     // Large Group Cell (top) Back Wall
   elevatorCarriageImage = loadImage('images/elevatorCarriage.png')
-  doorImage = loadImage('images/door.png')
-  doorLImage = loadImage('images/door.png')
+  doorImage = loadImage('images/Door.png')
+  doorLImage = loadImage('images/Door.png')
   bobImage = loadImage('images/bob.png')
   ventImage = loadImage('images/airduct_grate_02b.png')
   controlPanelImage = loadImage('images/control.png')
@@ -96,9 +96,9 @@ function preLoadStrings(){
 }
 // ------------------ FUNCTION TO PRELOAD SPRITESHEETS    ---------------- //
 function preLoadAllSpriteSheets(){
-  robotImage = loadSpriteSheet('sprites/robot.png',78,71,10);
-  ghostImage = loadSpriteSheet('sprites/ghostimage.png', 172, 197, 1);
-  trooperImage = loadSpriteSheet('/sprites/trooper.png', 108, 190, 7);
+  robotImage = loadSpriteSheet('images/robot.png',78,71,10);
+  ghostImage = loadSpriteSheet('images/ghostimage.png', 172, 197, 1);
+  trooperImage = loadSpriteSheet('images/trooper.png', 108, 190, 7);
 
 }
 // ------------------ FUNCTION TO PRELOAD ANIMATIONS    ---------------- //
