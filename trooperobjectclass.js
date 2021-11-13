@@ -4,7 +4,7 @@ let trooperSprite;
 let troopers = [];
 
 function preload(){
-    trooperImage = loadSpriteSheet('sprites/trooper.png',451,191,7);
+    trooperImage = loadSpriteSheet('/sprites/trooper.png', 108, 190, 7);
     trooperAnimation = loadAnimation(trooperImage);
 }
 
@@ -51,7 +51,7 @@ class TrooperObject{
     this.trooperSprite.mirrorX(1);
     this.trooperSprite.velocity.x = 1;
     this.trooperSprite.addAnimation('hover', trooperAnimation);
-    this.trooperSprite.scale = 1;
+    this.trooperSprite.scale = 0.8;
     this.trooperSprite.debug = true;
     this.trooperSprite.setCollider('circle',0,-20,30);
     }
