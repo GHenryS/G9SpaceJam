@@ -449,6 +449,10 @@ function () {
         if (keyIsDown(this.leftKey)) {
           this.firstStepToleft();
         }
+
+        if (keyIsDown(this.rightKey)) {
+          this.turnToFrontFromLeft();
+        }
       } // first step - left foot forwrd
 
 
@@ -471,12 +475,6 @@ function () {
 
       if (this.objectState == "stopleft2") {
         this.stopFaceLeft2();
-      } // turn to front from right
-
-
-      if (this.objectState == "frontfromleft") {
-        this.turnToFrontFromLeft();
-        ll;
       }
     } ///////////////////////////////////////////////////////////////////////////////////////////////////
     ///////// THE METHOD CALLED FROM OUTSIDE OF THE CLASS TO MAKE IT ALL HAPPEN ///////////////////////
@@ -554,15 +552,8 @@ function () {
       }
 
       if (this.step < 0) {
-        this.turnRightInMotion = false; //this.objectState            =   "faceleft";  
-
-        if (keyIsDown(this.leftKey)) {
-          this.objectState = "firstleft";
-        } else if (keyIsDown(this.rightKey)) {
-          this.objectState = "frontfromleft";
-        } else {
-          this.objectState = "faceleft";
-        }
+        this.turnRightInMotion = false;
+        this.objectState = "faceleft";
       }
     } //-------------------------- METHOD TO TURN FROM FRONT POSITION TO RIGHT ---------------------------//
 
@@ -593,8 +584,7 @@ function () {
   }, {
     key: "turnToFrontFromLeft",
     value: function turnToFrontFromLeft() {
-      ll; // run animation if the conditions are met 
-
+      // run animation if the conditions are met 
       if (this.turnFrontFromLeft == false) {
         this.dir = 1;
         this.step = 1;

@@ -15,7 +15,7 @@ class HumanObject{
         this.stationary                 =   "yes"       // "no" or "yes"
         this.turn                       =   0;
         this.moveXrate                  =   1;
-        this.change                     =   0.1;       // determines the rate of animation
+        this.change                     =   0.03;       // determines the rate of animation
         this.step                       =   1;          // DO NOT CHANGE THIS VALUE - counter to control animatioon
 
         // SETTING STANDARD CONTROL KEYS
@@ -426,6 +426,9 @@ class HumanObject{
             if(keyIsDown(this.leftKey)){  
                 this.firstStepToleft();
             }
+            if(keyIsDown(this.rightKey)){
+                this.turnToFrontFromLeft();
+            }
                  
         }
 
@@ -446,11 +449,7 @@ class HumanObject{
         if(this.objectState == "stopleft2"){
             this.stopFaceLeft2();
         }
-        // turn to front from right
-        if(this.objectState == "frontfromleft"){
-            this.turnToFrontFromLeft(); 
-            ll  
-        }   
+  
     }
 
     ///////////////////////////////////////////////////////////////////////////////////////////////////
@@ -523,16 +522,9 @@ class HumanObject{
             this.callForAnimation(); 
             this.step                   =   this.step - this.change;                      
         }
-        if(this.step < 0 ){      
+        if(this.step < 0 ){    
             this.turnRightInMotion      =   false; 
-            //this.objectState            =   "faceleft";  
-            if(keyIsDown(this.leftKey)){
-                this.objectState        =   "firstleft";
-            } else if(keyIsDown(this.rightKey)){
-                this.objectState        =   "frontfromleft";
-            } else { 
-                this.objectState        =   "faceleft";
-            }                           
+            this.objectState            =   "faceleft";                                    
         }                            
     }    
 
@@ -560,7 +552,6 @@ class HumanObject{
 
     //-------------------------- METHOD TO TURN FROM FRONT POSITION TO RIGHT ---------------------------//
     turnToFrontFromLeft(){
-ll
         // run animation if the conditions are met 
         if(this.turnFrontFromLeft  == false ){  
             this.dir                    =   1;
@@ -574,7 +565,7 @@ ll
         }  
         if(this.step < 0 ){
             this.turnFrontFromLeft      =   false; 
-            this.objectState            =   "front";             
+            this.objectState            =   "front";            
         } 
         console.log("facing front from left") 
     }
